@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/theme/theme.dart';
+import 'package:litadesarrollos/src/widgets/lita_button.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  bool _value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * .1,
-                        vertical: MediaQuery.of(context).size.height * .05),
+                        vertical: MediaQuery.of(context).size.height * .04),
                     child: FormBuilderTextField(
                       style: GoogleFonts.sourceSansPro(
                           color: Colors.white, fontSize: 16),
@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * .1,
-                        vertical: MediaQuery.of(context).size.height * .05),
+                        vertical: MediaQuery.of(context).size.height * .04),
                     child: FormBuilderTextField(
                       style: GoogleFonts.sourceSansPro(
                           color: Colors.white, fontSize: 16),
@@ -87,7 +87,7 @@ class LoginPage extends StatelessWidget {
                       cursorColor: Colors.white,
                       maxLines: 1,
                       decoration: InputDecoration(
-                        labelText: "Contaseña",
+                        labelText: "Contraseña",
                         labelStyle: GoogleFonts.sourceSansPro(
                           color: Colors.white,
                           fontSize: 16,
@@ -110,7 +110,7 @@ class LoginPage extends StatelessWidget {
                    */
                   Padding(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * .12),
+                        top: MediaQuery.of(context).size.height * .10),
                     child: FlatButton(
                       onPressed: () {},
                       child: Text(
@@ -134,10 +134,14 @@ class LoginPage extends StatelessWidget {
                               loginProvider.rememberUser =
                                   !loginProvider.rememberUser;
                             },
-                            child: Container(
+                            child: AnimatedContainer(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.easeInOut,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  color: primaryLita,
+                                  color: loginProvider.rememberUser == true
+                                      ? Colors.white
+                                      : primaryLita,
                                   border: Border.all(color: Colors.white)),
                               child: Padding(
                                 padding: const EdgeInsets.all(1.0),
@@ -145,12 +149,12 @@ class LoginPage extends StatelessWidget {
                                     ? Icon(
                                         Icons.check,
                                         size: 30.0,
-                                        color: Colors.white,
+                                        color: primaryLita,
                                       )
                                     : Icon(
                                         Icons.check_box_outline_blank,
                                         size: 30.0,
-                                        color: primaryLita,
+                                        color: Colors.transparent,
                                       ),
                               ),
                             ),
@@ -169,37 +173,7 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * .1),
-                    child: MaterialButton(
-                      onPressed: () async {
-                        if (_fbKey.currentState.saveAndValidate()) {
-                          loginProvider.email =
-                              _fbKey.currentState.value['email'];
-                          loginProvider.password =
-                              _fbKey.currentState.value['password'];
-                          await loginProvider.loginUser();
-                        }
-                      },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      color: accentLita,
-                      child: Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: MediaQuery.of(context).size.width * .2),
-                        child: loginProvider.isloading == true
-                            ? Center(child: CircularProgressIndicator())
-                            : Text(
-                                'Iniciar Sesión',
-                                style: GoogleFonts.sourceSansPro(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                      ),
-                    ),
-                  )
+                  LitaBtn(fbKey: _fbKey, loginProvider: loginProvider)
                 ],
               ),
             ),
