@@ -51,6 +51,7 @@ class LoginPage extends StatelessWidget {
                       style: GoogleFonts.sourceSansPro(
                           color: Colors.white, fontSize: 16),
                       attribute: "email",
+                      autocorrect: false,
                       textInputAction: TextInputAction.done,
                       cursorColor: Colors.white,
                       decoration: InputDecoration(
@@ -59,12 +60,15 @@ class LoginPage extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 16,
                         ),
+                        errorStyle: TextStyle(color: accentLita),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
+                          
                         ),
+                        errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))
                       ),
                       validators: [
                         FormBuilderValidators.required(),
@@ -87,7 +91,9 @@ class LoginPage extends StatelessWidget {
                       cursorColor: Colors.white,
                       maxLines: 1,
                       decoration: InputDecoration(
+                         errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                         labelText: "Contraseña",
+                        errorStyle: TextStyle(color: accentLita),
                         labelStyle: GoogleFonts.sourceSansPro(
                           color: Colors.white,
                           fontSize: 16,
