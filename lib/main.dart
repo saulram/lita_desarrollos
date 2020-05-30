@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:litadesarrollos/src/pages/login_page.dart';
+import 'package:litadesarrollos/src/pages/root_page.dart';
+import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
+
+import 'src/services/login_service.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +19,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => LoginService(),
         ),
+        ChangeNotifierProxyProvider<LoginService, TermsService>(
+          create: (_) => TermsService(),
+          update: (context, loginServce, termService) =>
+              termService..update(loginServce.loginResult),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -25,7 +33,7 @@ class MyApp extends StatelessWidget {
           accentColor: Color(0xff4E76B6),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: LoginPage(),
+        home: RootPage(),
       ),
     );
   }
