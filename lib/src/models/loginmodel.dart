@@ -37,7 +37,7 @@ class User {
     List<String> roles;
     bool isPrimaryAccount;
     bool isPhoneActive;
-    List<String> screenPreferences;
+    List<dynamic> screenPreferences;
     bool incorrectData;
     bool acceptTerms;
     bool isDefaulter;
@@ -46,8 +46,6 @@ class User {
     bool isActive;
     String completeName;
     String email;
-    String departmentId;
-    int phone;
     Residency residency;
 
     User({
@@ -64,8 +62,6 @@ class User {
         this.isActive,
         this.completeName,
         this.email,
-        this.departmentId,
-        this.phone,
         this.residency,
     });
 
@@ -74,7 +70,7 @@ class User {
         roles: List<String>.from(json["roles"].map((x) => x)),
         isPrimaryAccount: json["isPrimaryAccount"],
         isPhoneActive: json["isPhoneActive"],
-        screenPreferences: List<String>.from(json["screenPreferences"].map((x) => x)),
+        screenPreferences: List<dynamic>.from(json["screenPreferences"].map((x) => x)),
         incorrectData: json["incorrectData"],
         acceptTerms: json["acceptTerms"],
         isDefaulter: json["isDefaulter"],
@@ -83,8 +79,6 @@ class User {
         isActive: json["isActive"],
         completeName: json["completeName"],
         email: json["email"],
-        departmentId: json["departmentId"],
-        phone: json["phone"],
         residency: Residency.fromJson(json["residency"]),
     );
 
@@ -102,8 +96,6 @@ class User {
         "isActive": isActive,
         "completeName": completeName,
         "email": email,
-        "departmentId": departmentId,
-        "phone": phone,
         "residency": residency.toJson(),
     };
 }
@@ -133,12 +125,14 @@ class Theme {
     String secondaryColor;
     String name;
     String mainColor;
+    String thirdColor;
 
     Theme({
         this.id,
         this.secondaryColor,
         this.name,
         this.mainColor,
+        this.thirdColor,
     });
 
     factory Theme.fromJson(Map<String, dynamic> json) => Theme(
@@ -146,6 +140,7 @@ class Theme {
         secondaryColor: json["secondaryColor"],
         name: json["name"],
         mainColor: json["mainColor"],
+        thirdColor: json["thirdColor"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -153,5 +148,6 @@ class Theme {
         "secondaryColor": secondaryColor,
         "name": name,
         "mainColor": mainColor,
+        "thirdColor": thirdColor,
     };
 }

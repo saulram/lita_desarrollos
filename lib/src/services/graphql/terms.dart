@@ -11,3 +11,8 @@ query($slug: String!) {
     }
 }
 ''';
+
+String updateByRes = r'''
+    mutation( $acceptTerms: Boolean) {
+    updateUserByResident(input: { acceptTerms: $acceptTerms })
+}''';

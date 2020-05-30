@@ -12,7 +12,7 @@ class TermsService with ChangeNotifier {
     loginResult = lr;
     token = lr.token;
     notifyListeners();
-    if(token!=null ){
+    if (token != null) {
       getTerminos();
     }
   }
@@ -23,18 +23,14 @@ class TermsService with ChangeNotifier {
 // ...
 
   static HttpLink httplink = HttpLink(
-    uri: 'https://lita-261516.appspot.com/graphql',
-    headers: <String,String>{
-      "Authorization":"$token",
-    }
-  );
+      uri: 'https://lita-261516.appspot.com/graphql',
+      headers: <String, String>{
+        "Authorization": "$token",
+      });
 
+  Terms _teminos = Terms();
 
-Terms _teminos = Terms();
-Terms get  terminos =>_teminos;
-
-
-
+  Terms get terminos => _teminos;
 
   static GraphQLClient _client = GraphQLClient(
     cache: InMemoryCache(),
@@ -47,17 +43,34 @@ Terms get  terminos =>_teminos;
       documentNode: gql(getTerms),
       variables: <String, dynamic>{"slug": "terminos-y-condiciones"});
 
+  MutationOptions acceptTerms = MutationOptions(
+      documentNode: gql(updateByRes),
+      variables: <String, dynamic>{"acceptTerms":true });
+
   void getTerminos() async {
     final QueryResult result = await _client.query(options);
 
+    if (result.hasException) {
+      print(result.exception.toString());
+    } else {
+      _teminos = termsFromJson(jsonEncode(result.data));
+
+      notifyListeners();
+    }
+  }
+
+ Future<bool> termsAccepted() async {
+
+    final QueryResult result = await _client.mutate(acceptTerms);
+
     if(result.hasException){
       print(result.exception.toString());
-    }else{
-      
-      _teminos = termsFromJson(jsonEncode(result.data));
-   
-      notifyListeners(); 
-    }
+      return false;
 
+    }else{
+
+    return true;
+
+    }
   }
 }
