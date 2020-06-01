@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .05),
                   child: Center(
-                    child: Image.asset('assets/lita.png'),
+                    child: Image.asset('assets/lita.png',width: MediaQuery.of(context).size.width*.25,),
                   ),
                 ),
 

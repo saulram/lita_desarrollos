@@ -32,6 +32,7 @@ dependencies:
   provider: ^4.1.2
   flutter_secure_storage: ^3.3.3
   graphql: ^3.0.2
+  flutter_inner_drawer: ^0.5.6+1
 
 
 dev_dependencies:
@@ -51,6 +52,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/secciones/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        routes:{
+          'preferences-section':(_)=>PreferenceSelection()
+        } ,
         debugShowCheckedModeBanner: false,
         title: 'Lita Desarrollos',
         theme: ThemeData(
