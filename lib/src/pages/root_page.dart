@@ -13,8 +13,9 @@ class RootPage extends StatelessWidget {
 
     if (loginServce.isloading) {
       return Scaffold(
+        backgroundColor: primaryLita,
         body: Center(
-          child: CircularProgressIndicator(backgroundColor: primaryLita, strokeWidth: 1,),
+          child: Image.asset('assets/animado.gif'),
         ),
       );
     } 

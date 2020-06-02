@@ -1,3 +1,4 @@
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
@@ -26,18 +27,20 @@ class MyApp extends StatelessWidget {
               termService..update(loginServce.loginResult),
         )
       ],
-      child: MaterialApp(
-        routes:{
-          'preferences-section':(_)=>PreferenceSelection()
-        } ,
-        debugShowCheckedModeBanner: false,
-        title: 'Lita Desarrollos',
-        theme: ThemeData(
-          primaryColor: Color(0xff00CC87),
-          accentColor: Color(0xff4E76B6),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+      child: AlertProvider(
+        child: MaterialApp(
+          routes:{
+            'preferences-section':(_)=>PreferenceSelection()
+          } ,
+          debugShowCheckedModeBanner: false,
+          title: 'Lita Desarrollos',
+          theme: ThemeData(
+            primaryColor: Color(0xff00CC87),
+            accentColor: Color(0xff4E76B6),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: RootPage(),
         ),
-        home: RootPage(),
       ),
     );
   }

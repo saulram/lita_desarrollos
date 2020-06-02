@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/pages/forgotten/password_recover.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/theme/theme.dart';
@@ -8,8 +9,6 @@ import 'package:litadesarrollos/src/widgets/lita_button.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<LoginService>(context);
@@ -34,7 +33,10 @@ class LoginPage extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .05),
                   child: Center(
-                    child: Image.asset('assets/lita.png',width: MediaQuery.of(context).size.width*.25,),
+                    child: Image.asset(
+                      'assets/lita.png',
+                      width: MediaQuery.of(context).size.width * .25,
+                    ),
                   ),
                 ),
 
@@ -53,21 +55,20 @@ class LoginPage extends StatelessWidget {
                     textInputAction: TextInputAction.done,
                     cursorColor: Colors.white,
                     decoration: InputDecoration(
-                      labelText: "Usuario",
-                      labelStyle: GoogleFonts.sourceSansPro(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                      errorStyle: TextStyle(color: accentLita),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-
-                      ),
-                      errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))
-                    ),
+                        labelText: "Usuario",
+                        labelStyle: GoogleFonts.sourceSansPro(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                        errorStyle: TextStyle(color: accentLita),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        errorBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white))),
                     validators: [
                       FormBuilderValidators.required(),
                     ],
@@ -89,7 +90,8 @@ class LoginPage extends StatelessWidget {
                     cursorColor: Colors.white,
                     maxLines: 1,
                     decoration: InputDecoration(
-                       errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                      errorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white)),
                       labelText: "Contraseña",
                       errorStyle: TextStyle(color: accentLita),
                       labelStyle: GoogleFonts.sourceSansPro(
@@ -116,7 +118,10 @@ class LoginPage extends StatelessWidget {
                   padding: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .10),
                   child: FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ForgotPassword()));
+                    },
                     child: Text(
                       'Olvidé mi contraseña',
                       style: GoogleFonts.sourceSansPro(
@@ -177,7 +182,8 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                LitaBtn(fbKey: loginProvider.fbkey, loginProvider: loginProvider)
+                LitaBtn(
+                    fbKey: loginProvider.fbkey, loginProvider: loginProvider)
               ],
             ),
           ),

@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:graphql/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:litadesarrollos/src/models/loginmodel.dart';
+import 'package:litadesarrollos/src/services/graphql/recover_password.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
-
-
 
 import '../utils/globals.dart';
 
@@ -19,25 +19,29 @@ class LoginService with ChangeNotifier {
   //Inicializamos variable de respuesta login.
 
   LoginResult _loginResult = LoginResult();
+
   LoginResult get loginResult => _loginResult;
+
   set loginResult(LoginResult lr) {
     _loginResult = lr;
     notifyListeners();
   }
 
-
   //Inicializar el almacenamiento seguro
   final _storage = FlutterSecureStorage();
 
   //datos para login de usuario
-  String _email = '';
+  static String _email = '';
+
   String get email => _email;
+
   set email(String newMail) {
     _email = newMail;
     notifyListeners();
   }
 
   String _password = '';
+
   set password(String passwordnw) {
     _password = passwordnw;
     notifyListeners();
@@ -46,19 +50,28 @@ class LoginService with ChangeNotifier {
   ///para manejar el login del user
   ///
   bool _isloading = false;
+
   bool get isloading => _isloading;
 
   /// Para actualizar el checkbox de remeber username
 
   bool _value = false;
+
   bool get rememberUser => _value;
+
   set rememberUser(bool nv) {
     _value = nv;
     notifyListeners();
   }
- //controlador de formulario
+
+  //controlador de formulario
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
   GlobalKey get fbkey => _fbKey;
+  final GlobalKey<FormBuilderState> _fbRecover = GlobalKey<FormBuilderState>();
+
+  GlobalKey<FormBuilderState> get fbRecover => _fbRecover;
+
   ///Funcion para login de usuario.
   loginUser() async {
     _isloading = true;
@@ -82,7 +95,6 @@ class LoginService with ChangeNotifier {
     } else {
       _loginResult = loginResultFromJson(res.body);
       _isloading = false;
-      
     }
     notifyListeners();
   }
@@ -114,9 +126,39 @@ class LoginService with ChangeNotifier {
     }
   }
 
-   //helper para borrar todos los datos del almacen seguro
+  //helper para borrar todos los datos del almacen seguro
   void deleteAllUserData() async {
     //se borra completamente el almacen seguro
     await _storage.deleteAll();
+  }
+
+  static HttpLink httplink = HttpLink(
+    uri: 'https://lita-261516.appspot.com/graphql',
+  );
+  static GraphQLClient _client = GraphQLClient(
+    cache: InMemoryCache(),
+    link: httplink,
+  );
+  QueryOptions recoverPassword = QueryOptions(
+      documentNode: gql(recoverPass),
+      variables: <String, dynamic>{"email": "$_email"});
+
+  Future<bool> passRecover() async {
+    _isloading = true;
+    notifyListeners();
+    final QueryResult result = await _client.query(recoverPassword);
+
+    if (result.hasException) {
+      print(result.exception.toString());
+      _isloading = false;
+      notifyListeners();
+      return false;
+    } else {
+
+      _isloading = false;
+      notifyListeners();
+      return true;
+    }
+
   }
 }

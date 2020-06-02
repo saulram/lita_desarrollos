@@ -72,7 +72,7 @@ class InitialPage extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Text(
-                      'Pesonaliza tu pantalla',
+                      'Personaliza tu pantalla',
                       style: GoogleFonts.sourceSansPro(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -134,7 +134,8 @@ class InitialPage extends StatelessWidget {
                       return SqarePrefs(
                         child: MaterialButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, 'preferences-section');
+                              Navigator.pushNamed(
+                                  context, 'preferences-section');
                             },
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -166,16 +167,23 @@ class InitialPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromARGB(200, 242, 242, 242),
         items: [
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icono_inicio.png')),
-              title: Text('Inicio')),
+              icon: ImageIcon(
+                AssetImage('assets/icono_inicio.png'),
+                color: HexColor('#4E76B6'),
+              ),
+              title: Text(
+                'Inicio',
+                style: GoogleFonts.sourceSansPro(color: HexColor('#4E76B6')),
+              )),
           BottomNavigationBarItem(
               icon: ImageIcon(AssetImage('assets/icono_social.png')),
               title: Text('Social')),
           BottomNavigationBarItem(
               icon: ImageIcon(AssetImage('assets/icono_notificaciones.png')),
-              title: Text('Notifications'))
+              title: Text('Notificaciones'))
         ],
       ),
     );
