@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
-import 'package:litadesarrollos/src/widgets/init_square.dart';
+import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
 class PreferenceSelection extends StatelessWidget {
@@ -16,25 +16,7 @@ class PreferenceSelection extends StatelessWidget {
     return Scaffold(
         backgroundColor: HexColor(user.residency.theme.secondaryColor),
         drawerScrimColor: Colors.transparent,
-        endDrawer: Drawer(
-          elevation: 0,
-          child: Container(
-            color: HexColor(user.residency.theme.mainColor),
-            child: SafeArea(
-              child: Column(
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () {
-                      loginService.deleteAllUserData();
-                      loginService.loginResult = LoginResult();
-                    },
-                    child: Text('Cerrar Sesion'),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
+        endDrawer: DrawerLita(),
         appBar: AppBar(
           automaticallyImplyLeading: true,
           iconTheme: IconThemeData(color: Colors.white),

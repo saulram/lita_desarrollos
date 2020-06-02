@@ -1,4 +1,4 @@
-package com.disolutionsmx.litadesarrollos
+package com.disolutionsmx.lita_desarrollos
 
 import io.flutter.embedding.android.FlutterActivity
 

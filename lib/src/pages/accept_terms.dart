@@ -16,6 +16,7 @@ class AcceptTerms extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.dark,
+        centerTitle: true,
         backgroundColor: HexColor(
             user != null ? user.residency.theme.secondaryColor : '#ffffff'),
         elevation: 0,
@@ -23,16 +24,7 @@ class AcceptTerms extends StatelessWidget {
           'Terminos y Condiciones',
           style: GoogleFonts.sourceSansPro(color: Colors.white),
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            color: Colors.white,
-            onPressed: () {
-              loginService.deleteAllUserData();
 
-            },
-          )
-        ],
       ),
       backgroundColor: user != null
           ? HexColor(user.residency.theme.secondaryColor)

@@ -4,7 +4,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
-import 'package:litadesarrollos/src/widgets/lita_button.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPassword extends StatelessWidget {

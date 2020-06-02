@@ -1,5 +1,6 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/src/pages/directorio/directory.dart';
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
@@ -30,13 +31,16 @@ class MyApp extends StatelessWidget {
       child: AlertProvider(
         child: MaterialApp(
           routes:{
-            'preferences-section':(_)=>PreferenceSelection()
+            'preferences-section':(_)=>PreferenceSelection(),
+            'Directorio': (_)=>DirectoryPage()
           } ,
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',
           theme: ThemeData(
             primaryColor: Color(0xff00CC87),
             accentColor: Color(0xff4E76B6),
+
+
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           home: RootPage(),
