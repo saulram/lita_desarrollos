@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/pages/directorio/tabs/emergency_tab.dart';
+import 'package:litadesarrollos/src/pages/directorio/tabs/general_tab.dart';
+import 'package:litadesarrollos/src/pages/directorio/tabs/personal_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/resident_tab.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
@@ -62,16 +65,12 @@ class _DirectoryPageState extends State<DirectoryPage>
         body: TabBarView(
           controller: _controller,
           children: <Widget>[
-            Container(
-              color: Colors.red,
-            ),
-            Container(
-              color: Colors.white,
-            ),
+
+            EmergencyTab(),
+            GeneralTab(),
+
             ResidentTab(),
-            Container(
-              color: Colors.amber,
-            )
+            PersonalTab(),
           ],
         ),
       ),

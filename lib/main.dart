@@ -1,6 +1,7 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:litadesarrollos/src/pages/directorio/directory.dart';
+import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
@@ -26,6 +27,11 @@ class MyApp extends StatelessWidget {
           create: (_) => TermsService(),
           update: (context, loginServce, termService) =>
               termService..update(loginServce.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, DirectoryService>(
+          create: (_) => DirectoryService(),
+          update: (context, loginServce, directoryService) =>
+          directoryService..update(loginServce.loginResult),
         )
       ],
       child: AlertProvider(

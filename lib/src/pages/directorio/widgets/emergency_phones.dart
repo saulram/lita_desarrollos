@@ -7,10 +7,10 @@ import 'package:litadesarrollos/src/utils/hexcolor.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
-class ResidentsCard extends StatelessWidget {
-  final String completeName, address, phone;
+class EmergencyCards extends StatelessWidget {
+  final String completeName, phone;
 
-  const ResidentsCard({this.completeName, this.address, this.phone});
+  const EmergencyCards({this.completeName,  this.phone});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,8 @@ class ResidentsCard extends StatelessWidget {
           Expanded(
             flex: 2,
             child: CircleAvatar(
-              backgroundColor: Colors.red,
+              backgroundColor: primaryLita,
+              child: Text('${completeName.substring(0,1)}',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 22),),
             ),
           ),
           Expanded(
@@ -35,7 +36,7 @@ class ResidentsCard extends StatelessWidget {
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 18, color: HexColor('#333333')),
                 ),
-                Text('$address')
+                Text('$phone')
               ],
             ),
           ),
@@ -46,8 +47,8 @@ class ResidentsCard extends StatelessWidget {
               children: <Widget>[
                 GestureDetector(
                   onTap: () async {
-                    print('tapp');
-                   _launchURL();
+
+                    _launchURL();
                   },
                   child: Column(
                     children: <Widget>[
@@ -62,21 +63,7 @@ class ResidentsCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Column(
-                    children: <Widget>[
-                      ImageIcon(
-                        AssetImage('assets/msgbu.png'),
-                        color: accentLita,
-                      ),
-                      Text(
-                        'Mensaje',
-                        style: GoogleFonts.sourceSansPro(fontSize: 10),
-                      )
-                    ],
-                  ),
-                )
+
               ],
             ),
           )
