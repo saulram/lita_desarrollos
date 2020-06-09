@@ -9,15 +9,15 @@ LoginResult loginResultFromJson(String str) => LoginResult.fromJson(json.decode(
 String loginResultToJson(LoginResult data) => json.encode(data.toJson());
 
 class LoginResult {
-    bool success;
-    String token;
-    User user;
-
     LoginResult({
         this.success,
         this.token,
         this.user,
     });
+
+    bool success;
+    String token;
+    User user;
 
     factory LoginResult.fromJson(Map<String, dynamic> json) => LoginResult(
         success: json["success"],
@@ -33,121 +33,117 @@ class LoginResult {
 }
 
 class User {
-    String id;
-    List<String> roles;
-    bool isPrimaryAccount;
-    bool isPhoneActive;
-    List<dynamic> screenPreferences;
-    bool incorrectData;
-    bool acceptTerms;
-    bool isDefaulter;
-    List<dynamic> fcmTokens;
-    List<dynamic> fcmTopics;
-    bool isActive;
-    String completeName;
-    String email;
-    Residency residency;
-
     User({
-        this.id,
+        this.fullFile,
         this.roles,
-        this.isPrimaryAccount,
-        this.isPhoneActive,
-        this.screenPreferences,
-        this.incorrectData,
-        this.acceptTerms,
-        this.isDefaulter,
-        this.fcmTokens,
-        this.fcmTopics,
-        this.isActive,
-        this.completeName,
+        this.id,
+        this.phone,
+        this.departmentId,
         this.email,
+        this.completeName,
+        this.acceptTerms,
+        this.incorrectData,
+        this.screenPreferences,
+        this.isPhoneActive,
         this.residency,
     });
 
+    String fullFile;
+    List<String> roles;
+    String id;
+    int phone;
+    String departmentId;
+    String email;
+    String completeName;
+    bool acceptTerms;
+    bool incorrectData;
+    List<String> screenPreferences;
+    bool isPhoneActive;
+    Residency residency;
+
     factory User.fromJson(Map<String, dynamic> json) => User(
-        id: json["_id"],
+        fullFile: json["fullFile"],
         roles: List<String>.from(json["roles"].map((x) => x)),
-        isPrimaryAccount: json["isPrimaryAccount"],
-        isPhoneActive: json["isPhoneActive"],
-        screenPreferences: List<dynamic>.from(json["screenPreferences"].map((x) => x)),
-        incorrectData: json["incorrectData"],
-        acceptTerms: json["acceptTerms"],
-        isDefaulter: json["isDefaulter"],
-        fcmTokens: List<dynamic>.from(json["fcmTokens"].map((x) => x)),
-        fcmTopics: List<dynamic>.from(json["fcmTopics"].map((x) => x)),
-        isActive: json["isActive"],
-        completeName: json["completeName"],
+        id: json["_id"],
+        phone: json["phone"],
+        departmentId: json["departmentId"],
         email: json["email"],
+        completeName: json["completeName"],
+        acceptTerms: json["acceptTerms"],
+        incorrectData: json["incorrectData"],
+        screenPreferences: List<String>.from(json["screenPreferences"].map((x) => x)),
+        isPhoneActive: json["isPhoneActive"],
         residency: Residency.fromJson(json["residency"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "_id": id,
+        "fullFile": fullFile,
         "roles": List<dynamic>.from(roles.map((x) => x)),
-        "isPrimaryAccount": isPrimaryAccount,
-        "isPhoneActive": isPhoneActive,
-        "screenPreferences": List<dynamic>.from(screenPreferences.map((x) => x)),
-        "incorrectData": incorrectData,
-        "acceptTerms": acceptTerms,
-        "isDefaulter": isDefaulter,
-        "fcmTokens": List<dynamic>.from(fcmTokens.map((x) => x)),
-        "fcmTopics": List<dynamic>.from(fcmTopics.map((x) => x)),
-        "isActive": isActive,
-        "completeName": completeName,
+        "_id": id,
+        "phone": phone,
+        "departmentId": departmentId,
         "email": email,
+        "completeName": completeName,
+        "acceptTerms": acceptTerms,
+        "incorrectData": incorrectData,
+        "screenPreferences": List<dynamic>.from(screenPreferences.map((x) => x)),
+        "isPhoneActive": isPhoneActive,
         "residency": residency.toJson(),
     };
 }
 
 class Residency {
-    String name;
-    Theme theme;
-
     Residency({
+        this.id,
         this.name,
         this.theme,
     });
 
+    String id;
+    String name;
+    Theme theme;
+
     factory Residency.fromJson(Map<String, dynamic> json) => Residency(
+        id: json["_id"],
         name: json["name"],
         theme: Theme.fromJson(json["theme"]),
     );
 
     Map<String, dynamic> toJson() => {
+        "_id": id,
         "name": name,
         "theme": theme.toJson(),
     };
 }
 
 class Theme {
-    String id;
-    String secondaryColor;
-    String name;
-    String mainColor;
-    String thirdColor;
-
     Theme({
         this.id,
-        this.secondaryColor,
         this.name,
         this.mainColor,
+        this.secondaryColor,
         this.thirdColor,
     });
 
+    String id;
+    String name;
+    String mainColor;
+    String secondaryColor;
+    String thirdColor;
+
     factory Theme.fromJson(Map<String, dynamic> json) => Theme(
         id: json["_id"],
-        secondaryColor: json["secondaryColor"],
         name: json["name"],
         mainColor: json["mainColor"],
+        secondaryColor: json["secondaryColor"],
         thirdColor: json["thirdColor"],
     );
 
     Map<String, dynamic> toJson() => {
         "_id": id,
-        "secondaryColor": secondaryColor,
         "name": name,
         "mainColor": mainColor,
+        "secondaryColor": secondaryColor,
         "thirdColor": thirdColor,
     };
 }

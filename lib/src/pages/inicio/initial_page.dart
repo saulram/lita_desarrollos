@@ -102,10 +102,10 @@ class InitialPage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Image.asset(
-                                "assets/secciones/icon_${user.screenPreferences[index]}.png"),
+                            ImageIcon(AssetImage(
+                                "assets/secciones/icon_${user.screenPreferences[index]}.png"),color: HexColor(user.residency.theme.secondaryColor),size: MediaQuery.of(context).size.width*.15,),
                             Text(
-                              user.screenPreferences[index],
+                            this.translateString( user.screenPreferences[index]),
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 17,
                                   color: HexColor(
@@ -152,5 +152,15 @@ class InitialPage extends StatelessWidget {
       ),
       bottomNavigationBar:BottomLita(),
     );
+  }
+  String translateString ( String s){
+    switch ( s){
+      case 'bazaar':
+        return 'Bazar';
+      case 'social':
+        return 'Social';
+      default:
+        return s;
+    }
   }
 }

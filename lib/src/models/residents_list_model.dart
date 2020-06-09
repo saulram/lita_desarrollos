@@ -28,22 +28,26 @@ class UsersDirectory {
   UsersDirectory({
     this.completeName,
     this.phone,
+    this.fullFile,
     this.departmentId,
   });
 
   String completeName;
   String phone;
+  String fullFile;
   DepartmentId departmentId;
 
   factory UsersDirectory.fromJson(Map<String, dynamic> json) => UsersDirectory(
     completeName: json["completeName"],
     phone: json["phone"],
+    fullFile: json["fullFile"],
     departmentId: DepartmentId.fromJson(json["departmentId"]),
   );
 
   Map<String, dynamic> toJson() => {
     "completeName": completeName,
     "phone": phone,
+    "fullFile": fullFile,
     "departmentId": departmentId.toJson(),
   };
 }

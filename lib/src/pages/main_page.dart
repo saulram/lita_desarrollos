@@ -9,6 +9,7 @@ import '../services/login_service.dart';
 
 class MainPage extends StatelessWidget {
   @override
+  // ignore: missing_return
   Widget build(BuildContext context) {
     final loginService = Provider.of<LoginService>(context);
 

@@ -3,6 +3,7 @@ query {
     usersDirectory {
         completeName
         phone
+        fullFile
         departmentId {
             _id
             name
@@ -34,6 +35,50 @@ query($category: String) {
         description
         isActive
         updatedAtFormat
+    }
+}
+    ''';
+
+String addComment = r'''mutation($personalId: ID, $text: String!) {
+    addComment(input: { text: $text, personalId: $personalId }) {
+        _id
+        personalId
+        text
+        postedAt
+        postedAtFormatDate
+        isActive
+        postedById {
+            _id
+            completeName
+            fullFile
+        }
+    }
+}''';
+
+String listPersonalComentsQuery = r'''
+    query($bazaarId: ID, $wallId: ID, $commonAreaId: ID, $personalId: ID) {
+    comments(params: { bazaarId: $bazaarId, wallId: $wallId, commonAreaId: $commonAreaId, personalId: $personalId }) {
+        _id
+        bazaarId
+        wallId
+        text
+        replayIds {
+            _id
+            text
+            postedById {
+                _id
+                completeName
+            }
+        }
+        postedById {
+            _id
+            completeName
+            fullFile
+        }
+        complainById
+        postedAt
+        postedAtFormatDate
+        isActive
     }
 }
     ''';

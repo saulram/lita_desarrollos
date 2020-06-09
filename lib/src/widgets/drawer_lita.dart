@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
@@ -37,10 +38,7 @@ class DrawerLita extends StatelessWidget {
                 ],
               ),
               Container(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * .08,
+                height: MediaQuery.of(context).size.height * .08,
                 child: Row(
                   children: <Widget>[
                     Expanded(
@@ -50,37 +48,23 @@ class DrawerLita extends StatelessWidget {
                             Center(
                               child: CircleAvatar(
                                 backgroundColor:
-                                HexColor(user.residency.theme.thirdColor),
-                                radius: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width * .08,
+                                    HexColor(user.residency.theme.thirdColor),
+                                backgroundImage: NetworkImage(user.fullFile),
+                                radius: MediaQuery.of(context).size.width * .08,
                               ),
                             ),
                             Center(
                               child: Container(
                                 margin: EdgeInsets.only(
-                                    top: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height *
+                                    top: MediaQuery.of(context).size.height *
                                         .05,
-                                    left: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width *
+                                    left: MediaQuery.of(context).size.width *
                                         .09),
                                 child: Container(
                                     padding: EdgeInsets.all(2),
-                                    height: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width *
+                                    height: MediaQuery.of(context).size.width *
                                         .075,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width *
+                                    width: MediaQuery.of(context).size.width *
                                         .075,
                                     decoration: BoxDecoration(
                                         color: HexColor(user
@@ -101,60 +85,78 @@ class DrawerLita extends StatelessWidget {
                     ),
                     Expanded(
                         child: Container(
-                          child: Text(
-                            '${user.completeName} ',
-                            style: GoogleFonts.sourceSansPro(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500),
-                            textAlign: TextAlign.left,
-                          ),
-                        )),
+                      child: Text(
+                        '${user.completeName} ',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.left,
+                      ),
+                    )),
                   ],
                 ),
               ),
               SizedBox(
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * .02,
+                height: MediaQuery.of(context).size.height * .02,
               ),
-              ExpansionTile(
-                backgroundColor: HexColor(user.residency.theme.mainColor),
-                trailing: Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Directorio',
-                  style: GoogleFonts.sourceSansPro(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold),
-                ),
-                children: [
-                  GestureDetector(
-                    onTap:(){
-                      Navigator.popAndPushNamed(context, 'Directorio');
-
-                    },
-                    child: Container(
-                      height: MediaQuery
-                          .of(context)
-                          .size
-                          .height * .04,
-
-                      child: Center(
-                        child: Text(
-                          'Directorio de Inquilinos',
-                          style: GoogleFonts.sourceSansPro(
-                              color: Colors.white, fontSize: 14),
-                          textAlign: TextAlign.center,
-                        ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context, 'Directorio');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment
+                  .spaceEvenly,
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      width: MediaQuery.of(context).size.width*.5,
+                      child: Text(
+                        'Directorio',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
                       ),
                     ),
-                  ),
-                ],
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,color: Colors.white,size: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context, 'Visitas-Programadas');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width*.5,
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Text(
+                        'Visitas Programadas',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,color: Colors.white,size: 13,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

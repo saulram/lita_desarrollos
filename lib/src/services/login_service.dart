@@ -79,7 +79,7 @@ class LoginService with ChangeNotifier {
     if (_value == true) {
       _saveUserData();
     }
-    var res = await http.post('$api_url/login/',
+    var res = await http.post('$apiUrl/login/',
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

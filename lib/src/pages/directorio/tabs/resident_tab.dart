@@ -29,6 +29,7 @@ class ResidentTab extends StatelessWidget {
                   address:
                       directory.residents.usersDirectory[i].departmentId.name,
                   phone: directory.residents.usersDirectory[i].phone,
+                  file: directory.residents.usersDirectory[i].fullFile,
                 ),
               );
             },

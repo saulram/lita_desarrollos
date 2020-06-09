@@ -15,7 +15,7 @@ class RootPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: primaryLita,
         body: Center(
-          child: Image.asset('assets/animado.gif'),
+          child: CircularProgressIndicator(backgroundColor: primaryLita,),
         ),
       );
     } 

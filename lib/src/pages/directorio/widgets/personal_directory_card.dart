@@ -8,9 +8,9 @@ import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PersonalCard extends StatelessWidget {
-  final String completeName, address, phone,description,horario;
+  final String completeName, address, phone,description,horario,file;
 
-  const PersonalCard({this.completeName, this.address, this.phone, this.description, this.horario});
+  const PersonalCard({this.completeName, this.address, this.phone, this.description, this.horario,this.file});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,11 @@ class PersonalCard extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 2,
-                child: CircleAvatar(
-                  backgroundColor: Colors.red,
+                child: Center(
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(file),
+                    backgroundColor: Colors.white,
+                  ),
                 ),
               ),
               Expanded(
@@ -36,6 +39,7 @@ class PersonalCard extends StatelessWidget {
                       '$completeName',
                       style: GoogleFonts.sourceSansPro(
                           fontSize: 18, color: accentLita),
+                      maxLines: 2,
                     ),
                     Text('$address'),
                     Text(
@@ -97,7 +101,7 @@ class PersonalCard extends StatelessWidget {
               ),
               Expanded(
                 flex: 5,
-                child: Container(child: Text('$description',style: GoogleFonts.sourceSansPro(),textAlign: TextAlign.left,)),
+                child: Container(child: Text('$description',style: GoogleFonts.sourceSansPro(),textAlign: TextAlign.left,maxLines: 2,)),
               ),
               Expanded(
                 flex: 2,

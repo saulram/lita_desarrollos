@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/pages/programedvisits/view_qr.dart';
 
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 
-import 'package:url_launcher/url_launcher.dart';
+class VisitsCard extends StatelessWidget {
+  final String completeName, type, code, codeUrl, date,until;
 
-class ResidentsCard extends StatelessWidget {
-  final String completeName, address, phone,file;
-
-  const ResidentsCard({this.completeName, this.address, this.phone, this.file});
+  const VisitsCard(
+      {this.completeName, this.type, this.code, this.codeUrl, this.date, this.until});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,12 @@ class ResidentsCard extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: Center(
-              child: CircleAvatar(
-
-                maxRadius: MediaQuery.of(context).size.width*.06,
-                minRadius: MediaQuery.of(context).size.width*.04,
-                backgroundColor: accentLita,
-                backgroundImage: NetworkImage(file),
+            child: CircleAvatar(
+              backgroundColor: primaryLita,
+              child: Text(
+                '${completeName.substring(0, 1).toUpperCase()}',
+                style: GoogleFonts.sourceSansPro(
+                    color: Colors.white, fontSize: 22),
               ),
             ),
           ),
@@ -41,7 +41,13 @@ class ResidentsCard extends StatelessWidget {
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 18, color: HexColor('#333333')),
                 ),
-                Text('$address')
+                Text(
+                  'Tipo de visita: $type',
+                  style: GoogleFonts.sourceSansPro(),
+                ),
+                Text('$date',style: GoogleFonts.sourceSansPro(),),
+                Text('$until',style: GoogleFonts.sourceSansPro(),),
+
               ],
             ),
           ),
@@ -52,50 +58,32 @@ class ResidentsCard extends StatelessWidget {
               children: <Widget>[
                 GestureDetector(
                   onTap: () async {
-                    print('tapp');
-                   _launchURL();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ViewQR(
+                                  code: code,
+                                  codeUrl: codeUrl,
+                                )));
                   },
                   child: Column(
                     children: <Widget>[
-                      ImageIcon(
-                        AssetImage('assets/mobile.png'),
+                      Icon(
+                        FontAwesomeIcons.qrcode,
                         color: accentLita,
                       ),
                       Text(
-                        'Llamar',
+                        'Ver QR',
                         style: GoogleFonts.sourceSansPro(fontSize: 10),
                       )
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Column(
-                    children: <Widget>[
-                      ImageIcon(
-                        AssetImage('assets/msgbu.png'),
-                        color: accentLita,
-                      ),
-                      Text(
-                        'Mensaje',
-                        style: GoogleFonts.sourceSansPro(fontSize: 10),
-                      )
-                    ],
-                  ),
-                )
               ],
             ),
           )
         ],
       ),
     );
-  }
-  _launchURL() async {
-    final  url = 'tel:$phone';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 }
