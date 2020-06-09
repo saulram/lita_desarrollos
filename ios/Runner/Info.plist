@@ -4,6 +4,10 @@
 <dict>
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>Permiso para guardar imagenes en tu carrete.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Permiso para ver tu biblioteca de fotos</string>
+<key>NSCameraUsageDescription</key> <string>Necesitamos acceso para tomar fotos desde tu dispositivo</string>
+<key>NSMicrophoneUsageDescription</key><string>Necesitamos permiso para usar tu microfono cuando grabas </string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

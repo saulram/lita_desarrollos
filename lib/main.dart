@@ -4,6 +4,8 @@ import 'package:litadesarrollos/src/pages/directorio/directory.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/personal_service.dart';
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
+import 'package:litadesarrollos/src/pages/maintenance/maintenance_main.dart';
+import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/visitaProgramada.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/services/visits_service.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
@@ -45,6 +47,11 @@ class MyApp extends StatelessWidget {
           create: (_) => VisitService(),
           update: (context, loginServce, visitService) =>
           visitService..update(loginServce.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, MtoService>(
+          create: (_) => MtoService(),
+          update: (context, loginServce, mtoService) =>
+          mtoService..update(loginServce.loginResult),
         )
       ],
       child: AlertProvider(
@@ -53,6 +60,7 @@ class MyApp extends StatelessWidget {
             'preferences-section':(_)=>PreferenceSelection(),
             'Directorio': (_)=>DirectoryPage(),
             'Visitas-Programadas': (_)=>VisitaProgramadaPage(),
+            'Mantenimiento':(_)=>MaintenancePage()
           } ,
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',
