@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/tabs/new_visit_tab.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/tabs/visits_regist_tab.dart';
+import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
+import 'package:provider/provider.dart';
 
 class VisitaProgramadaPage extends StatefulWidget {
   @override
@@ -24,7 +26,8 @@ class _VisitaProgramadaPageState extends State<VisitaProgramadaPage>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    final loginService = Provider.of<LoginService>(context);
+    return loginService.loginResult.user != null ? DefaultTabController(
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -66,6 +69,6 @@ class _VisitaProgramadaPageState extends State<VisitaProgramadaPage>
           ],
         ),
       ),
-    );
+    ):Scaffold();
   }
 }

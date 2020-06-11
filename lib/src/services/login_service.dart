@@ -130,6 +130,8 @@ class LoginService with ChangeNotifier {
   void deleteAllUserData() async {
     //se borra completamente el almacen seguro
     await _storage.deleteAll();
+    _loginResult = LoginResult();
+    notifyListeners();
   }
 
   static HttpLink httplink = HttpLink(

@@ -14,24 +14,27 @@ class VisitsRegister extends StatelessWidget {
     } else {
       return Scaffold(
         body: visits.registrov.visits != null
-            ? ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: visits.registrov.visits.length,
-                itemBuilder: (BuildContext ctx, int i) {
-                  return Padding(
-                    padding: const EdgeInsets.all(11.0),
-                    child: VisitsCard
-                      (
-                      codeUrl: visits.registrov.visits[i].codeUrl,
-                      code: visits.registrov.visits[i].code,
-                      completeName: visits.registrov.visits[i].visitorsName,
-                      type: visits.registrov.visits[i].typeFormat,
-                      date: visits.registrov.visits[i].scheduleAtFormat,
-                      until: visits.registrov.visits[i].untilDateFormat,
-                    ),
-                  );
-                },
-              )
+            ? RefreshIndicator(
+          onRefresh: visits.getVisits,
+              child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: visits.registrov.visits.length,
+                  itemBuilder: (BuildContext ctx, int i) {
+                    return Padding(
+                      padding: const EdgeInsets.all(11.0),
+                      child: VisitsCard
+                        (
+                        codeUrl: visits.registrov.visits[i].codeUrl,
+                        code: visits.registrov.visits[i].code,
+                        completeName: visits.registrov.visits[i].visitorsName,
+                        type: visits.registrov.visits[i].typeFormat,
+                        date: visits.registrov.visits[i].scheduleAtFormat,
+                        until: visits.registrov.visits[i].untilDateFormat,
+                      ),
+                    );
+                  },
+                ),
+            )
             : Center(
                 child: CircularProgressIndicator(),
               ),

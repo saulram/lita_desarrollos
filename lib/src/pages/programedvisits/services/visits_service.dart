@@ -150,7 +150,7 @@ class VisitService with ChangeNotifier {
   VisitsList _registoV = VisitsList();
   VisitsList get registrov => _registoV;
 
-  getVisits() async {
+ Future<void> getVisits() async {
     _isloading = true;
     notifyListeners();
     QueryOptions getVisitasOptions =

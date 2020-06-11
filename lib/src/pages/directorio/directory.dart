@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/emergency_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/general_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/personal_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/resident_tab.dart';
+import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
+import 'package:provider/provider.dart';
 
 class DirectoryPage extends StatefulWidget {
   @override
@@ -26,7 +29,9 @@ class _DirectoryPageState extends State<DirectoryPage>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    final loginService = Provider.of<LoginService>(context);
+
+    return loginService.loginResult.user!= null ? DefaultTabController(
       length: 4,
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -74,6 +79,6 @@ class _DirectoryPageState extends State<DirectoryPage>
           ],
         ),
       ),
-    );
+    ):Scaffold();
   }
 }

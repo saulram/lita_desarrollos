@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
+import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
@@ -31,8 +35,10 @@ class DrawerLita extends StatelessWidget {
                       size: 50,
                     ),
                     onPressed: () {
+                      Navigator.popUntil(context, (route) => route.isFirst);
                       loginService.deleteAllUserData();
-                      loginService.loginResult = LoginResult();
+
+
                     },
                   )
                 ],
@@ -105,12 +111,11 @@ class DrawerLita extends StatelessWidget {
                   Navigator.popAndPushNamed(context, 'Directorio');
                 },
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment
-                  .spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
                       height: MediaQuery.of(context).size.height * .04,
-                      width: MediaQuery.of(context).size.width*.5,
+                      width: MediaQuery.of(context).size.width * .5,
                       child: Text(
                         'Directorio',
                         style: GoogleFonts.sourceSansPro(
@@ -123,7 +128,9 @@ class DrawerLita extends StatelessWidget {
                     Container(
                       height: MediaQuery.of(context).size.height * .04,
                       child: Icon(
-                        FontAwesomeIcons.chevronRight,color: Colors.white,size: 13,
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
                       ),
                     ),
                   ],
@@ -138,7 +145,7 @@ class DrawerLita extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      width: MediaQuery.of(context).size.width*.5,
+                      width: MediaQuery.of(context).size.width * .5,
                       height: MediaQuery.of(context).size.height * .04,
                       child: Text(
                         'Visitas Programadas',
@@ -152,7 +159,9 @@ class DrawerLita extends StatelessWidget {
                     Container(
                       height: MediaQuery.of(context).size.height * .04,
                       child: Icon(
-                        FontAwesomeIcons.chevronRight,color: Colors.white,size: 13,
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
                       ),
                     ),
                   ],
@@ -167,7 +176,7 @@ class DrawerLita extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                      width: MediaQuery.of(context).size.width*.5,
+                      width: MediaQuery.of(context).size.width * .5,
                       height: MediaQuery.of(context).size.height * .04,
                       child: Text(
                         'Mantenimiento',
@@ -181,12 +190,77 @@ class DrawerLita extends StatelessWidget {
                     Container(
                       height: MediaQuery.of(context).size.height * .04,
                       child: Icon(
-                        FontAwesomeIcons.chevronRight,color: Colors.white,size: 13,
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
                       ),
                     ),
                   ],
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context,'Avisos-page');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * .5,
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Text(
+                        'Avisos',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context,'Documents-page');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * .5,
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Text(
+                        'Documentos',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
             ],
           ),
         ),
