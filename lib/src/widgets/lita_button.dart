@@ -1,3 +1,4 @@
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,11 @@ class LitaBtn extends StatelessWidget {
                 _fbKey.currentState.value['email'];
             loginProvider.password =
                 _fbKey.currentState.value['password'];
-            await loginProvider.loginUser();
+          bool login =  await loginProvider.loginUser();
+          if(login==false){
+            print('aqui');
+            Alert.alert(context,title: 'Ocurrio un error, verifica el password',);
+          }
           }
         },
         shape: RoundedRectangleBorder(

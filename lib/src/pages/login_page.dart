@@ -1,3 +1,4 @@
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -39,6 +40,16 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
+
+               loginProvider.error!='' ? Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * .1,
+                    vertical: 5
+                  ),
+                  child:Text(
+                    '${loginProvider.error}',style: GoogleFonts.sourceSansPro(color: accentLita),
+                  )
+                ):Container(),
 
                 /**
                  * Text Field para usuario, email
@@ -182,8 +193,38 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                LitaBtn(
-                    fbKey: loginProvider.fbkey, loginProvider: loginProvider)
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * .1),
+                  child: MaterialButton(
+                    onPressed: () async {
+                      if (loginProvider.fbkey.currentState.saveAndValidate()) {
+                        loginProvider.email =
+                        loginProvider.fbkey.currentState.value['email'];
+                        loginProvider.password =
+                        loginProvider.fbkey.currentState.value['password'];
+                          await loginProvider.loginUser();
+
+                      }
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    color: accentLita,
+                    child: Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * .2),
+                      child: loginProvider.isloading == true
+                          ? CircularProgressIndicator(backgroundColor: Colors.white,strokeWidth: 1,)
+                          : Text(
+                        'Iniciar Sesión',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

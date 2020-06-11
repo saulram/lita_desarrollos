@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -67,13 +68,17 @@ class LoginService with ChangeNotifier {
   //controlador de formulario
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
 
-  GlobalKey get fbkey => _fbKey;
+  GlobalKey<FormBuilderState> get fbkey => _fbKey;
   final GlobalKey<FormBuilderState> _fbRecover = GlobalKey<FormBuilderState>();
 
   GlobalKey<FormBuilderState> get fbRecover => _fbRecover;
 
+  String _error = '';
+  String get error=> _error;
+
+
   ///Funcion para login de usuario.
-  loginUser() async {
+  Future <bool> loginUser() async {
     _isloading = true;
     notifyListeners();
     if (_value == true) {
@@ -90,13 +95,19 @@ class LoginService with ChangeNotifier {
         }));
     if (res.statusCode == 404) {
       _isloading = false;
+      _error = 'Ocurrio un error al iniciar sesion';
       //manejo de errores de backend
-      print(res.body);
+      notifyListeners();
+      return false;
     } else {
+
       _loginResult = loginResultFromJson(res.body);
+      _error = '';
       _isloading = false;
+      notifyListeners();
+      return true;
     }
-    notifyListeners();
+
   }
 
   /// Helper para guardar el login del usuario
