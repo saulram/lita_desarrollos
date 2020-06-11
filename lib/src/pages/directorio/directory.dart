@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/emergency_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/general_tab.dart';
 import 'package:litadesarrollos/src/pages/directorio/tabs/personal_tab.dart';

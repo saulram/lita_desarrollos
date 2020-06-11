@@ -1,4 +1,3 @@
-import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,7 +6,7 @@ import 'package:litadesarrollos/src/pages/forgotten/password_recover.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/theme/theme.dart';
-import 'package:litadesarrollos/src/widgets/lita_button.dart';
+
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -104,11 +103,16 @@ class LoginPage extends StatelessWidget {
                     maxLines: 1,
                     decoration: InputDecoration(
                       suffixIcon: IconButton(
-                        icon: Icon(FontAwesomeIcons.eye,color: Colors.white,),
-                        onPressed: (){
-                          if(loginProvider.pass == true){
+                        icon: Icon(
+                          loginProvider.pass == false
+                              ? FontAwesomeIcons.eye
+                              : FontAwesomeIcons.eyeSlash,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          if (loginProvider.pass == true) {
                             loginProvider.pass = false;
-                          }else{
+                          } else {
                             loginProvider.pass = true;
                           }
                         },

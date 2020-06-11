@@ -1,12 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:litadesarrollos/src/models/loginmodel.dart';
-import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/utils/hexcolor.dart';

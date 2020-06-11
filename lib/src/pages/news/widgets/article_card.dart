@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/news_model_list.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 
+// ignore: must_be_immutable
 class NewsCard extends StatelessWidget {
   final News news;
 
@@ -85,7 +86,9 @@ class NewsCard extends StatelessWidget {
           ],
         ),
       ),
+      // ignore: deprecated_member_use
       tapBodyToCollapse: true,
+      // ignore: deprecated_member_use
       hasIcon: false,
     );
   }

@@ -3,9 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/document_list_model.dart';
-import 'package:litadesarrollos/src/models/news_model_list.dart';
 import 'package:litadesarrollos/src/pages/documents/services/queries.dart';
-import 'package:litadesarrollos/src/pages/news/services/queries.dart';
 import '../../../models/loginmodel.dart';
 
 class DocService with ChangeNotifier {
