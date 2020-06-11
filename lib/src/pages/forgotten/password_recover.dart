@@ -22,6 +22,7 @@ class ForgotPassword extends StatelessWidget {
       backgroundColor: primaryLita,
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: FormBuilder(
             key: loginProvider.fbRecover,
             child: Column(
@@ -52,12 +53,12 @@ class ForgotPassword extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                      vertical: MediaQuery.of(context).size.height * .01),
+                      vertical: MediaQuery.of(context).size.height * .01,horizontal: 20),
                   child: Text(
                     '''Se enviará a tu mail un link donde podrás obtener una nueva contraseña.''',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.sourceSansPro(
-                        color: Colors.white, fontSize: 12),
+                        color: Colors.white, fontSize: 16),
                   ),
                 ),
 

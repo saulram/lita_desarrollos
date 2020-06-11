@@ -76,6 +76,13 @@ class LoginService with ChangeNotifier {
   String _error = '';
   String get error=> _error;
 
+  bool _pass = false;
+  bool get pass => _pass;
+  set pass ( bool pas){
+    _pass  = pas;
+    notifyListeners();
+  }
+
 
   ///Funcion para login de usuario.
   Future <bool> loginUser() async {

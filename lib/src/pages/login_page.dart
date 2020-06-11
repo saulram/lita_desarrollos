@@ -1,6 +1,7 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/forgotten/password_recover.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
@@ -40,16 +41,16 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-               loginProvider.error!='' ? Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * .1,
-                    vertical: 5
-                  ),
-                  child:Text(
-                    '${loginProvider.error}',style: GoogleFonts.sourceSansPro(color: accentLita),
-                  )
-                ):Container(),
+                loginProvider.error != ''
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * .1,
+                            vertical: 5),
+                        child: Text(
+                          '${loginProvider.error}',
+                          style: GoogleFonts.sourceSansPro(color: accentLita),
+                        ))
+                    : Container(),
 
                 /**
                  * Text Field para usuario, email
@@ -62,6 +63,7 @@ class LoginPage extends StatelessWidget {
                     style: GoogleFonts.sourceSansPro(
                         color: Colors.white, fontSize: 16),
                     attribute: "email",
+                    textCapitalization: TextCapitalization.none,
                     autocorrect: false,
                     textInputAction: TextInputAction.done,
                     cursorColor: Colors.white,
@@ -97,10 +99,20 @@ class LoginPage extends StatelessWidget {
                         color: Colors.white, fontSize: 16),
                     attribute: "password",
                     textInputAction: TextInputAction.done,
-                    obscureText: true,
+                    obscureText: !loginProvider.pass,
                     cursorColor: Colors.white,
                     maxLines: 1,
                     decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(FontAwesomeIcons.eye,color: Colors.white,),
+                        onPressed: (){
+                          if(loginProvider.pass == true){
+                            loginProvider.pass = false;
+                          }else{
+                            loginProvider.pass = true;
+                          }
+                        },
+                      ),
                       errorBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white)),
                       labelText: "Contraseña",
@@ -200,11 +212,10 @@ class LoginPage extends StatelessWidget {
                     onPressed: () async {
                       if (loginProvider.fbkey.currentState.saveAndValidate()) {
                         loginProvider.email =
-                        loginProvider.fbkey.currentState.value['email'];
+                            loginProvider.fbkey.currentState.value['email'];
                         loginProvider.password =
-                        loginProvider.fbkey.currentState.value['password'];
-                          await loginProvider.loginUser();
-
+                            loginProvider.fbkey.currentState.value['password'];
+                        await loginProvider.loginUser();
                       }
                     },
                     shape: RoundedRectangleBorder(
@@ -214,14 +225,17 @@ class LoginPage extends StatelessWidget {
                       margin: EdgeInsets.symmetric(
                           horizontal: MediaQuery.of(context).size.width * .2),
                       child: loginProvider.isloading == true
-                          ? CircularProgressIndicator(backgroundColor: Colors.white,strokeWidth: 1,)
+                          ? CircularProgressIndicator(
+                              backgroundColor: Colors.white,
+                              strokeWidth: 1,
+                            )
                           : Text(
-                        'Iniciar Sesión',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                      ),
+                              'Iniciar Sesión',
+                              style: GoogleFonts.sourceSansPro(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
+                            ),
                     ),
                   ),
                 )
