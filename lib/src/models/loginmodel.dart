@@ -45,6 +45,9 @@ class User {
         this.incorrectData,
         this.screenPreferences,
         this.isPhoneActive,
+        this.fcmTokens,
+        this.fcmTopics,
+        this.isDefaulter,
         this.residency,
     });
 
@@ -59,6 +62,9 @@ class User {
     bool incorrectData;
     List<String> screenPreferences;
     bool isPhoneActive;
+    List<String> fcmTokens;
+    List<dynamic> fcmTopics;
+    bool isDefaulter;
     Residency residency;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
@@ -73,6 +79,9 @@ class User {
         incorrectData: json["incorrectData"],
         screenPreferences: List<String>.from(json["screenPreferences"].map((x) => x)),
         isPhoneActive: json["isPhoneActive"],
+        fcmTokens: List<String>.from(json["fcmTokens"].map((x) => x)),
+        fcmTopics: List<dynamic>.from(json["fcmTopics"].map((x) => x)),
+        isDefaulter: json["isDefaulter"],
         residency: Residency.fromJson(json["residency"]),
     );
 
@@ -88,6 +97,9 @@ class User {
         "incorrectData": incorrectData,
         "screenPreferences": List<dynamic>.from(screenPreferences.map((x) => x)),
         "isPhoneActive": isPhoneActive,
+        "fcmTokens": List<dynamic>.from(fcmTokens.map((x) => x)),
+        "fcmTopics": List<dynamic>.from(fcmTopics.map((x) => x)),
+        "isDefaulter": isDefaulter,
         "residency": residency.toJson(),
     };
 }

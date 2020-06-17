@@ -48,7 +48,7 @@ class NewsPage extends StatelessWidget {
                   child: RefreshIndicator(
                     onRefresh: newsService.getNews,
                     child: ListView.builder(
-                        itemCount: newsService.newsList.news.length,
+                        itemCount: newsService.newsList.news.length ?? 1,
                         itemBuilder: (BuildContext ctx, int i) {
                           return Container(
                             child: NewsCard(news: newsService.newsList.news[i],),

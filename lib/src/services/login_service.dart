@@ -7,6 +7,7 @@ import 'package:graphql/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/services/graphql/recover_password.dart';
+import 'package:litadesarrollos/src/services/push_notifications_service.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
 
 import '../utils/globals.dart';
@@ -14,6 +15,7 @@ import '../utils/globals.dart';
 class LoginService with ChangeNotifier {
   LoginService() {
     _readUserDataSecure();
+
   }
 
   //Inicializamos variable de respuesta login.
@@ -180,4 +182,14 @@ class LoginService with ChangeNotifier {
     }
 
   }
+
+
+  int _pageView = 0;
+  set pageView ( int i){
+    _pageView = i;
+    notifyListeners();
+
+  }
+  int get pageView=>_pageView;
+
 }

@@ -20,7 +20,7 @@ class RootPage extends StatelessWidget {
       );
     } 
     if (loginServce.loginResult.token != '' && loginServce.loginResult.token != null) {
-      return MainPage();
+      return MainPage(loginResult: loginServce.loginResult,);
     }
     else {
       return LoginPage();

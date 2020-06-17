@@ -2,12 +2,35 @@
 import 'package:flutter/material.dart';
 import 'package:litadesarrollos/src/pages/accept_terms.dart';
 import 'package:litadesarrollos/src/pages/inicio/initial_page.dart';
+import 'package:litadesarrollos/src/services/push_notifications_service.dart';
 import 'package:provider/provider.dart';
 
 import '../models/loginmodel.dart';
 import '../services/login_service.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  final LoginResult loginResult;
+
+  const MainPage({Key key, @required this.loginResult}) : super(key: key);
+
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    final pushProvider = new PushNotificationsProvider(widget.loginResult);
+    pushProvider.mensajes.listen((argumento) {
+
+      Navigator.of(context).pushNamed('Notifications');
+      print('estamos');
+    });
+    pushProvider.initNotifications();
+  }
   @override
   // ignore: missing_return
   Widget build(BuildContext context) {

@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "21846158312",
+    "firebase_url": "https://lita-261516.firebaseio.com",
+    "project_id": "lita-261516",
+    "storage_bucket": "lita-261516.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21846158312:android:9b92f3b3d0f6a3797b925d",
+        "android_client_info": {
+          "package_name": "com.disolutionsmx.lita_desarrollos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21846158312-v9vhrv3ta9qqtd4027nk28quuohqucpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.disolutionsmx.lita_desarrollos",
+            "certificate_hash": "2b79e3e9bd6478990996a359f0c951619e6bad1f"
+          }
+        },
+        {
+          "client_id": "21846158312-gp33vjbt2dneekrhd426k19lopbok130.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdTNHi-WlACC-4I9ygQ_V_zcR4N8ythCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21846158312-gp33vjbt2dneekrhd426k19lopbok130.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21846158312-rr94lt3er7dkv627ojg4s6qb5bdqg508.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.disolutionsmx.litadesarrollos"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21846158312:android:be9c6d61f380d3a97b925d",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21846158312-gp33vjbt2dneekrhd426k19lopbok130.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdTNHi-WlACC-4I9ygQ_V_zcR4N8ythCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21846158312-gp33vjbt2dneekrhd426k19lopbok130.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "21846158312-rr94lt3er7dkv627ojg4s6qb5bdqg508.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.disolutionsmx.litadesarrollos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
