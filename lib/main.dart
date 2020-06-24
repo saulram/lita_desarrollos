@@ -16,6 +16,9 @@ import 'package:litadesarrollos/src/pages/notifications/services/notifications_s
 import 'package:litadesarrollos/src/pages/programedvisits/visitaProgramada.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/services/visits_service.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
+import 'package:litadesarrollos/src/pages/votesandpolls/services/polls_service.dart';
+import 'package:litadesarrollos/src/pages/votesandpolls/services/votes_service.dart';
+import 'package:litadesarrollos/src/pages/votesandpolls/votes_and_polls_main_page.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
@@ -86,13 +89,22 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProxyProvider<LoginService, NotificationService>(
           create: (_) => NotificationService(),
           update: (context, loginServce, notificationsService) =>
-          notificationsService..update(loginServce.loginResult),
+              notificationsService..update(loginServce.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, VoteService>(
+          create: (_) => VoteService(),
+          update: (context, loginService, voteService) =>
+              voteService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, PollService>(
+          create: (_) => PollService(),
+          update: (context, loginService, pollService) =>
+          pollService..update(loginService.loginResult),
         )
       ],
       child: AlertProvider(
         child: MaterialApp(
           navigatorKey: navigatorKey,
-
           routes: {
             'root': (_) => RootPage(),
             'preferences-section': (_) => PreferenceSelection(),
@@ -101,7 +113,8 @@ class _MyAppState extends State<MyApp> {
             'Mantenimiento': (_) => MaintenancePage(),
             'Avisos-page': (_) => NewsPage(),
             'Documents-page': (_) => DocumentsPage(),
-            'Notifications':(_)=>NotificationsPage()
+            'Notifications': (_) => NotificationsPage(),
+            'Vote': (_) => VotesAndPolls()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',
