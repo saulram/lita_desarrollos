@@ -1,5 +1,7 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/src/pages/common_areas/main_common_areas.dart';
+import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/directory.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/personal_service.dart';
@@ -100,6 +102,11 @@ class _MyAppState extends State<MyApp> {
           create: (_) => PollService(),
           update: (context, loginService, pollService) =>
           pollService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, CommonService>(
+          create: (_) => CommonService(),
+          update: (context, loginService, commonService) =>
+          commonService..update(loginService.loginResult),
         )
       ],
       child: AlertProvider(
@@ -114,7 +121,8 @@ class _MyAppState extends State<MyApp> {
             'Avisos-page': (_) => NewsPage(),
             'Documents-page': (_) => DocumentsPage(),
             'Notifications': (_) => NotificationsPage(),
-            'Vote': (_) => VotesAndPolls()
+            'Vote': (_) => VotesAndPolls(),
+            'Common':(_)=>CommonAreasPage()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',

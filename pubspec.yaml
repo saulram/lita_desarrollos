@@ -43,6 +43,7 @@ dependencies:
   expandable: ^4.1.4
   firebase_messaging: ^6.0.16
   flutter_animation_progress_bar: ^1.0.0
+  selectable_container: ^0.1.3
 
 
 

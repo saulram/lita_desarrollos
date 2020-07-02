@@ -8,6 +8,7 @@ import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 
 import 'package:litadesarrollos/src/pages/maintenance/report_created_success.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
+import 'package:litadesarrollos/src/pages/maintenance/tabs/image_full.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -93,11 +94,16 @@ class MtoTab extends StatelessWidget {
                           mtoService.isloading == true
                               ? LinearProgressIndicator()
                               : Container(),
-                          Image.file(
-                            mtoService.image,
-                            width: MediaQuery.of(context).size.width * .9,
-                            height: MediaQuery.of(context).size.height * .15,
-                            fit: BoxFit.cover,
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageFull(image: mtoService.image,)));
+                            },
+                            child: Image.file(
+                              mtoService.image,
+                              width: MediaQuery.of(context).size.width * .9,
+                              height: MediaQuery.of(context).size.height * .15,
+                              fit: BoxFit.cover,
+                            ),
                           )
                         ],
                       )
