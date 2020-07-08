@@ -40,6 +40,8 @@ class WallCommentsPost extends StatelessWidget {
                         MediaQuery.of(context).size.width * .05,
                         vertical: 2),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start
+                      ,
                       children: <Widget>[
                         Expanded(
                           child: Center(

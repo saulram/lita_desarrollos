@@ -13,7 +13,7 @@ class MyBookingsTab extends StatelessWidget {
       onRefresh: commonProvider.getMyReservations,
       child: Container(
         color: primaryLita,
-        child: commonProvider.loading != true?  ListView.builder(itemCount:commonProvider.myBooks.myBookings != null ? commonProvider.myBooks.myBookings.length:0,itemBuilder: (BuildContext ctx , int i){
+        child: commonProvider.loading != true?  ListView.builder(physics:BouncingScrollPhysics(),itemCount:commonProvider.myBooks.myBookings != null ? commonProvider.myBooks.myBookings.length:0,itemBuilder: (BuildContext ctx , int i){
           return Container(
             margin: EdgeInsets.symmetric(vertical: 25),
             child: MyBookCard(

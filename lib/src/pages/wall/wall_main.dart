@@ -89,19 +89,23 @@ class WallMainPage extends StatelessWidget {
                             }),
                       )
                     : Expanded(
-                        child: ListView.builder(
-                            itemCount: wallProvider.listWalls.walls != null
-                                ? wallProvider.listWalls.walls.length
-                                : 0,
-                            itemBuilder: (BuildContext ctx, int i) {
-                              final FocusNode myFocusNode = FocusNode();
+                        child: RefreshIndicator(
+                          onRefresh: wallProvider.getWalls,
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                              itemCount: wallProvider.listWalls.walls != null
+                                  ? wallProvider.listWalls.walls.length
+                                  : 0,
+                              itemBuilder: (BuildContext ctx, int i) {
+                                final FocusNode myFocusNode = FocusNode();
 
-                              return PostWidget(
-                                wallsList: wallProvider.listWalls.walls[i],
-                                myFocusNode: myFocusNode,
-                                loginProvider: wallProvider.loginResult,
-                              );
-                            }),
+                                return PostWidget(
+                                  wallsList: wallProvider.listWalls.walls[i],
+                                  myFocusNode: myFocusNode,
+                                  loginProvider: wallProvider.loginResult,
+                                );
+                              }),
+                        ),
                       ),
               ],
             ),

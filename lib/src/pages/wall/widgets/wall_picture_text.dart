@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/walls_model.dart';
+import 'package:litadesarrollos/src/pages/wall/pages/watch_post_page.dart';
+import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
+import 'package:litadesarrollos/src/theme/theme.dart';
+import 'package:provider/provider.dart';
 
 class WallPictureText extends StatelessWidget {
   final Wall wallsList;
@@ -8,10 +12,12 @@ class WallPictureText extends StatelessWidget {
   const WallPictureText({Key key, this.wallsList}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final wallProvider = Provider.of<WallService>(context);
     return Column(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               CircleAvatar(
                 backgroundImage: NetworkImage(wallsList.postedById.fullFile),
@@ -62,9 +68,21 @@ class WallPictureText extends StatelessWidget {
                     style: GoogleFonts.sourceSansPro(),
                   ),],
               ),
-              Text(
-                '${wallsList.comments.length} Comentarios',
-                style: GoogleFonts.sourceSansPro(),
+              FlatButton(
+                onPressed: ()  {
+                  wallProvider.getComments(wallsList.id);
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => WallComments(
+                        postId: wallsList.id,
+
+
+                      )));
+                },
+                child: Text(
+                  'Ver todos los comentarios',
+                  style: GoogleFonts.sourceSansPro(color: accentLita),
+                ),
               )
             ],
 

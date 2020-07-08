@@ -29,7 +29,9 @@ class PostWidget extends StatelessWidget {
         wallsList.comments.length > 0
             ? WallCommentsPost(wallsList: wallsList,loginProvider: loginProvider,myFocusNode: myFocusNode,)
             : Container(),
-        Row(children: <Widget>[
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
           Expanded(
             flex: 1,
             child: Center(
@@ -47,22 +49,7 @@ class PostWidget extends StatelessWidget {
             ),
           ),
         ]),
-        FlatButton(
-          onPressed: ()  {
-             wallProvider.getComments(wallsList.id);
 
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => WallComments(
-                  postId: wallsList.id,
-
-
-                    )));
-          },
-          child: Text(
-            'Ver todos los comentarios',
-            style: GoogleFonts.sourceSansPro(color: accentLita),
-          ),
-        ),
         Divider(),
       ],
     );

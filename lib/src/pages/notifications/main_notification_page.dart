@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_skeleton/flutter_skeleton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/notifications/widgets/notification_card.dart';
 import 'package:litadesarrollos/src/pages/notifications/services/notifications_service.dart';
@@ -45,7 +46,35 @@ class NotificationsPage extends StatelessWidget {
                               }),
                         ),
                       )
-                    : Center(child: CircularProgressIndicator())
+                    :
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (BuildContext context, int i) {
+                        return Center(
+                          child: CardSkeleton(
+                            style: SkeletonStyle(
+                              theme: SkeletonTheme.Light,
+                              isShowAvatar: true,
+                              isCircleAvatar: true,
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(16.0)),
+                              padding: EdgeInsets.all(32.0),
+                              barCount: 2,
+                              colors: [
+                                Colors.grey[300],
+                                Colors.grey[200],
+                                Colors.grey[100]
+                              ],
+                              backgroundColor: Color(0xffffff),
+                              isAnimation: true,
+
+                            ),
+                          ),
+                        );
+                      }),
+                )
+
               ],
             ),
             bottomNavigationBar: BottomLita(),
