@@ -92,7 +92,7 @@ class VoteService with ChangeNotifier {
     );
     QueryResult res = await _client.mutate(voteMutationOptions);
     getVotationsFc();
-    print(res.data);
+
   }
 
   Future<void>getVotationsFc() async {
@@ -102,10 +102,10 @@ class VoteService with ChangeNotifier {
 
 
     if (res.hasException) {
-      print(res.exception);
+
     } else {
       votations = voteListFromJson(jsonEncode(res.data));
-      print(votations);
+
     }
     _loading = false;
     notifyListeners();

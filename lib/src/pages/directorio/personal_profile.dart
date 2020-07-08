@@ -152,17 +152,17 @@ class PersonalProfile extends StatelessWidget {
                                 if(comentKey.currentState.saveAndValidate()){
                                   print(comentKey.currentState.value["comment"]);
                                   personalService.text = comentKey.currentState.value["comment"];
-                                 bool completed = await personalService.addMensaje(personal.id);
-                                 if(completed == true){
-                                   print('Coment Agregado');
-                                   comentKey.currentState.reset();
-                                   personalService.getComments(personal.id);
+                                  bool completed = await personalService.addMensaje(personal.id);
+                                  if(completed == true){
+                                    print('Coment Agregado');
+                                    comentKey.currentState.reset();
+                                    personalService.getComments(personal.id);
 
-                                   Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalComments()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalComments()));
 
-                                 }else{
-                                   print( 'Hubo un error');
-                                 }
+                                  }else{
+                                    print( 'Hubo un error');
+                                  }
                                 }
                               },
                               child: Text(

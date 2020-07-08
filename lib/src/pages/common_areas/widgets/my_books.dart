@@ -1,7 +1,6 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:litadesarrollos/src/models/booking_model.dart';
 import 'package:litadesarrollos/src/models/my_books_moodel.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:provider/provider.dart';

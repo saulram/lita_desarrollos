@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/notifications/main_notification_page.dart';
+import 'package:litadesarrollos/src/pages/wall/wall_main.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
@@ -168,16 +169,9 @@ class _InitialPageState extends State<InitialPage> {
           );
         }
         case 1:{
-          return Scaffold(
-            body: Center(
-              child: Container(
-                child: Text('To do- Social'),
-              ),
-            ),
-            bottomNavigationBar: BottomLita(),
-          );
+          return WallMainPage();
         }
-        case 2:
+        default:
           {
             return NotificationsPage();
           }

@@ -23,63 +23,66 @@ class VotesTab extends StatelessWidget {
               child: voteService.loading == true ? Center(child: CircularProgressIndicator(),):ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   if (voteService.votations.votes[index].alreadyAnswer == true) {
-                    return Column(
-                      children: <Widget>[
-                        Text(
-                          'Resultados de votación anterior: \n ${voteService.votations.votes[index].title}',
-                          style: GoogleFonts.sourceSansPro(
-                            fontSize: 17,
+                    return Padding(
+                      padding:  EdgeInsets.all(MediaQuery.of(context).size.height*.02),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Resultados de votación anterior: \n ${voteService.votations.votes[index].title}\n',
+                            style: GoogleFonts.sourceSansPro(
+                              fontSize: 17,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(child: Text('Sí'),width: MediaQuery.of(context).size.width*.05,),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .7,
-                              child: FAProgressBar(
-                                currentValue:
-                                    voteService.votations.votes[index].percent.upVote,
-                                displayText: '%',
-                                size: MediaQuery.of(context).size.width * .1,
-                                direction: Axis.horizontal,
-                                maxValue: 100,
-                                borderRadius: 0,
-                                backgroundColor: Colors.white,
-                                progressColor: HexColor(voteService
-                                    .loginResult.user.residency.theme.mainColor),
-                                changeProgressColor: accentLita,
-                                animatedDuration: Duration(milliseconds: 500),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(height: MediaQuery.of(context).size.height*.01,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(child: Text('No'),width: MediaQuery.of(context).size.width*.05),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .7,
-                              child: FAProgressBar(
-                                currentValue:
-                                    voteService.votations.votes[index].percent.downVote,
-                                displayText: '%',
-                                size: MediaQuery.of(context).size.width * .1,
-                                direction: Axis.horizontal,
-                                maxValue: 100,
-                                borderRadius: 0,
-                                backgroundColor: Colors.white,
-                                progressColor: HexColor(voteService
-                                    .loginResult.user.residency.theme.mainColor),
-                                changeProgressColor: accentLita,
-                                animatedDuration: Duration(milliseconds: 500),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(child: Text('Sí'),width: MediaQuery.of(context).size.width*.05,),
+                              Container(
+                                width: MediaQuery.of(context).size.width * .7,
+                                child: FAProgressBar(
+                                  currentValue:
+                                      voteService.votations.votes[index].percent.upVote,
+                                  displayText: '%',
+                                  size: MediaQuery.of(context).size.width * .1,
+                                  direction: Axis.horizontal,
+                                  maxValue: 100,
+                                  borderRadius: 0,
+                                  backgroundColor: Colors.white,
+                                  progressColor: HexColor(voteService
+                                      .loginResult.user.residency.theme.mainColor),
+                                  changeProgressColor: accentLita,
+                                  animatedDuration: Duration(milliseconds: 500),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height*.01,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(child: Text('No'),width: MediaQuery.of(context).size.width*.05),
+                              Container(
+                                width: MediaQuery.of(context).size.width * .7,
+                                child: FAProgressBar(
+                                  currentValue:
+                                      voteService.votations.votes[index].percent.downVote,
+                                  displayText: '%',
+                                  size: MediaQuery.of(context).size.width * .1,
+                                  direction: Axis.horizontal,
+                                  maxValue: 100,
+                                  borderRadius: 0,
+                                  backgroundColor: Colors.white,
+                                  progressColor: Colors.grey,
+                                  changeProgressColor: accentLita,
+                                  animatedDuration: Duration(milliseconds: 500),
+                                ),
+                              )
+                            ],
+                          ),
+                          Divider()
+                        ],
+                      ),
                     );
                   } else {
                     return Column(
@@ -162,7 +165,7 @@ class VotesTab extends StatelessWidget {
                         )
                       ],
                     );
-                    ;
+
                   }
                 },
                 itemCount:voteService.votations.votes!= null ?  voteService.votations.votes.length : 0,

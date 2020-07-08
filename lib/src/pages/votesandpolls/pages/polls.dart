@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/polls_service.dart';
-import 'package:litadesarrollos/src/pages/votesandpolls/services/votes_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -80,8 +79,7 @@ class PollsTab extends StatelessWidget {
                                 maxValue: 100,
                                 borderRadius: 0,
                                 backgroundColor: Colors.white,
-                                progressColor: HexColor(pollsService
-                                    .loginResult.user.residency.theme.mainColor),
+                                progressColor:Colors.grey,
                                 changeProgressColor: accentLita,
                                 animatedDuration: Duration(milliseconds: 500),
                               ),
@@ -228,7 +226,7 @@ class PollsTab extends StatelessWidget {
                         )
                       ],
                     );
-                    ;
+
                   }
                 },
                 itemCount: pollsService.listOfPolls.polls!= null ? pollsService.listOfPolls.polls.length:0,

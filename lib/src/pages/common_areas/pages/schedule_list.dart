@@ -9,7 +9,6 @@ import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
-import 'package:selectable_container/selectable_container.dart';
 
 class SchedulePage extends StatefulWidget {
   @override

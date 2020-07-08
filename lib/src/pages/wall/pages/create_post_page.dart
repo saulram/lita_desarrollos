@@ -6,21 +6,20 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 
-import 'package:litadesarrollos/src/pages/maintenance/report_created_success.dart';
-import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
 import 'package:litadesarrollos/src/pages/maintenance/tabs/image_full.dart';
+import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class MtoTab extends StatelessWidget {
-  GlobalKey<FormBuilderState> addMto = GlobalKey<FormBuilderState>();
+class AddComment extends StatelessWidget {
+  GlobalKey<FormBuilderState> addWall = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
     final userService = Provider.of<LoginService>(context);
-    final mtoService = Provider.of<MtoService>(context);
+    final wallService = Provider.of<WallService>(context);
     Future getImage(ImgSource source) async {
       var image = await ImagePickerGC.pickImage(
         context: context,
@@ -30,13 +29,21 @@ class MtoTab extends StatelessWidget {
           color: Colors.red,
         ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
       );
-      mtoService.image = image;
-      mtoService.uploadImage();
-
+      wallService.image = image;
+      wallService.uploadImage();
     }
 
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('Crear publicación',style: GoogleFonts.sourceSansPro(),),
+          centerTitle: true,
+          automaticallyImplyLeading: true,
+          backgroundColor: Colors.white,
+          elevation: 0,
+
+
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -65,51 +72,52 @@ class MtoTab extends StatelessWidget {
                   ],
                 ),
                 FormBuilder(
-                  key: addMto,
+                  key: addWall,
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: FormBuilderTextField(
                       attribute: "description",
                       textInputAction: TextInputAction.done,
                       decoration:
-                          InputDecoration(labelText: "Escribe aquí tu reporte"),
+                      InputDecoration(labelText: "Escribe aquí tu post"),
                       validators: [FormBuilderValidators.required()],
                     ),
                   ),
                 ),
-                mtoService.image != null
+                wallService.image != null
                     ? Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(CupertinoIcons.clear),
-                                onPressed: () {
-                                  mtoService.fileNames = null;
-                                  mtoService.image = null;
-                                },
-                              ),
-                            ],
-                          ),
-                          mtoService.isloading == true
-                              ? LinearProgressIndicator()
-                              : Container(),
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageFull(image: mtoService.image,)));
-                            },
-                            child: AspectRatio(
-                              aspectRatio: 16/9,
-                              child: Image.file(
-                                mtoService.image,
-
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )
-                        ],
-                      )
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        IconButton(
+                          icon: Icon(CupertinoIcons.clear),
+                          onPressed: () {
+                            wallService.fileNames = null;
+                            wallService.image = null;
+                          },
+                        ),
+                      ],
+                    ),
+                    wallService.isloading == true
+                        ? LinearProgressIndicator()
+                        : Container(),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>ImageFull(image: wallService.image,)));
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 16/9,
+                        child: Image.file(
+                          wallService.image,
+                          width: MediaQuery.of(context).size.width * .9,
+                          height: MediaQuery.of(context).size.height * .15,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
+                  ],
+                )
                     : Container(),
                 GestureDetector(
                   onTap: () => getImage(ImgSource.Both),
@@ -130,10 +138,10 @@ class MtoTab extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.symmetric(
                               vertical:
-                                  MediaQuery.of(context).size.height * .02),
-                          child: Text(mtoService.image != null
+                              MediaQuery.of(context).size.height * .02),
+                          child: Text(wallService.image != null
                               ? 'Cambiar foto'
-                              : 'Agregar fotos desde camara'),
+                              : 'Agregar fotos'),
                         ),
                       )
                     ],
@@ -145,14 +153,15 @@ class MtoTab extends StatelessWidget {
                   color: HexColor(userService
                       .loginResult.user.residency.theme.secondaryColor),
                   disabledColor: Colors.grey,
-                  onPressed: mtoService.isloading ==true ? null: () async {
-                    if(addMto.currentState.saveAndValidate()){
-                    mtoService.description=  addMto.currentState.value["description"];
-                      bool created = await mtoService.addComplainFuturo("maintenance");
+                  onPressed: wallService.isloading ==true ? null: () async {
+                    if(addWall.currentState.saveAndValidate()){
+                      print('dassd');
+                      wallService.description=  addWall.currentState.value["description"];
+                      bool created = await wallService.addWall();
                       if(created == true){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ReportDonePage(rn: mtoService.report.addComplain.reportId,)));
-                        mtoService.fileNames = null;
-                        mtoService.image = null;
+                       Navigator.pop(context);
+                        wallService.fileNames = null;
+                        wallService.image = null;
 
                       }else{
 
@@ -166,8 +175,8 @@ class MtoTab extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * .2,
                         vertical: 10),
-                    child: mtoService.isloading== false ? Text(
-                      'Crear reporte',
+                    child: wallService.isloading== false ? Text(
+                      'Publicar',
                       style: GoogleFonts.sourceSansPro(color: Colors.white),
                     ): CircularProgressIndicator( strokeWidth: .5,backgroundColor: Colors.white,),
                   ),

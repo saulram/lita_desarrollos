@@ -8,6 +8,8 @@ import 'package:litadesarrollos/src/pages/directorio/services/personal_service.d
 import 'package:litadesarrollos/src/pages/documents/documents_main.dart';
 import 'package:litadesarrollos/src/pages/documents/services/documents_service.dart';
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
+import 'package:litadesarrollos/src/pages/lost_found/lost_found_main.dart';
+import 'package:litadesarrollos/src/pages/lost_found/services/lost_found_service.dart';
 
 import 'package:litadesarrollos/src/pages/maintenance/maintenance_main.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
@@ -21,6 +23,7 @@ import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/polls_service.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/votes_service.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/votes_and_polls_main_page.dart';
+import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
@@ -107,6 +110,16 @@ class _MyAppState extends State<MyApp> {
           create: (_) => CommonService(),
           update: (context, loginService, commonService) =>
           commonService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, WallService>(
+          create: (_) => WallService(),
+          update: (context, loginService, commonService) =>
+          commonService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, LostService>(
+          create: (_) => LostService(),
+          update: (context, loginService, lostService) =>
+          lostService..update(loginService.loginResult),
         )
       ],
       child: AlertProvider(
@@ -122,7 +135,8 @@ class _MyAppState extends State<MyApp> {
             'Documents-page': (_) => DocumentsPage(),
             'Notifications': (_) => NotificationsPage(),
             'Vote': (_) => VotesAndPolls(),
-            'Common':(_)=>CommonAreasPage()
+            'Common':(_)=>CommonAreasPage(),
+            'Lost':(_)=>LostFoundMain()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',

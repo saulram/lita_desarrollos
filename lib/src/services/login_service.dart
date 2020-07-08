@@ -7,7 +7,6 @@ import 'package:graphql/client.dart';
 import 'package:http/http.dart' as http;
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/services/graphql/recover_password.dart';
-import 'package:litadesarrollos/src/services/push_notifications_service.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
 
 import '../utils/globals.dart';

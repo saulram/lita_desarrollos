@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/polls_list_model.dart';
-import 'package:litadesarrollos/src/models/vote_list_model.dart';
 
 class PollService with ChangeNotifier {
   static String getPolls = r'''
@@ -124,6 +123,7 @@ class PollService with ChangeNotifier {
 
     );
     QueryResult res = await _client.mutate(voteMutationOptions);
+    print(res.data);
     getPollsFc();
 
   }

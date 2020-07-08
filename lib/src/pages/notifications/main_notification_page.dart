@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:litadesarrollos/src/pages/news/services/news_service.dart';
-import 'package:litadesarrollos/src/pages/news/widgets/article_card.dart';
 import 'package:litadesarrollos/src/pages/notifications/widgets/notification_card.dart';
 import 'package:litadesarrollos/src/pages/notifications/services/notifications_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
-import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';

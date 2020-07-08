@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/common_areas/tabs/my_bookings.dart';
 import 'package:litadesarrollos/src/pages/common_areas/tabs/space_tab.dart';
-import 'package:litadesarrollos/src/pages/directorio/tabs/emergency_tab.dart';
-import 'package:litadesarrollos/src/pages/directorio/tabs/general_tab.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';

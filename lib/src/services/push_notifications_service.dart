@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:graphql/client.dart';
@@ -41,6 +40,7 @@ class PushNotificationsProvider {
             documentNode: gql(saveFCMTokenQuery),
             variables: <String, dynamic>{"fcmTokens": firebaseTokens});
         QueryResult res = await _client.query(saveFCMTokenOptions);
+        print(res.data);
       }
     }
   }
@@ -62,7 +62,7 @@ class PushNotificationsProvider {
 
       //Llega cuando esta abierta la app
 
-      print('=======ON MESSAGE =========\n ${info}');
+      print('=======ON MESSAGE =========\n $info');
       String argumento = 'no-data';
       if (Platform.isIOS) {
         argumento = info['aps']['title'] ?? 'no-data';
