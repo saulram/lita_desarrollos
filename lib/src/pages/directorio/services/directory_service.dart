@@ -7,6 +7,7 @@ import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/personal_list_model.dart';
 import 'package:litadesarrollos/src/models/residents_list_model.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/queries.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class DirectoryService with ChangeNotifier {
   static LoginResult _login;
@@ -32,7 +33,7 @@ class DirectoryService with ChangeNotifier {
   User get user => _login.user;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_login.token}",
       });

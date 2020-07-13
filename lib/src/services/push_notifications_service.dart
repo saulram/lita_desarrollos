@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/services/graphql/saveFCMToken.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class PushNotificationsProvider {
   final LoginResult loginResult;
@@ -19,7 +20,7 @@ class PushNotificationsProvider {
   void updateFCM(LoginResult loginUser, String deviceToken) async {
     bool exist = false;
     HttpLink httplink = HttpLink(
-        uri: 'https://lita-261516.appspot.com/graphql',
+        uri: uri,
         headers: {"Authorization": loginUser.token});
     GraphQLClient _client = GraphQLClient(
       cache: InMemoryCache(),

@@ -153,7 +153,7 @@ class LoginService with ChangeNotifier {
   }
 
   static HttpLink httplink = HttpLink(
-    uri: 'https://lita-261516.appspot.com/graphql',
+    uri: uri,
   );
   static GraphQLClient _client = GraphQLClient(
     cache: InMemoryCache(),

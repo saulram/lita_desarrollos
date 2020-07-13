@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/terms_model.dart';
 import 'package:litadesarrollos/src/services/graphql/terms.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 import '../models/loginmodel.dart';
 
@@ -23,7 +24,7 @@ class TermsService with ChangeNotifier {
 // ...
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "$token",
       });

@@ -25,7 +25,7 @@ class WallService  with ChangeNotifier{
   LoginResult get loginResult => _loginResult;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_loginResult.token}",
       });

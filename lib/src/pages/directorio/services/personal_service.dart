@@ -5,6 +5,7 @@ import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/comment_list.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/queries.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class PersonalService with ChangeNotifier {
   static LoginResult login;
@@ -27,7 +28,7 @@ class PersonalService with ChangeNotifier {
   }
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${login.token}",
       });

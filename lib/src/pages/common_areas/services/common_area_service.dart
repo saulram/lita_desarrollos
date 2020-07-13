@@ -8,6 +8,7 @@ import 'package:litadesarrollos/src/models/comment_list.dart';
 import 'package:litadesarrollos/src/models/common_area_list_model.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/my_books_moodel.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class CommonService with ChangeNotifier {
   static LoginResult _user = LoginResult();
@@ -21,7 +22,7 @@ class CommonService with ChangeNotifier {
   }
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_user.token}",
       });

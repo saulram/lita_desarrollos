@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/news_model_list.dart';
 import 'package:litadesarrollos/src/pages/news/services/queries.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 import '../../../models/loginmodel.dart';
 
 class NewsService with ChangeNotifier {
@@ -20,7 +21,7 @@ class NewsService with ChangeNotifier {
   NewsList _newsList = NewsList();
   NewsList get newsList => _newsList;
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_loginResult.token}",
       });

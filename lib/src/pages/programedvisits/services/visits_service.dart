@@ -7,6 +7,7 @@ import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/visit_model.dart';
 import 'package:litadesarrollos/src/models/visits_list_model.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/queries/visit_queries.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class VisitService with ChangeNotifier {
   static LoginResult _user;
@@ -90,7 +91,7 @@ class VisitService with ChangeNotifier {
   String get licensePlate => _licensePlate;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_user.token}",
       });

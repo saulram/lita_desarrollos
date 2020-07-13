@@ -6,6 +6,7 @@ import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/notifications_list_model.dart';
 import 'package:litadesarrollos/src/pages/notifications/services/notification_queries_graphql.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class NotificationService  with ChangeNotifier{
   static LoginResult _loginResult = LoginResult();
@@ -17,7 +18,7 @@ class NotificationService  with ChangeNotifier{
   LoginResult get loginResult => _loginResult;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_loginResult.token}",
       });

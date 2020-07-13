@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/vote_list_model.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 
 class VoteService with ChangeNotifier {
   static String getVotations = r'''
@@ -38,7 +39,7 @@ class VoteService with ChangeNotifier {
   LoginResult get loginResult => _loginResult;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_loginResult.token}",
       });

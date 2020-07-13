@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/document_list_model.dart';
 import 'package:litadesarrollos/src/pages/documents/services/queries.dart';
+import 'package:litadesarrollos/src/utils/globals.dart';
 import '../../../models/loginmodel.dart';
 
 class DocService with ChangeNotifier {
@@ -18,7 +19,7 @@ class DocService with ChangeNotifier {
   bool get isloading => _isloading;
 
   static HttpLink httplink = HttpLink(
-      uri: 'https://lita-261516.appspot.com/graphql',
+      uri: uri,
       headers: <String, String>{
         "Authorization": "${_loginResult.token}",
       });
