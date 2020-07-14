@@ -1,5 +1,7 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
+import 'package:litadesarrollos/src/pages/bazaar/bazar_main.dart';
 import 'package:litadesarrollos/src/pages/common_areas/main_common_areas.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/directory.dart';
@@ -120,6 +122,11 @@ class _MyAppState extends State<MyApp> {
           create: (_) => LostService(),
           update: (context, loginService, lostService) =>
           lostService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, BazaarService>(
+          create: (_) => BazaarService(),
+          update: (context, loginService, bazaarService) =>
+          bazaarService..update(loginService.loginResult),
         )
       ],
       child: AlertProvider(
@@ -136,7 +143,8 @@ class _MyAppState extends State<MyApp> {
             'Notifications': (_) => NotificationsPage(),
             'Vote': (_) => VotesAndPolls(),
             'Common':(_)=>CommonAreasPage(),
-            'Lost':(_)=>LostFoundMain()
+            'Lost':(_)=>LostFoundMain(),
+            'Bazar':(_)=>BazaarMain()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',

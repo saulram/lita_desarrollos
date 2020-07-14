@@ -32,12 +32,12 @@ class WallCommentsPost extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(
                       horizontal:
-                      MediaQuery.of(context).size.width * .03),
+                      MediaQuery.of(context).size.width * .015),
 
                   child: Container(
                     margin: EdgeInsets.symmetric(
                         horizontal:
-                        MediaQuery.of(context).size.width * .05,
+                        MediaQuery.of(context).size.width * .02,
                         vertical: 2),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start
