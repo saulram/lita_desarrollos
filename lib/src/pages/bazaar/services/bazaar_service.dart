@@ -312,7 +312,7 @@ class BazaarService with ChangeNotifier {
     }
 
 
-    getWalls();
+    getBazaars();
     return true;
   }
   String _commentId;

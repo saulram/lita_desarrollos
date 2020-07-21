@@ -12,6 +12,7 @@
         android:label="Lita"
         android:allowBackup="false"
         android:fullBackupContent="false"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

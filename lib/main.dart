@@ -2,6 +2,8 @@ import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
 import 'package:litadesarrollos/src/pages/bazaar/bazar_main.dart';
+import 'package:litadesarrollos/src/pages/chat/chat_main_page.dart';
+import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/pages/common_areas/main_common_areas.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/directory.dart';
@@ -12,7 +14,6 @@ import 'package:litadesarrollos/src/pages/documents/services/documents_service.d
 import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
 import 'package:litadesarrollos/src/pages/lost_found/lost_found_main.dart';
 import 'package:litadesarrollos/src/pages/lost_found/services/lost_found_service.dart';
-
 import 'package:litadesarrollos/src/pages/maintenance/maintenance_main.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
 import 'package:litadesarrollos/src/pages/news/news_main.dart';
@@ -30,10 +31,12 @@ import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-
 import 'src/services/login_service.dart';
 
-void main() {
+
+void main() async {
+
+
   runApp(MyApp());
 }
 
@@ -127,6 +130,11 @@ class _MyAppState extends State<MyApp> {
           create: (_) => BazaarService(),
           update: (context, loginService, bazaarService) =>
           bazaarService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, ChatService>(
+          create: (_) => ChatService(),
+          update: (context, loginService, bazaarService) =>
+          bazaarService..update(loginService.loginResult),
         )
       ],
       child: AlertProvider(
@@ -144,7 +152,8 @@ class _MyAppState extends State<MyApp> {
             'Vote': (_) => VotesAndPolls(),
             'Common':(_)=>CommonAreasPage(),
             'Lost':(_)=>LostFoundMain(),
-            'Bazar':(_)=>BazaarMain()
+            'Bazar':(_)=>BazaarMain(),
+            'Chat':(_)=>MainChatPage()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',

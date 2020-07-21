@@ -66,12 +66,15 @@ class _AddCommentDetailPostState extends State<AddCommentBazaarDetail> {
                 ? CircularProgressIndicator()
                 : FlatButton(
               onPressed: () async {
+                /**
                 if(_addcommentKey.currentState.validate()){
                   if(wallProvider.commentId != null){
-                    bool addReply = await wallProvider.createreplyComment(_titleController.text);
+                    bool addReply = await wallProvider.createPostComment(_titleController.text);
                     if(addReply == true){
                       wallProvider.commentId = null;
+
                     }
+
 
                   }else{
                     bool commented = await  wallProvider.createPostComment(widget.postId, _titleController.text);
@@ -82,9 +85,12 @@ class _AddCommentDetailPostState extends State<AddCommentBazaarDetail> {
 
 
                     }
+
                   }
 
+
                 }
+                 **/
 
               },
               child: Text(
