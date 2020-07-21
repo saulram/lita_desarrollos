@@ -1,19 +1,12 @@
 import 'dart:convert';
 
-import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
-import 'package:litadesarrollos/src/models/addedobject_model.dart';
-import 'package:litadesarrollos/src/models/categories_bazar_model.dart';
 import 'package:litadesarrollos/src/models/comment_list.dart';
-import 'package:litadesarrollos/src/models/files_model.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
-import 'package:litadesarrollos/src/models/lost_objects.dart';
 import 'package:litadesarrollos/src/pages/chat/models/chat_list_model.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
-import 'package:http_parser/http_parser.dart';
 
 class ChatService with ChangeNotifier {
   static LoginResult _loginResult;

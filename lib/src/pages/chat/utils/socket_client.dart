@@ -1,5 +1,4 @@
 import 'package:socket_io_client/socket_io_client.dart';
-import 'package:litadesarrollos/src/utils/globals.dart';
 
 class SocketClient {
   Socket socket ;

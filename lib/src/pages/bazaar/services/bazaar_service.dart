@@ -7,10 +7,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/addedobject_model.dart';
 import 'package:litadesarrollos/src/models/categories_bazar_model.dart';
-import 'package:litadesarrollos/src/models/comment_list.dart';
 import 'package:litadesarrollos/src/models/files_model.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
-import 'package:litadesarrollos/src/models/lost_objects.dart';
+import 'package:litadesarrollos/src/models/walls_model.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
 import 'package:http_parser/http_parser.dart';
 
@@ -261,6 +260,7 @@ class BazaarService with ChangeNotifier {
   List<Comment> comments = [];
 
   Future<void> getComments(String bId) async {
+    comments = [];
 
     print(bId);
     QueryOptions getComments = QueryOptions(
@@ -284,6 +284,7 @@ class BazaarService with ChangeNotifier {
 
 
   Future<bool> createPostComment(String wallId, String text)async{
+    print("Este es el wall id =$wallId ");
     String query = r'''
     mutation($bazaarId: ID, $text: String!) {
     addComment(input: { text: $text, bazaarId: $bazaarId }) {
@@ -306,8 +307,9 @@ class BazaarService with ChangeNotifier {
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;
-    print(res);
+    print(res.data);
     if(res.hasException){
+      print(res.exception);
       return false;
     }
 
@@ -321,4 +323,39 @@ class BazaarService with ChangeNotifier {
     notifyListeners();
   }
   String get commentId => _commentId;
+
+
+  Future<bool> createreplyComment( String text)async{
+    String query = r'''
+    mutation($text: String!, $commentId: ID) {
+    addComment(input: { text: $text commentId: $commentId }) {
+        _id
+        bazaarId
+        wallId
+        text
+        postedAt
+        postedAtFormatDate
+        isActive
+    }
+}
+    ''';
+    MutationOptions options = MutationOptions(
+        documentNode: gql(query),
+        variables: {
+          "commentId":_commentId,
+          "text":text
+        }
+    );
+    isloading = true;
+    QueryResult res = await _client.mutate(options);
+    isloading = false;
+    print(res);
+    if(res.hasException){
+      return false;
+    }
+
+
+
+    return true;
+  }
 }

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
 import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +43,8 @@ class _AddCommentDetailPostState extends State<AddCommentDetailPost> {
 
   @override
   Widget build(BuildContext context) {
-    final wallProvider = Provider.of<WallService>(context);
+    final wallProvider = Provider.of<BazaarService>(context);
+    final wallService = Provider.of<WallService>(context);
     final loginProvider = Provider.of<LoginService>(context);
     print(widget.postId);
     return Form(
@@ -66,10 +68,11 @@ class _AddCommentDetailPostState extends State<AddCommentDetailPost> {
                 : FlatButton(
               onPressed: () async {
                 if(_addcommentKey.currentState.validate()){
-                  if(wallProvider.commentId != null){
-                    bool addReply = await wallProvider.createreplyComment(_titleController.text);
+                  if(wallService.commentId != null){
+                    bool addReply = await wallService.createreplyComment(_titleController.text);
                     if(addReply == true){
                       wallProvider.commentId = null;
+                      wallProvider.getComments(widget.postId);
                     }
 
                   }else{

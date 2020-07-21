@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
-import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/pages/wall/widgets/add_comment_post_detail.dart';
 
 import 'package:litadesarrollos/src/pages/wall/widgets/wall_comment_reply.dart';
@@ -13,7 +12,7 @@ class BazaarComments extends StatelessWidget {
   final String bazaarId;
 
   BazaarComments({Key key, this.bazaarId}) : super(key: key);
-  FocusNode focusNode = FocusNode();
+  final FocusNode focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +184,7 @@ class BazaarComments extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: AddCommentDetailPost(
-                  //postId:postId,
+                  postId:bazaarId,
                   focusNode: focusNode,
                 ),
               ),

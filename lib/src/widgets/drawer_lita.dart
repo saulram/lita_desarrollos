@@ -381,6 +381,36 @@ class DrawerLita extends StatelessWidget {
                     ),
                   ],
                 ),
+              ), GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context,'Benefits');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * .5,
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Text(
+                        'Beneficios',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               GestureDetector(
                 onTap: () {
@@ -395,6 +425,37 @@ class DrawerLita extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * .04,
                       child: Text(
                         'Chat',
+                        style: GoogleFonts.sourceSansPro(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Icon(
+                        FontAwesomeIcons.chevronRight,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.popAndPushNamed(context,'Account');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * .5,
+                      height: MediaQuery.of(context).size.height * .04,
+                      child: Text(
+                        'Estados de Cuenta',
                         style: GoogleFonts.sourceSansPro(
                             color: Colors.white,
                             fontSize: 22,

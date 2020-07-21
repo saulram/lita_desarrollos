@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:litadesarrollos/src/models/categories_bazar_model.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
-import 'package:litadesarrollos/src/pages/lost_found/screens/lost_final.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +17,6 @@ class UploadBazarArticle extends StatefulWidget {
   final CategoriesList categories;
 
   UploadBazarArticle({Key key, this.categories}) : super(key: key);
-  List<bool> _selections = List.generate(2, (index) => false);
 
   @override
   _UploadBazarArticleState createState() => _UploadBazarArticleState();

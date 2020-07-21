@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
-import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
-import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:provider/provider.dart';
 
 class AddCommentBazaarDetail extends StatefulWidget {
@@ -44,7 +42,6 @@ class _AddCommentDetailPostState extends State<AddCommentBazaarDetail> {
   @override
   Widget build(BuildContext context) {
     final wallProvider = Provider.of<BazaarService>(context);
-    final loginProvider = Provider.of<LoginService>(context);
     print(widget.bazarId);
     return Form(
       key: _addcommentKey,
@@ -56,7 +53,9 @@ class _AddCommentDetailPostState extends State<AddCommentBazaarDetail> {
           validator: (String value) {
             if (value.isEmpty) {
               return 'title is empty';
-            } else {}
+            } else {
+              return '';
+            }
           },
           style: GoogleFonts.sourceSansPro(color: Colors.white),
 

@@ -5,7 +5,6 @@ import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/walls_model.dart';
 import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/pages/wall/widgets/wall_comment_reply.dart';
-import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 class WallCommentsPost extends StatelessWidget {

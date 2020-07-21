@@ -1,7 +1,11 @@
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/src/pages/account/main_account.dart';
+import 'package:litadesarrollos/src/pages/account/services/expenses_service.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
 import 'package:litadesarrollos/src/pages/bazaar/bazar_main.dart';
+import 'package:litadesarrollos/src/pages/benefits/benefitsmain_dart.dart';
+import 'package:litadesarrollos/src/pages/benefits/services/benefits_service.dart';
 import 'package:litadesarrollos/src/pages/chat/chat_main_page.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/pages/common_areas/main_common_areas.dart';
@@ -135,7 +139,17 @@ class _MyAppState extends State<MyApp> {
           create: (_) => ChatService(),
           update: (context, loginService, bazaarService) =>
           bazaarService..update(loginService.loginResult),
-        )
+        ),
+        ChangeNotifierProxyProvider<LoginService, BenefitsService>(
+          create: (_) => BenefitsService(),
+          update: (context, loginService, bazaarService) =>
+          bazaarService..update(loginService.loginResult),
+        ),
+        ChangeNotifierProxyProvider<LoginService, ExpensesService>(
+          create: (_) => ExpensesService(),
+          update: (context, loginService, bazaarService) =>
+          bazaarService..update(loginService.loginResult),
+        ),
       ],
       child: AlertProvider(
         child: MaterialApp(
@@ -153,7 +167,9 @@ class _MyAppState extends State<MyApp> {
             'Common':(_)=>CommonAreasPage(),
             'Lost':(_)=>LostFoundMain(),
             'Bazar':(_)=>BazaarMain(),
-            'Chat':(_)=>MainChatPage()
+            'Chat':(_)=>MainChatPage(),
+            'Benefits':(_)=>BenefitsMain(),
+            'Account':(_)=>AccountPage()
           },
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',

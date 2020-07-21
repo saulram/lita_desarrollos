@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/walls_model.dart';
-import 'package:litadesarrollos/src/utils/hexcolor.dart';
 
 class PostCommentReply extends StatelessWidget {
   final List<ReplayId> replayIds;
