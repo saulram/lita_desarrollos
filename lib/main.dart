@@ -1,44 +1,51 @@
+import 'dart:io';
+
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:litadesarrollos/src/pages/account/main_account.dart';
+import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:litadesarrollos/src/pages/account/services/expenses_service.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
-import 'package:litadesarrollos/src/pages/bazaar/bazar_main.dart';
-import 'package:litadesarrollos/src/pages/benefits/benefitsmain_dart.dart';
 import 'package:litadesarrollos/src/pages/benefits/services/benefits_service.dart';
-import 'package:litadesarrollos/src/pages/chat/chat_main_page.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
-import 'package:litadesarrollos/src/pages/common_areas/main_common_areas.dart';
+import 'package:litadesarrollos/src/pages/chat/utils/app_initializer.dart';
+import 'package:litadesarrollos/src/pages/chat/utils/dependency_injection.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
-import 'package:litadesarrollos/src/pages/directorio/directory.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/personal_service.dart';
-import 'package:litadesarrollos/src/pages/documents/documents_main.dart';
 import 'package:litadesarrollos/src/pages/documents/services/documents_service.dart';
-import 'package:litadesarrollos/src/pages/inicio/pref_page.dart';
-import 'package:litadesarrollos/src/pages/lost_found/lost_found_main.dart';
+import 'package:litadesarrollos/src/pages/inicio/services/preference_service.dart';
 import 'package:litadesarrollos/src/pages/lost_found/services/lost_found_service.dart';
-import 'package:litadesarrollos/src/pages/maintenance/maintenance_main.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
-import 'package:litadesarrollos/src/pages/news/news_main.dart';
 import 'package:litadesarrollos/src/pages/news/services/news_service.dart';
-import 'package:litadesarrollos/src/pages/notifications/main_notification_page.dart';
 import 'package:litadesarrollos/src/pages/notifications/services/notifications_service.dart';
-import 'package:litadesarrollos/src/pages/programedvisits/visitaProgramada.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/services/visits_service.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/polls_service.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/votes_service.dart';
-import 'package:litadesarrollos/src/pages/votesandpolls/votes_and_polls_main_page.dart';
 import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/services/graphql_terms_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
+import 'package:litadesarrollos/src/utils/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'src/services/login_service.dart';
+Injector injector;
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 
 void main() async {
+  DependencyInjection().initialise(Injector.getInjector());
+  injector = Injector.getInjector();
+  HttpOverrides.global = new MyHttpOverrides();
+  await AppInitializer().initialise(injector);
 
 
   runApp(MyApp());
@@ -150,27 +157,16 @@ class _MyAppState extends State<MyApp> {
           update: (context, loginService, bazaarService) =>
           bazaarService..update(loginService.loginResult),
         ),
+        ChangeNotifierProxyProvider<LoginService, PrefService>(
+          create: (_) => PrefService(),
+          update: (context, loginService, prefsService) =>
+          prefsService..update(loginService.loginResult),
+        ),
       ],
       child: AlertProvider(
         child: MaterialApp(
           navigatorKey: navigatorKey,
-          routes: {
-            'root': (_) => RootPage(),
-            'preferences-section': (_) => PreferenceSelection(),
-            'Directorio': (_) => DirectoryPage(),
-            'Visitas-Programadas': (_) => VisitaProgramadaPage(),
-            'Mantenimiento': (_) => MaintenancePage(),
-            'Avisos-page': (_) => NewsPage(),
-            'Documents-page': (_) => DocumentsPage(),
-            'Notifications': (_) => NotificationsPage(),
-            'Vote': (_) => VotesAndPolls(),
-            'Common':(_)=>CommonAreasPage(),
-            'Lost':(_)=>LostFoundMain(),
-            'Bazar':(_)=>BazaarMain(),
-            'Chat':(_)=>MainChatPage(),
-            'Benefits':(_)=>BenefitsMain(),
-            'Account':(_)=>AccountPage()
-          },
+          routes: routes,
           debugShowCheckedModeBanner: false,
           title: 'Lita Desarrollos',
           theme: ThemeData(
