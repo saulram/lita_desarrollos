@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:litadesarrollos/main.dart';
-import 'package:litadesarrollos/src/pages/chat/utils/socket_client.dart';
-import 'package:litadesarrollos/src/pages/chat/utils/socket_service.dart';
+import 'package:litadesarrollos/src/pages/chat/utils/socket_clienr.dart';
 
 class ChatDetailPage extends StatefulWidget {
-  final String token;
+  final String token,chatId,userId;
 
-  const ChatDetailPage({this.token});
+  const ChatDetailPage({this.token, this.chatId, this.userId});
 
   @override
   _ChatDetailPageState createState() => _ChatDetailPageState();
@@ -14,19 +12,20 @@ class ChatDetailPage extends StatefulWidget {
 
 class _ChatDetailPageState extends State<ChatDetailPage> {
   TextEditingController _controller = TextEditingController();
-  final SocketService socketService = injector.get<SocketService>();
+  final _socketClient = SocketClient();
 
 
   @override
   void initState() {
-   super.initState();
+
+    super.initState();
    _connectSocket();
-  }
-  _connectSocket ()async {
-
-    socketService.createSocketConnection();
 
   }
+  _connectSocket() async {
+    _socketClient.conect(widget.token,widget.chatId,widget.userId);
+  }
+
 
 
 
@@ -34,7 +33,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        title: Text('Chat'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -74,5 +73,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   void dispose() {
 
     super.dispose();
+    print('Se cerro el chat');
+
+    _socketClient.disconnect();
+
   }
 }

@@ -16,7 +16,7 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ChatDetailPage(token:userId, )));
+        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ChatDetailPage(token:userId, chatId: chatId,userId: userId,)));
 
       },
       leading: CircleAvatar(

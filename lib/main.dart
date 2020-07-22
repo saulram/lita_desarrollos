@@ -1,15 +1,12 @@
 import 'dart:io';
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_simple_dependency_injection/injector.dart';
-import 'package:litadesarrollos/src/pages/chat/utils/app_initializer.dart';
-import 'package:litadesarrollos/src/pages/chat/utils/dependency_injection.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/utils/provider_list.dart';
 import 'package:litadesarrollos/src/utils/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-Injector injector;
+
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -22,10 +19,9 @@ class MyHttpOverrides extends HttpOverrides {
 
 
 void main() async {
-  DependencyInjection().initialise(Injector.getInjector());
-  injector = Injector.getInjector();
+
   HttpOverrides.global = new MyHttpOverrides();
-  await AppInitializer().initialise(injector);
+
 
 
   runApp(MyApp());
