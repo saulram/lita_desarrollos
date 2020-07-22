@@ -1,15 +1,15 @@
+import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_skeleton/flutter_skeleton.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/chat/components/chat_tile_lita.dart';
-import 'package:litadesarrollos/src/pages/chat/pages/add_participants.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
-class MainChatPage extends StatelessWidget {
+class AddParticipants extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final chatService = Provider.of<ChatService>(context);
@@ -34,9 +34,7 @@ class MainChatPage extends StatelessWidget {
                   child: Text('Nuevo Chat',
                       style: GoogleFonts.sourceSansPro(
                           color: accentLita, fontWeight: FontWeight.w600)),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AddParticipants()));
-                  },
+                  onPressed: () {},
                 ),
               ),
               Expanded(
@@ -49,46 +47,20 @@ class MainChatPage extends StatelessWidget {
                     style: GoogleFonts.sourceSansPro(
                         color: accentLita, fontWeight: FontWeight.w600),
                   ),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AddParticipants()));
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
           ),
           Divider(),
           chatService.isloading ? Expanded(
-            child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (BuildContext context, int i) {
-                  return Center(
-                    child: CardSkeleton(
-                      style: SkeletonStyle(
-                        theme: SkeletonTheme.Light,
-                        isShowAvatar: true,
-                        isCircleAvatar: true,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(16.0)),
-                        padding: EdgeInsets.all(32.0),
-                        barCount: 2,
-                        colors: [
-                          Colors.grey[300],
-                          Colors.grey[200],
-                          Colors.grey[100]
-                        ],
-                        backgroundColor: Color(0xffffff),
-                        isAnimation: true,
-
-                      ),
-                    ),
-                  );
-                }),
+            child:AlphabetListScrollView(strList: null, indexedHeight: null),
           ) : Expanded(
             child: ListView.builder(itemCount:chatService.chatList.chats.length,itemBuilder: (BuildContext cctx, int i) {
               return ChatTile(
-                name:"${chatService.chatList.chats[i].name}",
-                chatId:"${chatService.chatList.chats[i].id}",
-                userId:"${chatService.loginResult.token}"
+                  name:"${chatService.chatList.chats[i].name}",
+                  chatId:"${chatService.chatList.chats[i].id}",
+                  userId:"${chatService.loginResult.token}"
               );
             }),
           )

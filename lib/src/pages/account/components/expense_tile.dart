@@ -28,7 +28,7 @@ class ExpenseTile extends StatelessWidget {
 
                       },
                       child: Text(
-                        'Descargar Factura',style: GoogleFonts.sourceSansPro(fontSize: 16,color: Colors.blue),
+                        'Descargar comprobante',style: GoogleFonts.sourceSansPro(fontSize: 10,color: accentLita),
                       ),
                     ):
                     Container()

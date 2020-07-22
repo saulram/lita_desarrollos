@@ -220,7 +220,7 @@ class _BazaarMainState extends State<BazaarMain>
                                                               TextAlign.start,
                                                         ),
                                                         Text(
-                                                          '${categorie.bazaars[i].price}',
+                                                          r'$'+'${categorie.bazaars[i].price}.00 MXN',
                                                           style: GoogleFonts
                                                               .sourceSansPro(
                                                                   fontWeight:

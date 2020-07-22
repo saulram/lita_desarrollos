@@ -80,7 +80,7 @@ class BazaarDetail extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('${object.name}',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
+              child: Text(r'Precio:$'+ '${object.price}.00 MXN',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
             ),
 
             Padding(

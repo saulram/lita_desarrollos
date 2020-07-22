@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:litadesarrollos/main.dart';
 import 'package:litadesarrollos/src/pages/chat/utils/socket_client.dart';
+import 'package:litadesarrollos/src/pages/chat/utils/socket_service.dart';
 
 class ChatDetailPage extends StatefulWidget {
   final String token;
@@ -12,7 +14,7 @@ class ChatDetailPage extends StatefulWidget {
 
 class _ChatDetailPageState extends State<ChatDetailPage> {
   TextEditingController _controller = TextEditingController();
-  final _socketClient = SocketClient();
+  final SocketService socketService = injector.get<SocketService>();
 
 
   @override
@@ -21,7 +23,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
    _connectSocket();
   }
   _connectSocket ()async {
-    await _socketClient.initConnection(widget.token);
+
+    socketService.createSocketConnection();
 
   }
 

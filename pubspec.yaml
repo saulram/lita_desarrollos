@@ -47,7 +47,9 @@ dependencies:
   flutter_skeleton: ^0.1.0+1
   flutter_expanded_tile: ^0.2.1
   socket_io_client: ^0.9.10
+  flutter_simple_dependency_injection: ^1.0.1
   dots_indicator: ^1.2.0
+  alphabet_list_scroll_view: ^1.0.6
 
 
 

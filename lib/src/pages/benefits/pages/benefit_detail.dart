@@ -63,9 +63,17 @@ class BenefitDetail extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${object.title}',
+                      '${object.discount}',
                       style: GoogleFonts.sourceSansPro(
                           fontSize: 18, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '${object.company}',
+                      style: GoogleFonts.sourceSansPro(
+                          fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ),
                   Padding(
@@ -86,16 +94,19 @@ class BenefitDetail extends StatelessWidget {
                         bool benefit_created =
                             await benefitService.getQr(object.id);
                         if (benefit_created == true) {
-                          Navigator.of(context)
-                              .pushReplacement(MaterialPageRoute(
-                                  builder: (_) => QRBenefit(
-                                        code: benefitService
-                                            .newBenefit.addExchange.code,
-                                        codeUrl: benefitService
-                                            .newBenefit.addExchange.codeUrl,
-                                      )));
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => QRBenefit(
+                                code:
+                                    benefitService.newBenefit.addExchange.code,
+                                codeUrl: benefitService
+                                    .newBenefit.addExchange.codeUrl,
+                              ),
+                            ),
+                          );
                         } else {
-                          Alert.alert(context, title: 'Error al crear el QR');
+                          Alert.alert(context,
+                              title: 'Este beneficio ya fue utilizado');
                         }
                       },
                       child: Text('Crear Codigo QR'),
