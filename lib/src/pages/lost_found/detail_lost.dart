@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/lost_objects.dart';
+import 'package:litadesarrollos/src/pages/chat/chat_main_page.dart';
+import 'package:litadesarrollos/src/pages/chat/models/chat_list_model.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
@@ -55,17 +57,17 @@ class LostObjectDetail extends StatelessWidget {
              child: Row(
                mainAxisAlignment: MainAxisAlignment.end,
                children: <Widget>[
-                 Text('${object.updatedAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
+                 Text('${object.looseAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
                ],
              ),
            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('${object.name}',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
+              child: Text('Objeto: ${object.name}',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('${object.description}',style: GoogleFonts.sourceSansPro(fontSize: 16,fontWeight: FontWeight.w400),),
+              child: Text('Descripción: \n${object.description}',style: GoogleFonts.sourceSansPro(fontSize: 16,fontWeight: FontWeight.w400),),
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height*.1,
@@ -74,6 +76,7 @@ class LostObjectDetail extends StatelessWidget {
               child: CupertinoButton(
                 color: accentLita,
                 onPressed: (){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainChatPage()));
                
 
                 },

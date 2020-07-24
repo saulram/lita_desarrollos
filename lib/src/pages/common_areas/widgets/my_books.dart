@@ -46,10 +46,10 @@ class MyBookCard extends StatelessWidget {
 
             }
 
-            print(cancel);
           },
           child: Text('Cancelar',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
         ),
+        Divider( color: Colors.white,)
       ],
     );
   }

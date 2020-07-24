@@ -1,6 +1,7 @@
 String getResidentes = r'''
 query {
     usersDirectory {
+    _id
         completeName
         phone
         fullFile

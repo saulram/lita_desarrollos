@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
+import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class CardSchedule extends StatefulWidget {
@@ -51,7 +52,7 @@ class _CardScheduleState extends State<CardSchedule> {
               border: Border.all(
                   color:
                       selected == true && spaceProvider.scheduleRank.length > 0
-                          ? Colors.grey
+                          ? primaryLita
                           : Colors.white)),
           child: Center(
             child: Text(

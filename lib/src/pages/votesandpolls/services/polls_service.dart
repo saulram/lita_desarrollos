@@ -124,7 +124,7 @@ class PollService with ChangeNotifier {
 
     );
     QueryResult res = await _client.mutate(voteMutationOptions);
-    print(res.data);
+
     getPollsFc();
 
   }
@@ -139,7 +139,7 @@ class PollService with ChangeNotifier {
       print(res.exception);
     } else {
       listOfPolls = pollsListFromJson(jsonEncode(res.data));
-      print(listOfPolls);
+
     }
     _loading = false;
     notifyListeners();

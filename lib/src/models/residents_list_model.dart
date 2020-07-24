@@ -26,18 +26,21 @@ class Residents {
 
 class UsersDirectory {
   UsersDirectory({
+    this.id,
     this.completeName,
     this.phone,
     this.fullFile,
     this.departmentId,
   });
 
+  String id;
   String completeName;
   String phone;
   String fullFile;
   DepartmentId departmentId;
 
   factory UsersDirectory.fromJson(Map<String, dynamic> json) => UsersDirectory(
+    id: json["_id"],
     completeName: json["completeName"],
     phone: json["phone"],
     fullFile: json["fullFile"],
@@ -45,6 +48,7 @@ class UsersDirectory {
   );
 
   Map<String, dynamic> toJson() => {
+    "_id": id,
     "completeName": completeName,
     "phone": phone,
     "fullFile": fullFile,

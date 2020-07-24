@@ -46,7 +46,7 @@ class NewsService with ChangeNotifier {
     }else{
       _isloading = false;
       _newsList = newsListFromJson(jsonEncode(res.data));
-      print (_newsList);
+
     }
     notifyListeners();
 

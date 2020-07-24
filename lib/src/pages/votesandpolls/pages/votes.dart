@@ -21,12 +21,19 @@ class VotesTab extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height*.7,
               child: voteService.loading == true ? Center(child: CircularProgressIndicator(),):ListView.builder(
+
                 itemBuilder: (BuildContext context, int index) {
                   if (voteService.votations.votes[index].alreadyAnswer == true) {
                     return Padding(
                       padding:  EdgeInsets.all(MediaQuery.of(context).size.height*.02),
                       child: Column(
                         children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Text('Votación cerrada el: ${voteService.votations.votes[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                            ],
+                          ),
+
                           Text(
                             'Resultados de votación anterior: \n ${voteService.votations.votes[index].title}\n',
                             style: GoogleFonts.sourceSansPro(
@@ -100,6 +107,7 @@ class VotesTab extends StatelessWidget {
                           children: <Widget>[
                             Column(
                               children: <Widget>[
+
                                 Row(
                                   children: <Widget>[
                                     Radio(
@@ -134,6 +142,7 @@ class VotesTab extends StatelessWidget {
                                     )
                                   ],
                                 ),
+
                               ],
                             ),
                             SizedBox(
@@ -162,7 +171,16 @@ class VotesTab extends StatelessWidget {
                               ),
                             )
                           ],
-                        )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('Votación valida hasta el: ${voteService.votations.votes[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                            ],
+                          ),
+                        ),
+                        Divider()
                       ],
                     );
 

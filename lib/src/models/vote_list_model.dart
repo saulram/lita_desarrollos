@@ -32,6 +32,9 @@ class Vote {
     this.description,
     this.percent,
     this.alreadyAnswer,
+    this.updatedAtFormat,
+    this.expiresAtLFormat,
+    this.expiresAtFormat,
   });
 
   String id;
@@ -40,6 +43,9 @@ class Vote {
   String description;
   Percent percent;
   bool alreadyAnswer;
+  String updatedAtFormat;
+  DateTime expiresAtLFormat;
+  String expiresAtFormat;
 
   factory Vote.fromJson(Map<String, dynamic> json) => Vote(
     id: json["_id"],
@@ -48,6 +54,9 @@ class Vote {
     description: json["description"],
     percent: Percent.fromJson(json["percent"]),
     alreadyAnswer: json["alreadyAnswer"],
+    updatedAtFormat: json["updatedAtFormat"],
+    expiresAtLFormat: DateTime.parse(json["expiresAtLFormat"]),
+    expiresAtFormat: json["expiresAtFormat"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -57,6 +66,9 @@ class Vote {
     "description": description,
     "percent": percent.toJson(),
     "alreadyAnswer": alreadyAnswer,
+    "updatedAtFormat": updatedAtFormat,
+    "expiresAtLFormat": expiresAtLFormat.toIso8601String(),
+    "expiresAtFormat": expiresAtFormat,
   };
 }
 

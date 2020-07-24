@@ -123,7 +123,7 @@ class CommonService with ChangeNotifier {
       print(res.exception);
     } else {
       comments = commentListFromJson(jsonEncode(res.data));
-      print(res.data);
+
 
       notifyListeners();
     }
@@ -229,7 +229,7 @@ class CommonService with ChangeNotifier {
       notifyListeners();
       return false;
     } else {
-      print(res.data);
+
       _loading = false;
       notifyListeners();
       return true;
@@ -283,7 +283,7 @@ class CommonService with ChangeNotifier {
       day = date.day.toString();
     }
     String date2 = date.year.toString() + '-' + month + '-' + day;
-    print(date2);
+
 
     String options = r'''
     mutation($date: String!, $scheduleRank: String!, $commonAreaId: ID!, $attendeesNumber: Int) {
@@ -328,7 +328,7 @@ class CommonService with ChangeNotifier {
       print('Error:  ${res.exception}');
       return false;
     }
-    print(res.data);
+
     booking = bookingFromJson(jsonEncode(res.data));
     return true;
   }
@@ -371,7 +371,7 @@ class CommonService with ChangeNotifier {
     if(res.hasException){
       print(res.exception);
     }
-    print(res.data);
+
     _myBooks = myBookingsListFromJson(jsonEncode(res.data));
     notifyListeners();
     return true;
@@ -399,7 +399,7 @@ class CommonService with ChangeNotifier {
     return false;
     }
     else{
-      print(res.data);
+
       getMyReservations();
       return true;
     }

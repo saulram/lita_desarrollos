@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -18,464 +17,369 @@ class DrawerLita extends StatelessWidget {
       child: Container(
         color: HexColor(user.residency.theme.mainColor),
         child: SafeArea(
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      CupertinoIcons.clear,
-                      color: Colors.white,
-                      size: 50,
-                    ),
-                    onPressed: () {
-                      Navigator.popUntil(context, (route) => route.isFirst);
-                     // loginService.deleteAllUserData();
-
-
-                    },
-                  )
-                ],
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * .08,
-                child: Row(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    Expanded(
-                      child: Container(
-                        child: Stack(
-                          children: <Widget>[
-                            Center(
-                              child: CircleAvatar(
-                                backgroundColor:
-                                    HexColor(user.residency.theme.thirdColor),
-                                backgroundImage: NetworkImage(user.fullFile),
-                                radius: MediaQuery.of(context).size.width * .08,
+                    IconButton(
+                      icon: Icon(
+                        CupertinoIcons.clear,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+
+                      },
+                    )
+                  ],
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * .08,
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          child: Stack(
+                            children: <Widget>[
+                              Center(
+                                child: CircleAvatar(
+                                  backgroundColor:
+                                      HexColor(user.residency.theme.thirdColor),
+                                  backgroundImage: NetworkImage(user.fullFile),
+                                  radius:
+                                      MediaQuery.of(context).size.width * .08,
+                                ),
                               ),
-                            ),
-                            Center(
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    top: MediaQuery.of(context).size.height *
-                                        .05,
-                                    left: MediaQuery.of(context).size.width *
-                                        .09),
+                              Center(
                                 child: Container(
-                                    padding: EdgeInsets.all(2),
-                                    height: MediaQuery.of(context).size.width *
-                                        .075,
-                                    width: MediaQuery.of(context).size.width *
-                                        .075,
-                                    decoration: BoxDecoration(
-                                        color: HexColor(user
-                                            .residency.theme.secondaryColor),
-                                        shape: BoxShape.circle),
-                                    child: Center(
-                                      child: Icon(
-                                        CupertinoIcons.pencil,
-                                        color: Colors.white,
-                                        size: 13,
-                                      ),
-                                    )),
-                              ),
-                            )
-                          ],
+                                  margin: EdgeInsets.only(
+                                      top: MediaQuery.of(context).size.height *
+                                          .05,
+                                      left: MediaQuery.of(context).size.width *
+                                          .09),
+                                  child: Container(
+                                      padding: EdgeInsets.all(2),
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              .075,
+                                      width: MediaQuery.of(context).size.width *
+                                          .075,
+                                      decoration: BoxDecoration(
+                                          color: HexColor(user
+                                              .residency.theme.secondaryColor),
+                                          shape: BoxShape.circle),
+                                      child: Center(
+                                        child: Icon(
+                                          CupertinoIcons.pencil,
+                                          color: Colors.white,
+                                          size: 13,
+                                        ),
+                                      )),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                        child: Container(
-                      child: Text(
-                        '${user.completeName} ',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
-                        textAlign: TextAlign.left,
-                      ),
-                    )),
-                  ],
+                      Expanded(
+                          child: Container(
+                        child: Text(
+                          '${user.completeName} ',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.left,
+                        ),
+                      )),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .02,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context, 'Directorio');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      width: MediaQuery.of(context).size.width * .5,
-                      child: Text(
-                        'Directorio',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .02,
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context, 'Visitas-Programadas');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Visitas Programadas',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
+                ExpansionTile(
+                  key: Key(''),
+                  title: Padding(
+                    padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*.04),
+                    child: Text(
+                      'Comunidad',
+                      style: GoogleFonts.sourceSansPro(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
+                  ),
+                  trailing: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Colors.white,
+                  ),
+                  children: [
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Áreas Comunes',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Common');
+                      },
                     ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context, 'Mantenimiento');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Mantenimiento',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Encuestas y votaciones',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Vote');
+                      },
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Avisos',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Avisos-page');
+                      },
                     ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Avisos-page');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Avisos',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Objetos perdidos y encontrados',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Lost');
+                      },
                     ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Bazar',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Bazar');
+                      },
+                    ),
+                    ListTile(
+                      title: Container(
+                        margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * .1),
+                        child: Text(
+                          'Mantenimiento y quejas',
+                          style: GoogleFonts.sourceSansPro(color: Colors.white),
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('Mantenimiento');
+                      },
                     ),
                   ],
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Documents-page');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Documentos',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
+                SizedBox(height: MediaQuery.of(context).size.height*.02,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Directorio');
+                  },
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        height: MediaQuery.of(context).size.height * .07,
+                        width: MediaQuery.of(context).size.width * .5,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Directorio',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
                       ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
 
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Vote');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Votaciones',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
 
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Common');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Áreas comunes',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Lost');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Objetos',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Bazar');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Bazar',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ), GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Benefits');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Beneficios',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                    Navigator.popAndPushNamed(context,'Chat');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Chat',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.popAndPushNamed(context,'Account');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .5,
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Text(
-                        'Estados de Cuenta',
-                        style: GoogleFonts.sourceSansPro(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .04,
-                      child: Icon(
-                        FontAwesomeIcons.chevronRight,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
 
-            ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Chat');
+                  },
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * .5,
+                        height: MediaQuery.of(context).size.height * .07,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Chat',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+
+
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Account');
+                  },
+                  child: Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * .5,
+                        height: MediaQuery.of(context).size.height * .07,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Estados de Cuenta',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Visitas-Programadas');
+                  },
+                  child: Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * .5,
+                        height: MediaQuery.of(context).size.height * .07,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Visitas Programadas',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Documents-page');
+                  },
+                  child:Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * .5,
+                        height: MediaQuery.of(context).size.height * .07,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Documentos',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+
+                    ],
+                  )
+
+
+
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.popAndPushNamed(context, 'Benefits');
+                  },
+                  child: Row(
+
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width * .5,
+                        height: MediaQuery.of(context).size.height * .07,
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*.09),
+                        child: Text(
+                          'Beneficios Lita',
+                          style: GoogleFonts.sourceSansPro(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                        loginService.deleteAllUserData();
+
+                      },
+                      child: Row(
+                        children: <Widget>[
+                          Text('Cerrar sesión',style: GoogleFonts.sourceSansPro(color: Colors.white),),
+                          Icon(Icons.exit_to_app,color: Colors.white,)
+                        ],
+                      ),
+                    ),
+                    FlatButton(
+                      child: Text('Legal',style: GoogleFonts.sourceSansPro(color: Colors.white),),
+                    )
+                  ],
+                )
+
+
+              ],
+            ),
           ),
         ),
       ),

@@ -6,6 +6,7 @@ Lista de Providers usados en la app.
 import 'package:litadesarrollos/src/pages/account/services/expenses_service.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
 import 'package:litadesarrollos/src/pages/benefits/services/benefits_service.dart';
+import 'package:litadesarrollos/src/pages/chat/services/chat_provider.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
@@ -32,91 +33,94 @@ List<SingleChildWidget> providerList = [
   ChangeNotifierProxyProvider<LoginService, TermsService>(
     create: (_) => TermsService(),
     update: (context, loginServce, termService) =>
-    termService..update(loginServce.loginResult),
+        termService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, DirectoryService>(
     create: (_) => DirectoryService(),
     update: (context, loginServce, directoryService) =>
-    directoryService..update(loginServce.loginResult),
+        directoryService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, PersonalService>(
     create: (_) => PersonalService(),
     update: (context, loginServce, personalService) =>
-    personalService..update(loginServce.loginResult),
+        personalService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, VisitService>(
     create: (_) => VisitService(),
     update: (context, loginServce, visitService) =>
-    visitService..update(loginServce.loginResult),
+        visitService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, MtoService>(
     create: (_) => MtoService(),
     update: (context, loginServce, mtoService) =>
-    mtoService..update(loginServce.loginResult),
+        mtoService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, NewsService>(
     create: (_) => NewsService(),
     update: (context, loginServce, newsService) =>
-    newsService..update(loginServce.loginResult),
+        newsService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, DocService>(
     create: (_) => DocService(),
     update: (context, loginServce, docsService) =>
-    docsService..update(loginServce.loginResult),
+        docsService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, NotificationService>(
     create: (_) => NotificationService(),
     update: (context, loginServce, notificationsService) =>
-    notificationsService..update(loginServce.loginResult),
+        notificationsService..update(loginServce.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, VoteService>(
     create: (_) => VoteService(),
     update: (context, loginService, voteService) =>
-    voteService..update(loginService.loginResult),
+        voteService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, PollService>(
     create: (_) => PollService(),
     update: (context, loginService, pollService) =>
-    pollService..update(loginService.loginResult),
+        pollService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, CommonService>(
     create: (_) => CommonService(),
     update: (context, loginService, commonService) =>
-    commonService..update(loginService.loginResult),
+        commonService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, WallService>(
     create: (_) => WallService(),
     update: (context, loginService, commonService) =>
-    commonService..update(loginService.loginResult),
+        commonService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, LostService>(
     create: (_) => LostService(),
     update: (context, loginService, lostService) =>
-    lostService..update(loginService.loginResult),
+        lostService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, BazaarService>(
     create: (_) => BazaarService(),
     update: (context, loginService, bazaarService) =>
-    bazaarService..update(loginService.loginResult),
+        bazaarService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, ChatService>(
     create: (_) => ChatService(),
     update: (context, loginService, bazaarService) =>
-    bazaarService..update(loginService.loginResult),
+        bazaarService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, BenefitsService>(
     create: (_) => BenefitsService(),
     update: (context, loginService, bazaarService) =>
-    bazaarService..update(loginService.loginResult),
+        bazaarService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, ExpensesService>(
     create: (_) => ExpensesService(),
     update: (context, loginService, bazaarService) =>
-    bazaarService..update(loginService.loginResult),
+        bazaarService..update(loginService.loginResult),
   ),
   ChangeNotifierProxyProvider<LoginService, PrefService>(
     create: (_) => PrefService(),
     update: (context, loginService, prefsService) =>
-    prefsService..update(loginService.loginResult),
+        prefsService..update(loginService.loginResult),
+  ),
+  ChangeNotifierProvider(
+    create: (_) => ChatProvider(),
   ),
 ];

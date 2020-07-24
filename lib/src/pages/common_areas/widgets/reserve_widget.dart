@@ -24,8 +24,11 @@ class ReserveWidget extends StatelessWidget {
             radius: MediaQuery.of(context).size.width*.4,
           ),
         ),
-        Text(
-          'Recibirás una confirmación cuando tu reservación sea aceptada',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Recibirás una confirmación cuando tu reservación sea aceptada',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
+        ),
         OutlineButton(
           borderSide: BorderSide(color: Colors.white),
           shape: RoundedRectangleBorder(
@@ -35,6 +38,7 @@ class ReserveWidget extends StatelessWidget {
           },
           child: Text('Entendido',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
         ),
+        Divider()
       ],
     );
   }

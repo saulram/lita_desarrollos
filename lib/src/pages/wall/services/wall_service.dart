@@ -236,7 +236,7 @@ class WallService  with ChangeNotifier{
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;
-    print(res);
+
     if(res.hasException){
       return false;
     }
@@ -276,7 +276,7 @@ class WallService  with ChangeNotifier{
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;
-    print(res);
+
     if(res.hasException){
       return false;
     }
@@ -340,7 +340,7 @@ class WallService  with ChangeNotifier{
     } else {
 
       comments = List<Comment>.from(res.data["comments"].map((x) => Comment.fromJson(x)));
-      print(comments.toString());
+
 
 
       notifyListeners();

@@ -19,6 +19,7 @@ import 'package:litadesarrollos/src/pages/votesandpolls/votes_and_polls_main_pag
 /*
 Lista de rutas de la app.
  */
+
 Map<String, Widget Function(BuildContext)> routes = {
   'root': (_) => RootPage(),
   'preferences-section': (_) => PreferenceSelection(),

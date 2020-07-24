@@ -8,7 +8,7 @@ import 'package:litadesarrollos/src/utils/globals.dart';
 
 class VoteService with ChangeNotifier {
   static String getVotations = r'''
-  query {
+ query {
     votes {
         _id
         residencyId
@@ -19,6 +19,9 @@ class VoteService with ChangeNotifier {
             downVote
         }
         alreadyAnswer
+        updatedAtFormat
+        expiresAtLFormat
+        expiresAtFormat
     }
 }
   ''';

@@ -100,7 +100,7 @@ class WallComments extends StatelessWidget {
                                                   .postedAtFormatDate,
                                               style: GoogleFonts.sourceSansPro(
                                                   color: Colors.white,
-                                                  fontSize: 13,
+                                                  fontSize: 10,
                                                   fontWeight: FontWeight.w300),
                                             ),
                                             FlatButton(
@@ -115,7 +115,7 @@ class WallComments extends StatelessWidget {
                                                 'Responder',
                                                 style:
                                                     GoogleFonts.sourceSansPro(
-                                                        color: Colors.white),
+                                                        color: Colors.white,fontSize: 13),
                                               ),
                                             ),
                                             FlatButton(
@@ -129,7 +129,7 @@ class WallComments extends StatelessWidget {
                                                 'Reportar',
                                                 style:
                                                     GoogleFonts.sourceSansPro(
-                                                        color: Colors.white),
+                                                        color: Colors.white,fontSize: 13),
                                               ),
                                             )
                                           ],

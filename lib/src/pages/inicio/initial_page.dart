@@ -75,16 +75,22 @@ class _InitialPageState extends State<InitialPage> {
                         ),
                         Expanded(
                           flex: 1,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                right: MediaQuery.of(context).size.width * .07),
-                            child: Text(
-                              'Editar',
-                              style: GoogleFonts.sourceSansPro(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 17),
-                              textAlign: TextAlign.end,
+                          child: InkWell(
+                            onTap: (){
+                              Navigator.pushNamed(
+                                  context, 'preferences-section');
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  right: MediaQuery.of(context).size.width * .07),
+                              child: Text(
+                                'Editar',
+                                style: GoogleFonts.sourceSansPro(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize: 17),
+                                textAlign: TextAlign.end,
+                              ),
                             ),
                           ),
                         )
@@ -106,27 +112,33 @@ class _InitialPageState extends State<InitialPage> {
                           int lgt = user.screenPreferences.length;
 
                           if (index < lgt) {
-                            return SqarePrefs(
-                              color: HexColor(user.residency.theme.thirdColor),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  ImageIcon(
-                                    AssetImage(
-                                        "assets/secciones/icon_${user.screenPreferences[index]}.png"),
-                                    color:
-                                    HexColor(user.residency.theme.secondaryColor),
-                                    size: MediaQuery.of(context).size.width * .15,
-                                  ),
-                                  Text(
-                                    this.translateString(
-                                        user.screenPreferences[index]),
-                                    style: GoogleFonts.sourceSansPro(
-                                        fontSize: 17,
-                                        color: HexColor(
-                                            user.residency.theme.secondaryColor)),
-                                  )
-                                ],
+                            return InkWell(
+                              onTap: (){
+                                Navigator.of(context).pushNamed(user.screenPreferences[index]);
+                              },
+                              child: SqarePrefs(
+                                color: HexColor(user.residency.theme.thirdColor),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    ImageIcon(
+                                      AssetImage(
+                                          "assets/sections/${user.screenPreferences[index]}.png"),
+                                      color:
+                                      HexColor(user.residency.theme.secondaryColor),
+                                      size: MediaQuery.of(context).size.width * .15,
+                                    ),
+                                    Text(
+                                      this.translateString(
+                                          user.screenPreferences[index]),
+                                      style: GoogleFonts.sourceSansPro(
+                                          fontSize: 17,
+                                          color: HexColor(
+                                              user.residency.theme.secondaryColor)),
+                                      textAlign: TextAlign.center,
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           } else {
@@ -184,10 +196,24 @@ class _InitialPageState extends State<InitialPage> {
 
   String translateString(String s) {
     switch (s) {
-      case 'bazaar':
-        return 'Bazar';
-      case 'social':
-        return 'Social';
+      case 'Account':
+        return 'Estados de Cuenta';
+      case 'Benefits':
+        return 'Beneficios';
+      case 'Visitas-Programadas':
+        return 'Visitas programadas';
+      case 'Documents-page':
+        return 'Documentos';
+      case 'Vote':
+        return 'Encuestas y votaciones';
+      case 'Lost':
+        return 'Objetos perdidos y encontrados';
+      case 'Avisos-page':
+        return 'Avisos';
+      case 'Common':
+        return 'Áreas comunes';
+      case 'Mantenimiento':
+        return 'Mantenimiento y quejas';
       default:
         return s;
     }

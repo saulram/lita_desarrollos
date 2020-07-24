@@ -49,6 +49,7 @@ dependencies:
   adhara_socket_io: ^0.4.2+1
   dots_indicator: ^1.2.0
   alphabet_list_scroll_view: ^1.0.6
+  bubble: ^1.1.9+1
 
 
 
@@ -76,6 +77,7 @@ flutter:
   assets:
     - assets/
     - assets/secciones/
+    - assets/sections/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -88,7 +88,8 @@ class MainChatPage extends StatelessWidget {
               return ChatTile(
                 name:"${chatService.chatList.chats[i].name}",
                 chatId:"${chatService.chatList.chats[i].id}",
-                userId:"${chatService.loginResult.user.id}"
+                userId:"${chatService.loginResult.user.id}",
+
               );
             }),
           )
