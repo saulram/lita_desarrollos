@@ -30,24 +30,19 @@ class MainChatPage extends StatelessWidget {
           Row(
             children: <Widget>[
               Expanded(
-                child: FlatButton(
-                  child: Text('Nuevo Chat',
-                      style: GoogleFonts.sourceSansPro(
-                          color: accentLita, fontWeight: FontWeight.w600)),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AddParticipants()));
-                  },
-                ),
+                child: Container()
               ),
               Expanded(
+                flex: 2,
                 child: Container(),
               ),
               Expanded(
+                flex: 2,
                 child: FlatButton(
                   child: Text(
-                    'Crear Grupo',
+                    'Crear Conversación',
                     style: GoogleFonts.sourceSansPro(
-                        color: accentLita, fontWeight: FontWeight.w600),
+                        color: accentLita, fontWeight: FontWeight.w600,fontSize: 13),
                   ),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (_)=>AddParticipants()));

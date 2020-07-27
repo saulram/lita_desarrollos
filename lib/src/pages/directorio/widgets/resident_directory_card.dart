@@ -69,7 +69,9 @@ class ResidentsCard extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, 'Chat');
+                  },
                   child: Column(
                     children: <Widget>[
                       ImageIcon(

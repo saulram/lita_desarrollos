@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
-import 'package:litadesarrollos/src/models/comment_list.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/chat/models/chat_list_model.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
@@ -13,6 +12,7 @@ class ChatService with ChangeNotifier {
 
   void update(LoginResult lr) {
     _loginResult = lr;
+    _chatParticipants = ["${_loginResult.user.id}"];
     getChats();
     notifyListeners();
   }
@@ -42,17 +42,18 @@ query {
     link: httplink,
   );
 
+  bool _isloading = false;
 
-bool _isloading = false;
-bool get isloading =>_isloading;
+  bool get isloading => _isloading;
 
   set isloading(bool isa) {
     _isloading = isa;
     notifyListeners();
   }
-  ChatList _chatList ;
-  ChatList get chatList =>_chatList;
 
+  ChatList _chatList;
+
+  ChatList get chatList => _chatList;
 
   Future<bool> getChats() async {
     QueryOptions options = QueryOptions(
@@ -68,108 +69,72 @@ bool get isloading =>_isloading;
     return true;
   }
 
+  String _commentId;
 
-
-
-
-  static String listAreaCommentsQuery = r'''
-  query( $bazaarId: ID) {
-    comments(params: {  bazaarId: $bazaarId,  }) {
-        _id
-       
-        bazaarId
-        text
-        replayIds {
-            _id
-            text
-            postedById {
-                _id
-                completeName
-                fullFile
-            }
-            replayIds {
-                _id
-                text
-                postedById {
-                    _id
-                    completeName
-                    fullFile
-                }
-            }
-        }
-        postedById {
-            _id
-            completeName
-            fullFile
-        }
-        complainById
-        postedAt
-        postedAtFormatDate
-        isActive
-    }
-}
-  ''';
-  List<Comment> comments = [];
-
-  Future<void> getComments(String bId) async {
-
-    print(bId);
-    QueryOptions getComments = QueryOptions(
-      documentNode: gql(listAreaCommentsQuery),
-      variables: {"bazaarId": bId},
-      fetchPolicy: FetchPolicy.cacheAndNetwork,
-    );
-    QueryResult res = await _client.query(getComments);
-    isloading = false;
-    if (res.hasException) {
-      print(res.exception);
-    } else {
-
-      comments = List<Comment>.from(res.data["comments"].map((x) => Comment.fromJson(x)));
-      print(comments.toString());
-
-
-      notifyListeners();
-    }
+  set commentId(String cid) {
+    _commentId = cid;
+    notifyListeners();
   }
 
+  String get commentId => _commentId;
 
-  Future<bool> createPostComment(String wallId, String text)async{
-    String query = r'''
-    mutation($bazaarId: ID, $text: String!) {
-    addComment(input: { text: $text, bazaarId: $bazaarId }) {
+  void removeParticipant(String id) {
+    _chatParticipants.remove(id);
+    notifyListeners();
+  }
+
+  List<String> _chatParticipants = [];
+
+  List<String> get chatParticipants => _chatParticipants;
+
+  set categories(List<String> cates) {
+    _chatParticipants = cates;
+    notifyListeners();
+  }
+
+  void onCategorySelected(
+      bool selected, String categoryName, BuildContext ctx) {
+    if (selected == true) {
+      _chatParticipants.length == 10
+          ? Alert.alert(ctx,
+              title: 'Seleccionar',
+              content: 'Solo puedes seleccionar 10 opciones',
+              ok: 'Entendido')
+          : _chatParticipants.add(categoryName);
+
+      print(_chatParticipants);
+    } else {
+      _chatParticipants.remove(categoryName);
+    }
+    notifyListeners();
+  }
+
+  Future<bool> createChat(String name) async {
+    query = r'''
+    mutation($users: [ID]!, $name: String) {
+    addChat(input: { users: $users, name: $name }) {
         _id
-        bazaarId
-        text
-        postedAt
-        postedAtFormatDate
+        name
+        createdAt
+        updatedAt
         isActive
     }
 }
     ''';
     MutationOptions options = MutationOptions(
-        documentNode: gql(query),
-        variables: {
-          "bazaarId":wallId,
-          "text":text
-        }
+      documentNode: gql(query),
+      variables: {
+        "users": _chatParticipants,
+        "name": name
+      }
     );
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;
-    print(res);
     if(res.hasException){
       return false;
     }
-
-
-    getChats();
     return true;
+
   }
-  String _commentId;
-  set commentId(String cid){
-    _commentId = cid;
-    notifyListeners();
-  }
-  String get commentId => _commentId;
 }

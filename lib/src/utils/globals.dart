@@ -1,10 +1,10 @@
 
-String apiUrl = 'https://lita-261516.appspot.com/api';
+String apiUrl = 'http://67.205.150.152/api';
 
 String device = 'mobile';
 
-String uri = 'https://lita-261516.appspot.com/graphql';
+String uri = 'http://67.205.150.152/graphql';
 
 class AppConfig {
-  static const  apiSocket = 'https://lita-261516.appspot.com:443';
+  static const  apiSocket = 'http://67.205.150.152/';
 }
