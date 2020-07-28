@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/chat/models/message.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_provider.dart';
 import 'package:litadesarrollos/src/pages/chat/utils/socket_clienr.dart';
@@ -50,7 +51,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         text: data["text"],
       );
 
-
       chatHistory.add(_msg);
       _chat.messages = chatHistory;
     };
@@ -71,10 +71,11 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       alignment: Alignment.topLeft,
     );
     BubbleStyle styleMe = BubbleStyle(
-      nip: BubbleNip.rightTop,
-      color: HexColor(loginProvider.loginResult.user.residency.theme.secondaryColor),
+      nip: BubbleNip.rightBottom,
+      color: HexColor(
+          loginProvider.loginResult.user.residency.theme.secondaryColor),
       elevation: 1 * px,
-      margin: BubbleEdges.only(top: 8.0, left: 50.0),
+      margin: BubbleEdges.only(top: 5.0, left: 50.0),
       alignment: Alignment.topRight,
     );
 
@@ -131,7 +132,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                               ],
                             ),
                           );
-
                         },
                       ),
                     )
@@ -146,14 +146,16 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   maxLines: 3,
                   maxLength: 250,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                  style: GoogleFonts.sourceSansPro(),
                   suffix: IconButton(
                     color: accentLita,
                     icon: Icon(FontAwesomeIcons.paperPlane),
                     onPressed: () {
-                      _sendMessage();
+                      _sendMessage(loginProvider.loginResult.user);
                     },
                   ),
                   decoration: BoxDecoration(
+
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Color(0xffd2d2d2))),
                 ),
@@ -166,8 +168,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     );
   }
 
-  void _sendMessage() {
+  void _sendMessage(User user) {
     if (_controller.text.isNotEmpty) {
+      MessageList _msg = MessageList(
+        id: "",
+        chatId: widget.chatId,
+        updatedAt: DateTime.now(),
+        senderId: SenderId(completeName: user.completeName, id: widget.userId),
+        text: _controller.text,
+      );
+      chatHistory.insert(0, _msg);
+      _chat.messages = chatHistory;
+
       _socketClient.sendmessage(_controller.text, widget.chatId, widget.userId);
       _controller.text = '';
     }
@@ -176,7 +188,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   void dispose() {
     super.dispose();
-
 
     _socketClient.disconnect();
   }

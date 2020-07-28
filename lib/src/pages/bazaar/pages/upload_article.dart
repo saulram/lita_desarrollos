@@ -111,7 +111,7 @@ class _UploadBazarArticleState extends State<UploadBazarArticle> {
                 headerColor: accentLita,
                 title: Text(
                   bazarService.category == null
-                      ? 'Selecciona una categoria'
+                      ? 'Seleccionar una categoría'
                       : bazarService.category,
                   style: GoogleFonts.sourceSansPro(
                     color: Colors.white,

@@ -38,7 +38,7 @@ class _CommonAreasPageState extends State<CommonAreasPage>
         appBar: AppBar(
           backgroundColor: primaryLita,
           title: Text(
-            'Areas Comunes',
+            'Áreas Comunes',
             style: GoogleFonts.sourceSansPro(
                 fontWeight: FontWeight.w600, fontSize: 22,color: Colors.white),
           ),

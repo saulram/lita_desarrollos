@@ -133,7 +133,7 @@ class MtoTab extends StatelessWidget {
                                   MediaQuery.of(context).size.height * .02),
                           child: Text(mtoService.image != null
                               ? 'Cambiar foto'
-                              : 'Agregar fotos desde camara'),
+                              : 'Agregar fotos desde cámara'),
                         ),
                       )
                     ],

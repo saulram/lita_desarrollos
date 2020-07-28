@@ -14,7 +14,7 @@ class PersonalTab extends StatelessWidget {
       );
 
     }else{
-      if (directory.user.isPhoneActive) {
+      if (directory.user!=null) {
         return Scaffold(
           body: directory.personald.personalDirectory != null ? ListView.builder(
             physics: BouncingScrollPhysics(),
@@ -38,7 +38,7 @@ class PersonalTab extends StatelessWidget {
                 ),
               );
             },
-          ): Center(child: CircularProgressIndicator(),),
+          ): Center(child: Text('Ocurrio un error al listar personal'),),
         );
       } else {
         return Scaffold(

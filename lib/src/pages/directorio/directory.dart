@@ -52,7 +52,7 @@ class _DirectoryPageState extends State<DirectoryPage>
             isScrollable: true,
             tabs: <Widget>[
               Tab(
-                text: 'Telefonos de emergencia',
+                text: 'Teléfonos de emergencia',
               ),
               Tab(
                 text: 'Servicios Generales',

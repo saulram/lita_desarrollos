@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/pages/inicio/services/preference_service.dart';
+import 'package:litadesarrollos/src/pages/profile/profile_edit.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
@@ -42,46 +44,54 @@ class DrawerLita extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Expanded(
-                        child: Container(
-                          child: Stack(
-                            children: <Widget>[
-                              Center(
-                                child: CircleAvatar(
-                                  backgroundColor:
-                                      HexColor(user.residency.theme.thirdColor),
-                                  backgroundImage: NetworkImage(user.fullFile),
-                                  radius:
-                                      MediaQuery.of(context).size.width * .08,
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context,MaterialPageRoute(builder: (_)=>MyProfile()));
+                          },
+                          child: Container(
+                            child: Stack(
+                              children: <Widget>[
+                                Center(
+                                  child: Hero(
+                                    tag:'profile',
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          HexColor(user.residency.theme.thirdColor),
+                                      backgroundImage: NetworkImage(user.fullFile),
+                                      radius:
+                                          MediaQuery.of(context).size.width * .07,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              Center(
-                                child: Container(
-                                  margin: EdgeInsets.only(
-                                      top: MediaQuery.of(context).size.height *
-                                          .05,
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
+                                Center(
                                   child: Container(
-                                      padding: EdgeInsets.all(2),
-                                      height:
-                                          MediaQuery.of(context).size.width *
-                                              .075,
-                                      width: MediaQuery.of(context).size.width *
-                                          .075,
-                                      decoration: BoxDecoration(
-                                          color: HexColor(user
-                                              .residency.theme.secondaryColor),
-                                          shape: BoxShape.circle),
-                                      child: Center(
-                                        child: Icon(
-                                          CupertinoIcons.pencil,
-                                          color: Colors.white,
-                                          size: 13,
-                                        ),
-                                      )),
-                                ),
-                              )
-                            ],
+                                    margin: EdgeInsets.only(
+                                        top: MediaQuery.of(context).size.height *
+                                            .05,
+                                        left: MediaQuery.of(context).size.width *
+                                            .09),
+                                    child: Container(
+                                        padding: EdgeInsets.all(2),
+                                        height:
+                                            MediaQuery.of(context).size.width *
+                                                .075,
+                                        width: MediaQuery.of(context).size.width *
+                                            .075,
+                                        decoration: BoxDecoration(
+                                            color: HexColor(user
+                                                .residency.theme.secondaryColor),
+                                            shape: BoxShape.circle),
+                                        child: Center(
+                                          child: Icon(
+                                            CupertinoIcons.pencil,
+                                            color: Colors.white,
+                                            size: 13,
+                                          ),
+                                        )),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

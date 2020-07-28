@@ -22,7 +22,7 @@ class FoundTab extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  '¿Has encontrado algún objeto? \n Publícalo aqui para poder ayudarte a encontrarlo',
+                  '¿Has encontrado algún objeto? \n  Publícalo aquí para encontrar a su dueño. ¡Gracias!',
                   style: GoogleFonts.sourceSansPro(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),

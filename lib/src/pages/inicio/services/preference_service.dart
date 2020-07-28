@@ -68,7 +68,7 @@ class PrefService with ChangeNotifier {
   bool _loading = false;
   bool get loading =>_loading;
 
-  Future<LoginResult>updateScreenPreferences()async {
+  Future<LoginResult>updateScreenPreferences({bool isActive})async {
     String query = r'''
     mutation($phone: String, $picture: String, $screenPreferences: [String], $acceptTerms: Boolean, $isPhoneActive: Boolean, $incorrectData: Boolean, $fcmTokens: [String], $fcmTopics: [String]) {
     updateUserByResident(input: { phone: $phone, picture: $picture, screenPreferences: $screenPreferences, acceptTerms: $acceptTerms, isPhoneActive: $isPhoneActive, incorrectData: $incorrectData, fcmTokens: $fcmTokens, fcmTopics: $fcmTopics })
@@ -78,7 +78,8 @@ class PrefService with ChangeNotifier {
       documentNode: gql(query),
       fetchPolicy: FetchPolicy.cacheAndNetwork,
       variables: {
-        "screenPreferences":_categories
+        "screenPreferences":_categories,
+        "isPhoneActive": isActive
       }
     );
     _loading = true;
@@ -88,6 +89,9 @@ class PrefService with ChangeNotifier {
     notifyListeners();
     if(res.data != null){
       LoginResult userPref = _loginResult;
+      if(isActive != null){
+        userPref.user.isPhoneActive = isActive;
+      }
       userPref.user.screenPreferences = _categories;
       return userPref;
 

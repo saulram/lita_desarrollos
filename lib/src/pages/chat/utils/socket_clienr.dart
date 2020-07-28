@@ -23,6 +23,10 @@ class SocketClient {
 
       _socket.emit('joinGroup', [chatId, userId]);
     });
+    _socket.on('connect', (data) {
+      print('Conectado');
+    });
+    
     _socket.on('notAuthorizedError', (data) {
       print('Error de autorizacion: : : : ${data.toString()}');
     });
@@ -67,10 +71,11 @@ class SocketClient {
 
     _socket.connect();
   }
-  sendmessage(String text,chatId,user_id){
-    print("Emitiendo mensaje con texto $text, para el chat : $chatId  y con el user   : $user_id");
+  sendmessage(String text,chatId,user_id) async {
 
-    _socket.emitWithAck('updateChat',[text,chatId,user_id]).then((value) => print('asdsad'));
+
+    await _socket.emit('updateChat',[text,chatId,user_id]);
+    print("Emitiendo mensaje con texto $text, para el chat : $chatId  y con el user   : $user_id");
 
 
 

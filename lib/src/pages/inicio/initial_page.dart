@@ -33,9 +33,13 @@ class _InitialPageState extends State<InitialPage> {
               automaticallyImplyLeading: false,
               centerTitle: true,
               backgroundColor: HexColor(user.residency.theme.secondaryColor),
-              title: Image.asset(
-                'assets/lita.png',
-                width: MediaQuery.of(context).size.width * .23,
+              title: Padding(
+                padding: const EdgeInsets.all(9),
+                child: Image.asset(
+                  'assets/lita.png',
+                  width: MediaQuery.of(context).size.width * .23,
+
+                ),
               ),
               elevation: 0,
               actions: <Widget>[
@@ -114,7 +118,7 @@ class _InitialPageState extends State<InitialPage> {
                           if (index < lgt) {
                             return InkWell(
                               onTap: (){
-                                Navigator.of(context).pushNamed(user.screenPreferences[index]);
+                                Navigator.of(context).pushNamed(loginService.loginResult.user.screenPreferences[index]);
                               },
                               child: SqarePrefs(
                                 color: HexColor(user.residency.theme.thirdColor),

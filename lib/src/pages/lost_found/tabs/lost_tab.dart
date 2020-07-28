@@ -22,7 +22,7 @@ class LostTab extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  '¿Has perdido algún objeto? \n Publícalo aqui para poder ayudarte a encontrarlo',
+                  '¿Has perdido algún objeto? \n Publícalo aquí para poder ayudarte a encontrarlo',
                   style: GoogleFonts.sourceSansPro(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),

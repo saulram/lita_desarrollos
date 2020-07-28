@@ -14,7 +14,7 @@ class GeneralTab extends StatelessWidget {
       );
     } else {
       return Scaffold(
-        body: directory.residents.usersDirectory != null
+        body: directory.generalServices.directories != null
             ? ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: directory.generalServices.directories.length,
@@ -31,7 +31,7 @@ class GeneralTab extends StatelessWidget {
                 },
               )
             : Center(
-                child: CircularProgressIndicator(),
+                child: Text('Aún no hay servicios registrados'),
               ),
       );
     }

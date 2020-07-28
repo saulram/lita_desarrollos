@@ -1,10 +1,10 @@
 
-String apiUrl = 'http://67.205.150.152/api';
+String apiUrl = 'http://api.lita.mx/api';
 
 String device = 'mobile';
 
-String uri = 'http://67.205.150.152/graphql';
+String uri = 'http://api.lita.mx/graphql';
 
 class AppConfig {
-  static const  apiSocket = 'http://67.205.150.152/';
+  static const  apiSocket = 'http://api.lita.mx/';
 }

@@ -39,7 +39,7 @@ class _MaintenancePageState extends State<MaintenancePage>
           title: Text(
             'Mantenimiento y Quejas',
             style: GoogleFonts.sourceSansPro(
-                fontWeight: FontWeight.w600, fontSize: 22),
+                fontWeight: FontWeight.w600, fontSize: 16),
           ),
           elevation: 0,
           centerTitle: true,

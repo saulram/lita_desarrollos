@@ -82,7 +82,7 @@ class NewVisitTab extends StatelessWidget {
                       textInputAction: TextInputAction.done,
                       attribute: "vehicleModel",
                       decoration:
-                      InputDecoration(labelText: "Modelo del Vehiculo"),
+                      InputDecoration(labelText: "Modelo del vehículo"),
                       validators: [],
                     ),
                   ),

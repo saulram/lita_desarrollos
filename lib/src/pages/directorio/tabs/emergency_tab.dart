@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/widgets/emergency_phones.dart';
+import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -9,12 +10,13 @@ class EmergencyTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final directory = Provider.of<DirectoryService>(context);
+
     if (directory.loading == true) {
       return Center(
         child: CircularProgressIndicator(),
       );
     } else {
-      if (directory.user.isPhoneActive) {
+      if (directory.user!=null) {
         return Scaffold(
           body: directory.emergencias.directories != null ? ListView.builder(
             physics: BouncingScrollPhysics(),

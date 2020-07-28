@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/widgets/resident_directory_card.dart';
+import 'package:litadesarrollos/src/pages/profile/profile_edit.dart';
 
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,9 @@ class ResidentTab extends StatelessWidget {
                   ),
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   Navigator.of(context).push(MaterialPageRoute(builder: (_)=> MyProfile()));
+                  },
                   color: accentLita,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
