@@ -53,8 +53,28 @@ class BazaarDetail extends StatelessWidget {
                 ],
               ),
             ),
-            Image.network(object.fullFiles[0],fit: BoxFit.cover,width: MediaQuery.of(context).size.width,),
+            Stack(
+              children: <Widget>[
+
+                Image.network(object.fullFiles[0],fit: BoxFit.cover,width: MediaQuery.of(context).size.width,),
+                Positioned(
+                  bottom: 0,
+                  left: 20,
+                  child: Container(
+                    color: primaryLita,
+                    height: MediaQuery.of(context).size.height*.05,
+                    width: MediaQuery.of(context).size.width*.2,
+                    child: Center(
+                      child: Text('${object.type.toUpperCase()}',style: GoogleFonts.sourceSansPro(color: Colors.white),),
+                    ),
+
+
+                  ),
+                ),
+              ],
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 GestureDetector(
                   onTap: (){
@@ -64,7 +84,12 @@ class BazaarDetail extends StatelessWidget {
                   },
                   child: Padding(
                     padding: EdgeInsets.all(8),
-                    child: Text('Comentarios'),
+                    child: Row(
+                      children: <Widget>[
+                        ImageIcon(AssetImage('assets/comment.png'),),
+                        Text('Comentarios',style: GoogleFonts.sourceSansPro(),),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -72,7 +97,7 @@ class BazaarDetail extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text('${object.formatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
+                      Text('Publicado: ${object.formatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
                     ],
                   ),
                 ),
@@ -80,7 +105,7 @@ class BazaarDetail extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(r'Precio:$'+ '${object.price}.00 MXN',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
+              child: Text(r'Precio: $'+ '${object.price}.00 MXN',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
             ),
 
             Padding(

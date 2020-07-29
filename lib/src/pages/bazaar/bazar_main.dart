@@ -8,6 +8,7 @@ import 'package:litadesarrollos/src/pages/bazaar/pages/upload_article.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
+import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
@@ -72,6 +73,7 @@ class _BazaarMainState extends State<BazaarMain>
                         }).toList(),
                 ),
               ),
+              bottomNavigationBar: BottomLita(),
               body: TabBarView(
                   controller: _controller,
                   children: bazarService.categories.categoriesBazaar == null
@@ -101,7 +103,7 @@ class _BazaarMainState extends State<BazaarMain>
                                   color: primaryLita,
                                   padding: EdgeInsets.all(
                                       MediaQuery.of(context).size.width * .02),
-                                  child: Column(
+                                  child:  loginService.loginResult.user.roles[0]!='resident' ? Container(): Column(
                                     children: <Widget>[
 
                                       InkWell(

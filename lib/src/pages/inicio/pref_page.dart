@@ -28,7 +28,7 @@ class PreferenceSelection extends StatelessWidget {
           backgroundColor: HexColor(user.residency.theme.secondaryColor),
           title: Image.asset(
             'assets/lita.png',
-            width: MediaQuery.of(context).size.width * .23,
+            height: MediaQuery.of(context).size.height * .05,
           ),
           elevation: 0,
           actions: <Widget>[
@@ -57,13 +57,13 @@ class PreferenceSelection extends StatelessWidget {
                         fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    '''Selecciona las secciones que quieras que aparezcan
+                    '''Selecciona los modulos que quieras que aparezcan
     en tu página de inicio para un fácil acceso.
     Tienes un máximo de 6 opciones.''',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.sourceSansPro(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 14,
                         fontWeight: FontWeight.w300),
                   ),
                   Expanded(

@@ -77,7 +77,7 @@ class WallCommentsPost extends StatelessWidget {
                                     color: Colors.black,
                                     fontSize: 13,
                                     fontWeight: FontWeight.normal),
-                                textAlign: TextAlign.start,
+
                               ),
                               Row(
                                 children: <Widget>[

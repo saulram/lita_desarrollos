@@ -5,6 +5,7 @@ import 'package:litadesarrollos/src/pages/common_areas/tabs/space_tab.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
+import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
@@ -33,6 +34,7 @@ class _CommonAreasPageState extends State<CommonAreasPage>
       child: Scaffold(
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.transparent,
+        bottomNavigationBar: BottomLita(),
         endDrawer: DrawerLita(),
 
         appBar: AppBar(
@@ -53,7 +55,7 @@ class _CommonAreasPageState extends State<CommonAreasPage>
 
             tabs: <Widget>[
               Tab(
-                text: 'Espacios',
+                text: 'Amenidades',
 
               ),
               Tab(

@@ -57,7 +57,7 @@ class LostObjectDetail extends StatelessWidget {
              child: Row(
                mainAxisAlignment: MainAxisAlignment.end,
                children: <Widget>[
-                 Text('${object.looseAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
+                 Text('Publicado: ${object.updatedAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
                ],
              ),
            ),
@@ -72,7 +72,7 @@ class LostObjectDetail extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height*.1,
             ),
-            Center(
+            loginProvider.loginResult.user.roles[0]!='resident'? Container(): Center(
               child: CupertinoButton(
                 color: accentLita,
                 onPressed: (){

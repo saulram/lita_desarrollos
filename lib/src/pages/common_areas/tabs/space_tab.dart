@@ -65,7 +65,8 @@ class SpaceTab extends StatelessWidget {
                   ),
                   Text(
                     '${spaceService.areasList.commonAreas[i].description}',
-                    maxLines: 1,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.sourceSansPro(),
                   ),
                   CupertinoButton(
@@ -81,7 +82,7 @@ class SpaceTab extends StatelessWidget {
                   ),
                   Text(
                       'Anticipo: ${spaceService.areasList.commonAreas[i].cost}'),
-                  Center(
+                 spaceService.user.user.roles[0]!='resident'? Container(): Center(
                     child: CupertinoButton(
                       color: accentLita,
 

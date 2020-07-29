@@ -38,16 +38,19 @@ class _UploadBazarArticleState extends State<UploadBazarArticle> {
     final bazarService = Provider.of<BazaarService>(context);
     Future getImage(ImgSource source) async {
       var image = await ImagePickerGC.pickImage(
-        context: context,
-        source: source,
-        cameraIcon: Icon(
-          CupertinoIcons.photo_camera_solid,
-          color: Colors.red,
-        ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+          context: context,
+          source: source,
+          cameraIcon: Icon(
+            CupertinoIcons.photo_camera,
+          ), //
+          cameraText: Text('Cámara'),
+          galleryText: Text('Galeria'),// cameraIcon and gall
+          galleryIcon: Icon(CupertinoIcons
+              .video_camera) // eryIcon can change. If no icon provided default icon will be present
       );
       bazarService.image = image;
       bazarService.uploadImage();
-    }
+    };
 
     Widget _buttons() {
       return Row(

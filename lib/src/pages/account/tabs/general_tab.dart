@@ -25,7 +25,7 @@ class GeneralIncomes extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Consulta los últimos 10 movimientos.\nPara ver detalles, navega en el menú superior o haz click en cada concepto\n',
+                        'Consulta los últimos 10 movimientos.\nPara ver detalles, navega en el menú superior o haz click en cada concepto.\n',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.sourceSansPro(
                             fontSize: 13, fontWeight: FontWeight.w400),

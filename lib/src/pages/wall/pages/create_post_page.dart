@@ -22,16 +22,19 @@ class AddComment extends StatelessWidget {
     final wallService = Provider.of<WallService>(context);
     Future getImage(ImgSource source) async {
       var image = await ImagePickerGC.pickImage(
-        context: context,
-        source: source,
-        cameraIcon: Icon(
-          CupertinoIcons.photo_camera_solid,
-          color: Colors.red,
-        ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+          context: context,
+          source: source,
+          cameraIcon: Icon(
+            CupertinoIcons.photo_camera,
+          ), //
+          cameraText: Text('Cámara'),
+          galleryText: Text('Galeria'),// cameraIcon and gall
+          galleryIcon: Icon(CupertinoIcons
+              .video_camera) // eryIcon can change. If no icon provided default icon will be present
       );
       wallService.image = image;
       wallService.uploadImage();
-    }
+    };
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -79,7 +82,7 @@ class AddComment extends StatelessWidget {
                       attribute: "description",
                       textInputAction: TextInputAction.done,
                       decoration:
-                      InputDecoration(labelText: "Escribe aquí tu post"),
+                      InputDecoration(labelText: "Escribe aquí tu publicación"),
                       validators: [FormBuilderValidators.required()],
                     ),
                   ),

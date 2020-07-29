@@ -5,6 +5,7 @@ import 'package:litadesarrollos/src/pages/lost_found/tabs/lost_tab.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
+import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
@@ -31,6 +32,7 @@ class _LostFoundMainState extends State<LostFoundMain>
     return loginService.loginResult.user!= null ? DefaultTabController(
       length: 2,
       child: Scaffold(
+        bottomNavigationBar: BottomLita(),
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.transparent,
         endDrawer: DrawerLita(),

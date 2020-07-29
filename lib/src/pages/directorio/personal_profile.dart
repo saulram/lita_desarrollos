@@ -108,7 +108,7 @@ class PersonalProfile extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          'Descripcion',
+                          'Descripción',
                           style: GoogleFonts.sourceSansPro(
                               color: HexColor('#828282'), fontSize: 16),
                         ),
@@ -127,7 +127,7 @@ class PersonalProfile extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .07,
               ),
-              Row(
+              personalService.login.user.roles[0]!='resident'? Container(): Row(
                 children: <Widget>[
                   Expanded(
                     flex: 1,

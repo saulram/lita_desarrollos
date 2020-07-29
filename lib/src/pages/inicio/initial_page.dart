@@ -37,7 +37,8 @@ class _InitialPageState extends State<InitialPage> {
                 padding: const EdgeInsets.all(9),
                 child: Image.asset(
                   'assets/lita.png',
-                  width: MediaQuery.of(context).size.width * .23,
+                  height: MediaQuery.of(context).size.height*.05,
+
 
                 ),
               ),

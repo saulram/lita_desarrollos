@@ -61,7 +61,7 @@ class _DirectoryPageState extends State<DirectoryPage>
                 text: 'Residentes',
               ),
               Tab(
-                text: 'Personal',
+                text: 'Personal interno',
               ),
             ],
           ),

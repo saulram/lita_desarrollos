@@ -6,6 +6,7 @@ import 'package:litadesarrollos/src/pages/chat/components/chat_tile_lita.dart';
 import 'package:litadesarrollos/src/pages/chat/pages/add_participants.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
+import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
@@ -25,6 +26,7 @@ class MainChatPage extends StatelessWidget {
           style: GoogleFonts.sourceSansPro(),
         ),
       ),
+      bottomNavigationBar: BottomLita(),
       body: Column(
         children: <Widget>[
           Row(
@@ -83,7 +85,7 @@ class MainChatPage extends StatelessWidget {
               return ChatTile(
                 name:"${chatService.chatList.chats[i].name}",
                 chatId:"${chatService.chatList.chats[i].id}",
-                userId:"${chatService.loginResult.user.id}",
+                userId:"${chatService.loginResult.user?.id}",
 
               );
             }),

@@ -28,14 +28,10 @@ class VotesTab extends StatelessWidget {
                       padding:  EdgeInsets.all(MediaQuery.of(context).size.height*.02),
                       child: Column(
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Text('Votación cerrada el: ${voteService.votations.votes[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
-                            ],
-                          ),
+
 
                           Text(
-                            'Resultados de votación anterior: \n ${voteService.votations.votes[index].title}\n',
+                            'Resultados de la votación anterior: \n ${voteService.votations.votes[index].title}\n',
                             style: GoogleFonts.sourceSansPro(
                               fontSize: 17,
                             ),
@@ -87,6 +83,15 @@ class VotesTab extends StatelessWidget {
                               )
                             ],
                           ),
+
+                          SizedBox(height: MediaQuery.of(context).size.height*.01,),
+                          Row(
+                            children: <Widget>[
+                              Text('Votación cerrada el: ${voteService.votations.votes[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                            ],
+                          ),
+
+                          SizedBox(height: MediaQuery.of(context).size.height*.01,),
                           Divider()
                         ],
                       ),

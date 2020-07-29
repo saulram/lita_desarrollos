@@ -36,7 +36,7 @@ class ViewQR extends StatelessWidget {
         ],
         elevation: 0,
         title: Text(
-          'Fecha y hora de visita',
+          'Código QR',
           style: GoogleFonts.sourceSansPro(color: Colors.white),
         ),
       ),

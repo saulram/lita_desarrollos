@@ -19,7 +19,7 @@ class LostTab extends StatelessWidget {
             height: MediaQuery.of(context).size.height*.15,
             color: primaryLita,
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * .02),
-            child: Column(
+            child:lostService.loginResult.user.roles[0]!='resident' ?Container(): Column(
               children: <Widget>[
                 Text(
                   '¿Has perdido algún objeto? \n Publícalo aquí para poder ayudarte a encontrarlo',
@@ -55,7 +55,7 @@ class LostTab extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height*.11,
+   top: lostService.loginResult.user.roles[0]!='resident'? MediaQuery.of(context).size.height*.02: MediaQuery.of(context).size.height*.11,
           child: Container(
             height: MediaQuery.of(context).size.height*.9,
             width: MediaQuery.of(context).size.width,

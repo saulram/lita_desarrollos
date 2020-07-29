@@ -35,7 +35,7 @@ class WallPictureText extends StatelessWidget {
                     child: Text(
                       '${wallsList.description}',
                       style: GoogleFonts.sourceSansPro(),
-                      textAlign: TextAlign.justify,
+                      textAlign: TextAlign.start,
                       softWrap: true,
                       maxLines: 2,
                     ),
@@ -61,13 +61,7 @@ class WallPictureText extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Row(
-                children: <Widget>[ImageIcon(AssetImage('assets/comment.png')),
-                  Text(
-                    'Comentarios   ',
-                    style: GoogleFonts.sourceSansPro(),
-                  ),],
-              ),
+
               FlatButton(
                 onPressed: ()  {
                   wallProvider.getComments(wallsList.id);

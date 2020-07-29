@@ -19,16 +19,19 @@ class CreateFound extends StatelessWidget {
     final lostService = Provider.of<LostService>(context);
     Future getImage(ImgSource source) async {
       var image = await ImagePickerGC.pickImage(
-        context: context,
-        source: source,
-        cameraIcon: Icon(
-          CupertinoIcons.photo_camera_solid,
-          color: Colors.red,
-        ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+          context: context,
+          source: source,
+          cameraIcon: Icon(
+            CupertinoIcons.photo_camera,
+          ), //
+          cameraText: Text('Cámara'),
+          galleryText: Text('Galeria'),// cameraIcon and gall
+          galleryIcon: Icon(CupertinoIcons
+              .video_camera) // eryIcon can change. If no icon provided default icon will be present
       );
       lostService.image = image;
       lostService.uploadImage();
-    }
+    };
 
     return Scaffold(
       backgroundColor:
@@ -139,7 +142,7 @@ class CreateFound extends StatelessWidget {
             ),
             OutlineButton(
               onPressed: () {
-                getImage(ImgSource.Camera);
+                getImage(ImgSource.Both);
               },
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),

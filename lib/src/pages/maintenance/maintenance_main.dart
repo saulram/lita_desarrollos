@@ -37,9 +37,9 @@ class _MaintenancePageState extends State<MaintenancePage>
         appBar: AppBar(
           backgroundColor: HexColor('#FFFFFF'),
           title: Text(
-            'Mantenimiento y Quejas',
+            'Mantenimiento y quejas',
             style: GoogleFonts.sourceSansPro(
-                fontWeight: FontWeight.w600, fontSize: 16),
+                fontWeight: FontWeight.w600, fontSize: 18),
           ),
           elevation: 0,
           centerTitle: true,

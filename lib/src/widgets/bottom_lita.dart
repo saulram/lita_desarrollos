@@ -14,7 +14,7 @@ class BottomLita extends StatelessWidget {
         loginService.pageView = i;
        var rt = ModalRoute.of(context).settings.name;
         if(rt != '/'){
-          Navigator.popAndPushNamed(context,'/');
+        Navigator.popUntil(context, (route) => route.isFirst);
         }
       },
       currentIndex: loginService.pageView,

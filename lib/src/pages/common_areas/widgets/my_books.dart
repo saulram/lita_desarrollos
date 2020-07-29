@@ -39,7 +39,7 @@ class MyBookCard extends StatelessWidget {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8)),
           onPressed: () async {
-            int cancel = await Alert.confirm(context,title: 'Cancelar evento',content: '¿Estas seguro de querer cancelar?',ok: 'Si',cancel: 'No');
+            int cancel = await Alert.confirm(context,title: 'Cancelar evento',content: '¿Estás seguro de querer cancelar?',ok: 'Si',cancel: 'No');
             if(cancel == 0){
               //cancel
               commonService.cancelBookings(book.id);

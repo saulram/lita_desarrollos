@@ -25,7 +25,7 @@ class FoundDetail extends StatelessWidget {
         iconTheme: IconThemeData(color: Colors.white),
         actionsIconTheme: IconThemeData(color: Colors.white),
         title: Text(
-          'Objeto Perdido',
+          'Objeto Encontrado',
           style: GoogleFonts.sourceSansPro(color: Colors.white),
         ),
       ),
@@ -55,7 +55,7 @@ class FoundDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text('${object.updatedAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
+                  Text('Publicado: ${object.updatedAtFormatDate}',style: GoogleFonts.sourceSansPro(color: HexColor('#333333',),fontSize: 12),)
                 ],
               ),
             ),
@@ -70,10 +70,11 @@ class FoundDetail extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height*.1,
             ),
-            Center(
+            loginProvider.loginResult.user.roles[0]!='resident' ?Container(): Center(
               child: CupertinoButton(
                 color: accentLita,
                 onPressed: (){
+                  Navigator.of(context).pushNamed('Chat');
 
 
                 },

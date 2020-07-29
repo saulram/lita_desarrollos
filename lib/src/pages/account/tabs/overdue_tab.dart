@@ -34,7 +34,7 @@ class OverdueTab extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Para realizar tu pago, acude directamente con el administrador\ndel condominio. Una vez realizado el pago, podrás ver la actualización \ndel mismo en esta sección.\n',
+                  'Recuerda que al saldar tus pagos vencidos,\n podrás acceder a los beneficios de Lita App',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 13, fontWeight: FontWeight.w400),

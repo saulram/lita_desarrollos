@@ -12,7 +12,9 @@ class ChatService with ChangeNotifier {
 
   void update(LoginResult lr) {
     _loginResult = lr;
-    _chatParticipants = ["${_loginResult.user.id}"];
+    if(_loginResult.user!= null){
+      _chatParticipants = ["${_loginResult.user.id}"];
+    }
     getChats();
     notifyListeners();
   }

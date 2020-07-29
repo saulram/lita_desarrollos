@@ -28,7 +28,7 @@ class PrefService with ChangeNotifier {
   }
   void onCategorySelected(bool selected, String categoryName,BuildContext ctx) {
     if (selected == true) {
-      _categories.length == 6 ? Alert.alert(ctx,title: 'Seleccionar',content: 'Solo puedes seleccionar 6 opciones',ok: 'Entendido')
+      _categories.length == 6 ? Alert.alert(ctx,title: 'Seleccionar',content: 'Sólo puedes seleccionar 6 opciones',ok: 'Entendido')
       :_categories.add(categoryName);
 
       print(_categories);
@@ -68,20 +68,35 @@ class PrefService with ChangeNotifier {
   bool _loading = false;
   bool get loading =>_loading;
 
-  Future<LoginResult>updateScreenPreferences({bool isActive})async {
+  Future<LoginResult>updateScreenPreferences({bool isActive,String file})async {
     String query = r'''
     mutation($phone: String, $picture: String, $screenPreferences: [String], $acceptTerms: Boolean, $isPhoneActive: Boolean, $incorrectData: Boolean, $fcmTokens: [String], $fcmTopics: [String]) {
     updateUserByResident(input: { phone: $phone, picture: $picture, screenPreferences: $screenPreferences, acceptTerms: $acceptTerms, isPhoneActive: $isPhoneActive, incorrectData: $incorrectData, fcmTokens: $fcmTokens, fcmTopics: $fcmTopics })
 }
     ''';
-    MutationOptions options = MutationOptions(
-      documentNode: gql(query),
-      fetchPolicy: FetchPolicy.cacheAndNetwork,
-      variables: {
-        "screenPreferences":_categories,
-        "isPhoneActive": isActive
-      }
-    );
+    MutationOptions options;
+    if(file!=null){
+       options = MutationOptions(
+          documentNode: gql(query),
+          fetchPolicy: FetchPolicy.cacheAndNetwork,
+          variables: {
+            "screenPreferences":_categories,
+            "isPhoneActive": isActive!=null? isActive : _loginResult.user.isPhoneActive,
+            "picture": file
+          }
+      );
+    }else{
+       options = MutationOptions(
+          documentNode: gql(query),
+          fetchPolicy: FetchPolicy.cacheAndNetwork,
+          variables: {
+            "screenPreferences":_categories,
+            "isPhoneActive": isActive!=null? isActive : _loginResult.user.isPhoneActive,
+
+          }
+      );
+    }
+
     _loading = true;
     notifyListeners();
     QueryResult res = await _client.mutate(options);

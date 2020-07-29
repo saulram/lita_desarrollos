@@ -1,9 +1,13 @@
 import 'package:easy_alert/easy_alert.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/inicio/services/preference_service.dart';
+import 'package:litadesarrollos/src/pages/profile/page/user_picture.dart';
+import 'package:litadesarrollos/src/pages/profile/services/profile_service.dart';
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
@@ -15,6 +19,7 @@ class MyProfile extends StatelessWidget {
     final loginProvider = Provider.of<LoginService>(context);
 
     final initialService = Provider.of<PrefService>(context);
+
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -33,25 +38,43 @@ class MyProfile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Hero(
-                tag: 'profile',
-                child: CircleAvatar(
-                  backgroundColor: HexColor(loginProvider
-                      .loginResult.user.residency.theme.secondaryColor),
-                  child: Padding(
-                    padding:
-                        EdgeInsets.all(MediaQuery.of(context).size.width * .02),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                loginProvider.loginResult.user.fullFile),
-                          )),
+              Stack(
+                children: <Widget>[
+                  Hero(
+                    tag: 'profile',
+                    child: CircleAvatar(
+                      backgroundColor: HexColor(loginProvider
+                          .loginResult.user.residency.theme.secondaryColor),
+
+                      child: Padding(
+                        padding:
+                            EdgeInsets.all(MediaQuery.of(context).size.width * .02),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    loginProvider.loginResult.user.fullFile),
+                              )),
+                        ),
+                      ),
+                      radius: MediaQuery.of(context).size.width * .15,
                     ),
                   ),
-                  radius: MediaQuery.of(context).size.width * .15,
-                ),
+                  Positioned(
+                    bottom: -15,
+                    right: -12,
+
+                    child: IconButton(
+                      onPressed: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_)=>UserProfilePic()));
+
+                      },
+                      icon: Icon(Icons.camera_alt),
+                    ),
+                  )
+                ],
               ),
               Container(
                 margin: EdgeInsets.only(
@@ -133,7 +156,7 @@ class MyProfile extends StatelessWidget {
                         int i = await Alert.alert(context, title:'Perfil actualizado');
                         if(i == 0 ){
                           loginProvider.loginUser();
-                          print('Reiniciamos sesion');
+
                         }
                       }
                       },
@@ -187,7 +210,10 @@ class MyProfile extends StatelessWidget {
               Row(
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Alert.alert(context,title: 'Gracias',content: 'El administrador se pondrá en contracto contigo para solucionarlo.',ok: 'Entendido');
+
+                    },
                     child: Text(
                       'Mis datos no son correctos',
                       style: GoogleFonts.sourceSansPro(color: accentLita),

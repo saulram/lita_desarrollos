@@ -7,6 +7,7 @@ import 'package:litadesarrollos/src/pages/benefits/services/benefits_service.dar
 import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
+import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +37,7 @@ class _BenefitsMainState extends State<BenefitsMain>
           ? benefitsService.benefits.categoriesBenefits.length
           : 1,
       child: Scaffold(
+        bottomNavigationBar: BottomLita(),
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.transparent,
         endDrawer: DrawerLita(),

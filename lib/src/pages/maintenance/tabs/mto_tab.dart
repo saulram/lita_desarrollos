@@ -72,7 +72,7 @@ class MtoTab extends StatelessWidget {
                       attribute: "description",
                       textInputAction: TextInputAction.done,
                       decoration:
-                          InputDecoration(labelText: "Escribe aquí tu reporte"),
+                          InputDecoration(labelText: "Escribe aquí tus comentarios"),
                       validators: [FormBuilderValidators.required()],
                     ),
                   ),
@@ -167,7 +167,7 @@ class MtoTab extends StatelessWidget {
                         horizontal: MediaQuery.of(context).size.width * .2,
                         vertical: 10),
                     child: mtoService.isloading== false ? Text(
-                      'Crear reporte',
+                      'Crear comentario',
                       style: GoogleFonts.sourceSansPro(color: Colors.white),
                     ): CircularProgressIndicator( strokeWidth: .5,backgroundColor: Colors.white,),
                   ),

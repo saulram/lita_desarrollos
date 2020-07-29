@@ -13,7 +13,7 @@ import 'package:litadesarrollos/src/utils/globals.dart';
 class CommonService with ChangeNotifier {
   static LoginResult _user = LoginResult();
   CommonAreasList areasList = CommonAreasList();
-
+LoginResult get user =>_user;
   void update(LoginResult lr) {
     _user = lr;
     getCommonAreas();

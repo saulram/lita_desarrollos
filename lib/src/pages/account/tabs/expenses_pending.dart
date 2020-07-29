@@ -34,7 +34,7 @@ import 'package:provider/provider.dart';
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Para realizar tu pago, acude directamente con el administrador\ndel condominio. Una vez realizado el pago, podrás ver la actualización\ndel mismo en esta sección.',
+                  'Para realizar tu pago, acude directamente con el administrador\ndel condominio. Una vez realizado el pago, podrás ver la actualización del mismo en esta sección.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 13, fontWeight: FontWeight.w400),

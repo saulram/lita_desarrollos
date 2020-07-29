@@ -21,12 +21,12 @@ class FoundTab extends StatelessWidget {
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * .02),
             child: Column(
               children: <Widget>[
-                Text(
+               lostService.loginResult.user.roles[0]!='resident'? Container(): Text(
                   '¿Has encontrado algún objeto? \n  Publícalo aquí para encontrar a su dueño. ¡Gracias!',
                   style: GoogleFonts.sourceSansPro(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
-                InkWell(
+               lostService.loginResult.user.roles[0]!='resident'?Container(): InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreateFound()));
                   },
@@ -55,7 +55,7 @@ class FoundTab extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height*.11,
+          top:lostService.loginResult.user.roles[0]!='resident'? MediaQuery.of(context).size.height*.02: MediaQuery.of(context).size.height*.11,
           child: Container(
             height: MediaQuery.of(context).size.height*.9,
             width: MediaQuery.of(context).size.width,

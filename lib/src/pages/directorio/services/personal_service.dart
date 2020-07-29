@@ -8,12 +8,14 @@ import 'package:litadesarrollos/src/pages/directorio/services/queries.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
 
 class PersonalService with ChangeNotifier {
-  static LoginResult login;
+  static LoginResult _login;
+
+  LoginResult get login => login;
   bool _isloading = false;
   bool get isloading => _isloading;
 
   void update(LoginResult lr) {
-    login = lr;
+    _login = lr;
     notifyListeners();
     print(login.token);
   }
@@ -30,7 +32,7 @@ class PersonalService with ChangeNotifier {
   static HttpLink httplink = HttpLink(
       uri: uri,
       headers: <String, String>{
-        "Authorization": "${login.token}",
+        "Authorization": "${_login.token}",
       });
   static GraphQLClient _client = GraphQLClient(
     cache: InMemoryCache(),

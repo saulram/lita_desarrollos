@@ -17,6 +17,7 @@ import 'package:litadesarrollos/src/pages/lost_found/services/lost_found_service
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
 import 'package:litadesarrollos/src/pages/news/services/news_service.dart';
 import 'package:litadesarrollos/src/pages/notifications/services/notifications_service.dart';
+import 'package:litadesarrollos/src/pages/profile/services/profile_service.dart';
 import 'package:litadesarrollos/src/pages/programedvisits/services/visits_service.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/polls_service.dart';
 import 'package:litadesarrollos/src/pages/votesandpolls/services/votes_service.dart';
@@ -119,6 +120,11 @@ List<SingleChildWidget> providerList = [
     create: (_) => PrefService(),
     update: (context, loginService, prefsService) =>
         prefsService..update(loginService.loginResult),
+  ),
+  ChangeNotifierProxyProvider<LoginService, ProfileService>(
+    create: (_) => ProfileService(),
+    update: (context, loginService, prefsService) =>
+    prefsService..update(loginService.loginResult),
   ),
   ChangeNotifierProvider(
     create: (_) => ChatProvider(),

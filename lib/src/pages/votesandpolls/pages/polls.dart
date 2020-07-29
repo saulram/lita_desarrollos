@@ -26,7 +26,7 @@ class PollsTab extends StatelessWidget {
                     return Column(
                       children: <Widget>[
                         Text(
-                          'Resultados de votación anterior: \n ${pollsService.listOfPolls.polls[index].question}',
+                          '\nResultados de la encuesta anterior: \n ${pollsService.listOfPolls.polls[index].question} \n',
                           style: GoogleFonts.sourceSansPro(
                             fontSize: 17,
                           ),

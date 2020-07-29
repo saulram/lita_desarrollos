@@ -35,7 +35,7 @@ class PaidTab extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Gracias por tu pago',
+                  'Gracias por tu pago.',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 13, fontWeight: FontWeight.w400),

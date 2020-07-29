@@ -23,14 +23,17 @@ class ReportDonePage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: Colors.white),
             ),
-            Center(
-                child: Text(
-                    'Tu reporte ha sido enviado con éxito a la administracion.\n En breve nos pondremos en contacto contigo.',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white))),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                  child: Text(
+                      'Tu reporte ha sido enviado con éxito a la administracion.\n En breve nos pondremos en contacto contigo.',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.sourceSansPro(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white))),
+            ),
             OutlineButton(
               onPressed: () {
                 Navigator.pop(context);
