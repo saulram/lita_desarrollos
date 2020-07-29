@@ -20,7 +20,7 @@ class BookingReceivedPage extends StatelessWidget {
             HexColor(userprovider.loginResult.user.residency.theme.mainColor),
         elevation: 0,
         title: Text(
-          'Tú solicitud ha sido recibida',
+          'Tu solicitud ha sido recibida',
           style: GoogleFonts.sourceSansPro(color: Colors.white),
         ),
         centerTitle: true,

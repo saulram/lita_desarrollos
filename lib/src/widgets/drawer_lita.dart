@@ -63,7 +63,8 @@ class DrawerLita extends StatelessWidget {
                                           user.residency.theme.thirdColor),
                                       backgroundImage:
                                           NetworkImage(user.fullFile),
-                                      maxRadius:45
+                                      maxRadius:35
+
 
                                     ),
                                   ),

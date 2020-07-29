@@ -100,7 +100,7 @@ class VotesTab extends StatelessWidget {
                     return Column(
                       children: <Widget>[
                         Text(
-                          '${voteService.votations.votes[index].title}',
+                          '\n${voteService.votations.votes[index].title}',
                           style: GoogleFonts.sourceSansPro(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

@@ -10,6 +10,7 @@ import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class BazaarDetail extends StatelessWidget {
   final Bazaar  object ;
@@ -17,6 +18,9 @@ class BazaarDetail extends StatelessWidget {
   const BazaarDetail({Key key, this.object}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final formatCurrency = new NumberFormat.simpleCurrency();
+
+
     final loginProvider = Provider.of<LoginService>(context);
     final bazarService = Provider.of<BazaarService>(context);
 
@@ -105,7 +109,7 @@ class BazaarDetail extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(r'Precio: $'+ '${object.price}.00 MXN',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
+              child: Text('${formatCurrency.format(object.price)} MXN',style: GoogleFonts.sourceSansPro(fontSize: 18,fontWeight: FontWeight.w600),),
             ),
 
             Padding(
@@ -140,6 +144,7 @@ class BazaarDetail extends StatelessWidget {
               child: CupertinoButton(
                 color: accentLita,
                 onPressed: (){
+                  Navigator.of(context).pushNamed('Chat');
 
 
                 },

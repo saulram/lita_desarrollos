@@ -110,8 +110,9 @@ class DirectoryService with ChangeNotifier {
       notifyListeners();
       return false;
     }else{
-      personald = personalFromJson(jsonEncode(res.data));
       _loading = false;
+      personald = personalFromJson(jsonEncode(res.data));
+
       notifyListeners();
       return true;
     }

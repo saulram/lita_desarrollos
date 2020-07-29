@@ -23,104 +23,116 @@ class PollsTab extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   if (pollsService.listOfPolls.polls[index].alreadyAnswer ==
                       true) {
-                    return Column(
-                      children: <Widget>[
-                        Text(
-                          '\nResultados de la encuesta anterior: \n ${pollsService.listOfPolls.polls[index].question} \n',
-                          style: GoogleFonts.sourceSansPro(
-                            fontSize: 17,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(
-                              child: Text(
-                                  '${pollsService.listOfPolls.polls[index].firstOption.answer}'),
-                              width: MediaQuery.of(context).size.width * .15,
+                    return Padding(
+                      padding:  EdgeInsets.all(MediaQuery.of(context).size.height*.02),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            '\nResultados de la encuesta anterior: \n ${pollsService.listOfPolls.polls[index].question} \n',
+                            style: GoogleFonts.sourceSansPro(
+                              fontSize: 17,
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .7,
-                              child: FAProgressBar(
-                                currentValue: pollsService
-                                    .listOfPolls.polls[index].percent.firstOption,
-                                displayText: '%',
-                                size: MediaQuery.of(context).size.width * .1,
-                                direction: Axis.horizontal,
-                                maxValue: 100,
-                                borderRadius: 0,
-                                backgroundColor: Colors.white,
-                                progressColor: HexColor(pollsService
-                                    .loginResult.user.residency.theme.mainColor),
-                                changeProgressColor: accentLita,
-                                animatedDuration: Duration(milliseconds: 500),
+                            textAlign: TextAlign.center,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                child: Text(
+                                    '${pollsService.listOfPolls.polls[index].firstOption.answer}'),
+                                width: MediaQuery.of(context).size.width * .15,
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(
-                                child: Text( '${pollsService.listOfPolls.polls[index].secondOption.answer}'),
-                                width: MediaQuery.of(context).size.width * .15),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .7,
-                              child: FAProgressBar(
-                                currentValue: pollsService.listOfPolls
-                                    .polls[index].percent.secondOption,
-                                displayText: '%',
-                                size: MediaQuery.of(context).size.width * .1,
-                                direction: Axis.horizontal,
-                                maxValue: 100,
-                                borderRadius: 0,
-                                backgroundColor: Colors.white,
-                                progressColor:Colors.grey,
-                                changeProgressColor: accentLita,
-                                animatedDuration: Duration(milliseconds: 500),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * .01,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(
-                                child: Text( '${pollsService.listOfPolls.polls[index].thirdOption.answer}'),
-                                width: MediaQuery.of(context).size.width * .15),
-                            Container(
-                              width: MediaQuery.of(context).size.width * .7,
-                              child: FAProgressBar(
-                                currentValue: pollsService.listOfPolls
-                                    .polls[index].percent.thirdOption,
-                                displayText: '%',
-                                size: MediaQuery.of(context).size.width * .1,
-                                direction: Axis.horizontal,
-                                maxValue: 100,
-                                borderRadius: 0,
-                                backgroundColor: Colors.white,
-                                progressColor: HexColor(pollsService
-                                    .loginResult.user.residency.theme.mainColor),
-                                changeProgressColor: accentLita,
-                                animatedDuration: Duration(milliseconds: 500),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
+                              Container(
+                                width: MediaQuery.of(context).size.width * .7,
+                                child: FAProgressBar(
+                                  currentValue: pollsService
+                                      .listOfPolls.polls[index].percent.firstOption,
+                                  displayText: '%',
+                                  size: MediaQuery.of(context).size.width * .1,
+                                  direction: Axis.horizontal,
+                                  maxValue: 100,
+                                  borderRadius: 0,
+                                  backgroundColor: Colors.white,
+                                  progressColor: HexColor(pollsService
+                                      .loginResult.user.residency.theme.mainColor),
+                                  changeProgressColor: accentLita,
+                                  animatedDuration: Duration(milliseconds: 500),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * .01,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                  child: Text( '${pollsService.listOfPolls.polls[index].secondOption.answer}'),
+                                  width: MediaQuery.of(context).size.width * .15),
+                              Container(
+                                width: MediaQuery.of(context).size.width * .7,
+                                child: FAProgressBar(
+                                  currentValue: pollsService.listOfPolls
+                                      .polls[index].percent.secondOption,
+                                  displayText: '%',
+                                  size: MediaQuery.of(context).size.width * .1,
+                                  direction: Axis.horizontal,
+                                  maxValue: 100,
+                                  borderRadius: 0,
+                                  backgroundColor: Colors.white,
+                                  progressColor:Colors.grey,
+                                  changeProgressColor: accentLita,
+                                  animatedDuration: Duration(milliseconds: 500),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * .01,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                  child: Text( '${pollsService.listOfPolls.polls[index].thirdOption.answer}'),
+                                  width: MediaQuery.of(context).size.width * .15),
+                              Container(
+                                width: MediaQuery.of(context).size.width * .7,
+                                child: FAProgressBar(
+                                  currentValue: pollsService.listOfPolls
+                                      .polls[index].percent.thirdOption,
+                                  displayText: '%',
+                                  size: MediaQuery.of(context).size.width * .1,
+                                  direction: Axis.horizontal,
+                                  maxValue: 100,
+                                  borderRadius: 0,
+                                  backgroundColor: Colors.white,
+                                  progressColor: HexColor(pollsService
+                                      .loginResult.user.residency.theme.mainColor),
+                                  changeProgressColor: accentLita,
+                                  animatedDuration: Duration(milliseconds: 500),
+                                ),
+                              )
+                            ],
+                          ),
+
+                          SizedBox(height: MediaQuery.of(context).size.height*.01,),
+                          Row(
+                            children: <Widget>[
+                              Text('Encuesta cerrada el: ${pollsService.listOfPolls.polls[index].updatedAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                            ],
+                          ),
+
+                          SizedBox(height: MediaQuery.of(context).size.height*.01,),
+                        ],
+                      ),
                     );
                   } else {
                     return Column(
                       children: <Widget>[
                         Text(
-                          '${pollsService.listOfPolls.polls[index].question}',
+                          '\n${pollsService.listOfPolls.polls[index].question}',
                           style: GoogleFonts.sourceSansPro(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -223,7 +235,16 @@ class PollsTab extends StatelessWidget {
                               ),
                             )
                           ],
-                        )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Row(
+                            children: <Widget>[
+                              Text('Encuesta valida hasta el: ${pollsService.listOfPolls.polls[index].updatedAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                            ],
+                          ),
+                        ),
+                        Divider()
                       ],
                     );
 
