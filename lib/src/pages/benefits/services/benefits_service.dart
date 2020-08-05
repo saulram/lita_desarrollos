@@ -24,11 +24,10 @@ query {
     categoriesBenefits {
         _id
         name
-        
+        updatedAtFormat
         benefits {
             _id
             title
-            description
             picture
             fullFile
             discount
@@ -37,6 +36,7 @@ query {
             phone
             website
             updatedAtFormat
+            branch
         }
     }
 }

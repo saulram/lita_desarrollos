@@ -57,7 +57,7 @@ class FoundTab extends StatelessWidget {
         Positioned(
           top:lostService.loginResult.user.roles[0]!='resident'? MediaQuery.of(context).size.height*.02: MediaQuery.of(context).size.height*.11,
           child: Container(
-            height: MediaQuery.of(context).size.height*.9,
+            height: MediaQuery.of(context).size.height*.6,
             width: MediaQuery.of(context).size.width,
             child: GridView.builder(
                 shrinkWrap: true,

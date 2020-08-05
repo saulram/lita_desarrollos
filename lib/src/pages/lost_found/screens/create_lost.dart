@@ -188,7 +188,7 @@ class CreateLost1st extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * .22),
                 child: lostService.isloading == true
-                    ? CircularProgressIndicator()
+                    ? CircularProgressIndicator( strokeWidth: 1, backgroundColor: Colors.white,)
                     : Text(
                         'Publicar',
                         style: GoogleFonts.sourceSansPro(color: Colors.white),

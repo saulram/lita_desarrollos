@@ -302,7 +302,7 @@ LoginResult get user =>_user;
         startAt
         endAt
         attendeesNumber
-        paymentStatus
+        paymentStatusFormat
         isActive
         createdAt
         updatedAt
@@ -356,7 +356,7 @@ LoginResult get user =>_user;
         startAt
         endAt
         attendeesNumber
-        paymentStatus
+        paymentStatusFormat
         isActive
         updatedAtFormat
         bookingDateFormat

@@ -143,7 +143,7 @@ class _BazaarMainState extends State<BazaarMain>
                                 top: MediaQuery.of(context).size.height * .11,
                                 child: Container(
                                   height:
-                                      MediaQuery.of(context).size.height * .9,
+                                      MediaQuery.of(context).size.height * .6,
                                   width: MediaQuery.of(context).size.width,
                                   child: bazarService.isloading == true
                                       ? ListSkeleton(

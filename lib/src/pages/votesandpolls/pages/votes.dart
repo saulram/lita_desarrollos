@@ -52,8 +52,8 @@ class VotesTab extends StatelessWidget {
                                   maxValue: 100,
                                   borderRadius: 0,
                                   backgroundColor: Colors.white,
-                                  progressColor: HexColor(voteService
-                                      .loginResult.user.residency.theme.mainColor),
+                                  progressColor: HexColor(voteService.votations.votes[index].percent.upVote > voteService.votations.votes[index].percent.downVote ? voteService
+                                      .loginResult.user.residency.theme.mainColor : '#33333'),
                                   changeProgressColor: accentLita,
                                   animatedDuration: Duration(milliseconds: 500),
                                 ),
@@ -76,7 +76,8 @@ class VotesTab extends StatelessWidget {
                                   maxValue: 100,
                                   borderRadius: 0,
                                   backgroundColor: Colors.white,
-                                  progressColor: Colors.grey,
+                                  progressColor:HexColor(voteService.votations.votes[index].percent.upVote < voteService.votations.votes[index].percent.downVote ? voteService
+                                      .loginResult.user.residency.theme.mainColor : '#33333'),
                                   changeProgressColor: accentLita,
                                   animatedDuration: Duration(milliseconds: 500),
                                 ),

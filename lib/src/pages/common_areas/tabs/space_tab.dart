@@ -8,11 +8,14 @@ import 'package:litadesarrollos/src/pages/common_areas/services/common_area_serv
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/utils/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
+final formatCurrency = new NumberFormat.simpleCurrency();
 class SpaceTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final spaceService = Provider.of<CommonService>(context);
+
     return ListView.builder(
       itemBuilder: (BuildContext ctx, int i) {
         return Column(
@@ -69,7 +72,7 @@ class SpaceTab extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.sourceSansPro(),
                   ),
-                  CupertinoButton(
+                 spaceService.areasList.commonAreas[i].regulationContent == '' || spaceService.areasList.commonAreas[i].regulationFileUrl== null ? Container() : CupertinoButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>RulesPage(area: spaceService.areasList.commonAreas[i],)));
                     },
@@ -81,7 +84,7 @@ class SpaceTab extends StatelessWidget {
                     ),
                   ),
                   Text(
-                      'Anticipo: ${spaceService.areasList.commonAreas[i].cost}'),
+                      'Costo: ${formatCurrency.format(spaceService.areasList.commonAreas[i].cost)} MXN'),
                  spaceService.user.user.roles[0]!='resident'? Container(): Center(
                     child: CupertinoButton(
                       color: accentLita,

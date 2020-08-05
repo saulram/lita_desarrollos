@@ -10,6 +10,7 @@ import 'package:litadesarrollos/src/services/login_service.dart';
 import 'package:litadesarrollos/src/theme/theme.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BenefitDetail extends StatelessWidget {
   final Benefit object;
@@ -63,7 +64,7 @@ class BenefitDetail extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${object.discount}',
+                      '${object.title}',
                       style: GoogleFonts.sourceSansPro(
                           fontSize: 18, fontWeight: FontWeight.w600),
                     ),
@@ -79,13 +80,50 @@ class BenefitDetail extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${object.description}',
+                      '${object.discount}',
                       style: GoogleFonts.sourceSansPro(
                           fontSize: 16, fontWeight: FontWeight.w400),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '${object.branch}',
+                      style: GoogleFonts.sourceSansPro(
+                          fontSize: 16, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Vigencia: ${object.until}',
+                      style: GoogleFonts.sourceSansPro(
+                          fontSize: 13, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () async{
+
+                        final  url = 'https://${object.website}';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        '${object.website}',
+                        style: GoogleFonts.sourceSansPro(
+                            fontSize: 13, fontWeight: FontWeight.w400,color: accentLita),
+                      ),
+                    ),
+                  ),
+
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * .1,
+                    height: MediaQuery.of(context).size.height * .07,
                   ),
                   Center(
                     child: CupertinoButton(

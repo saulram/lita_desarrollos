@@ -196,12 +196,15 @@ class _BenefitsMainState extends State<BenefitsMain>
                                             fit: BoxFit.cover,
                                           )),
                                       Text(
-                                        '${categorie.benefits[i].title}',
+                                        '${categorie.benefits[i].company}',
                                         style: GoogleFonts
                                             .sourceSansPro(
+
                                             fontWeight:
                                             FontWeight
                                                 .w600),
+                                        overflow:TextOverflow.ellipsis,
+                                        maxLines:2,
                                         textAlign:
                                         TextAlign.start,
                                       ),
@@ -213,19 +216,31 @@ class _BenefitsMainState extends State<BenefitsMain>
                                             FontWeight
                                                 .w400,
                                             fontSize: 10),
+                                        overflow:TextOverflow.ellipsis,
                                         textAlign:
                                         TextAlign.start,
+                                        maxLines:2
+                                          ,
+
                                       ),
-                                      Text(
-                                        '${categorie.benefits[i].company}',
-                                        style: GoogleFonts
-                                            .sourceSansPro(
-                                            fontWeight:
-                                            FontWeight
-                                                .w400,
-                                            fontSize: 10),
-                                        textAlign:
-                                        TextAlign.start,
+                                      Row(
+                                        children: <Widget>[
+                                          Text('Sucursal: ',style: GoogleFonts.sourceSansPro(
+                                            fontSize: 10,
+                                            fontWeight:FontWeight.w600
+                                          ),),
+                                          Text(
+                                            '${categorie.benefits[i].branch}',
+                                            style: GoogleFonts
+                                                .sourceSansPro(
+                                                fontWeight:
+                                                FontWeight
+                                                    .w400,
+                                                fontSize: 10),
+                                            textAlign:
+                                            TextAlign.start,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),

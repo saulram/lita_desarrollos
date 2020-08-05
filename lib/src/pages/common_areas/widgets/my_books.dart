@@ -19,7 +19,7 @@ class MyBookCard extends StatelessWidget {
       children: <Widget>[
         Text('${book.commonAreaId.name}  \n',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 22),textAlign: TextAlign.center,),
         Text('${book.bookingDateFormat} \n',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
-        Text('Estatus: \n ${book.paymentStatus} \n',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
+        Text('Estatus: \n ${book.paymentStatusFormat} \n',style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 18),textAlign: TextAlign.center,),
         Center(
           child: CircleAvatar(
             backgroundImage: NetworkImage(

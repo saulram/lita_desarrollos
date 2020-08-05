@@ -28,22 +28,26 @@ class CategoriesBenefit {
   CategoriesBenefit({
     this.id,
     this.name,
+    this.updatedAtFormat,
     this.benefits,
   });
 
   String id;
   String name;
+  dynamic updatedAtFormat;
   List<Benefit> benefits;
 
   factory CategoriesBenefit.fromJson(Map<String, dynamic> json) => CategoriesBenefit(
     id: json["_id"],
     name: json["name"],
+    updatedAtFormat: json["updatedAtFormat"],
     benefits: List<Benefit>.from(json["benefits"].map((x) => Benefit.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "_id": id,
     "name": name,
+    "updatedAtFormat": updatedAtFormat,
     "benefits": List<dynamic>.from(benefits.map((x) => x.toJson())),
   };
 }
@@ -52,7 +56,6 @@ class Benefit {
   Benefit({
     this.id,
     this.title,
-    this.description,
     this.picture,
     this.fullFile,
     this.discount,
@@ -61,11 +64,11 @@ class Benefit {
     this.phone,
     this.website,
     this.updatedAtFormat,
+    this.branch,
   });
 
   String id;
   String title;
-  String description;
   String picture;
   String fullFile;
   String discount;
@@ -74,32 +77,33 @@ class Benefit {
   String phone;
   String website;
   String updatedAtFormat;
+  String branch;
 
   factory Benefit.fromJson(Map<String, dynamic> json) => Benefit(
     id: json["_id"],
     title: json["title"],
-    description: json["description"],
     picture: json["picture"],
     fullFile: json["fullFile"],
     discount: json["discount"],
     company: json["company"],
     until: json["until"],
-    phone: json["phone"],
+    phone: json["phone"] == null ? null : json["phone"],
     website: json["website"],
     updatedAtFormat: json["updatedAtFormat"],
+    branch: json["branch"] == null ? null : json["branch"],
   );
 
   Map<String, dynamic> toJson() => {
     "_id": id,
     "title": title,
-    "description": description,
     "picture": picture,
     "fullFile": fullFile,
     "discount": discount,
     "company": company,
     "until": until,
-    "phone": phone,
+    "phone": phone == null ? null : phone,
     "website": website,
     "updatedAtFormat": updatedAtFormat,
+    "branch": branch == null ? null : branch,
   };
 }

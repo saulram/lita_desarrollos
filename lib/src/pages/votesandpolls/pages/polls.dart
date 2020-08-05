@@ -39,7 +39,7 @@ class PollsTab extends StatelessWidget {
                             children: <Widget>[
                               Container(
                                 child: Text(
-                                    '${pollsService.listOfPolls.polls[index].firstOption.answer}'),
+                                    '${pollsService.listOfPolls.polls[index].firstOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13)),
                                 width: MediaQuery.of(context).size.width * .15,
                               ),
                               Container(
@@ -68,7 +68,7 @@ class PollsTab extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Container(
-                                  child: Text( '${pollsService.listOfPolls.polls[index].secondOption.answer}'),
+                                  child: Text( '${pollsService.listOfPolls.polls[index].secondOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13)),
                                   width: MediaQuery.of(context).size.width * .15),
                               Container(
                                 width: MediaQuery.of(context).size.width * .7,
@@ -95,7 +95,7 @@ class PollsTab extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
                               Container(
-                                  child: Text( '${pollsService.listOfPolls.polls[index].thirdOption.answer}'),
+                                  child: Text( '${pollsService.listOfPolls.polls[index].thirdOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13)),
                                   width: MediaQuery.of(context).size.width * .15),
                               Container(
                                 width: MediaQuery.of(context).size.width * .7,
@@ -160,7 +160,7 @@ class PollsTab extends StatelessWidget {
                                           MediaQuery.of(context).size.width * .2,
                                       padding: EdgeInsets.all(8),
                                       child: Text(
-                                          '${pollsService.listOfPolls.polls[index].firstOption.answer}'),
+                                          '${pollsService.listOfPolls.polls[index].firstOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13),),
                                     )
                                   ],
                                 ),
@@ -180,7 +180,7 @@ class PollsTab extends StatelessWidget {
                                           MediaQuery.of(context).size.width * .2,
                                       padding: EdgeInsets.all(8),
                                       child: Text(
-                                          '${pollsService.listOfPolls.polls[index].secondOption.answer}'),
+                                          '${pollsService.listOfPolls.polls[index].secondOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13)),
                                     )
                                   ],
                                 ),
@@ -200,7 +200,7 @@ class PollsTab extends StatelessWidget {
                                           MediaQuery.of(context).size.width * .2,
                                       padding: EdgeInsets.all(8),
                                       child: Text(
-                                          '${pollsService.listOfPolls.polls[index].thirdOption.answer}'),
+                                          '${pollsService.listOfPolls.polls[index].thirdOption.answer}',style: GoogleFonts.sourceSansPro(fontSize: 13)),
                                     )
                                   ],
                                 ),

@@ -160,7 +160,7 @@ class DrawerLita extends StatelessWidget {
                         margin: EdgeInsets.only(
                             left: MediaQuery.of(context).size.width * .1),
                         child: Text(
-                          'Encuestas y votaciones',
+                          'Votaciones y encuestas',
                           style: GoogleFonts.sourceSansPro(color: Colors.white),
                         ),
                       ),

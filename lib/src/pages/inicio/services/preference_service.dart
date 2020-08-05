@@ -81,7 +81,7 @@ class PrefService with ChangeNotifier {
           fetchPolicy: FetchPolicy.cacheAndNetwork,
           variables: {
             "screenPreferences":_categories,
-            "isPhoneActive": isActive!=null? isActive : _loginResult.user.isPhoneActive,
+            "isPhoneActive": _loginResult.user.isPhoneActive,
             "picture": file
           }
       );

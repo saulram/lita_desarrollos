@@ -33,7 +33,7 @@ class MyBooking {
     this.startAt,
     this.endAt,
     this.attendeesNumber,
-    this.paymentStatus,
+    this.paymentStatusFormat,
     this.isActive,
     this.updatedAtFormat,
     this.bookingDateFormat,
@@ -46,7 +46,7 @@ class MyBooking {
   String startAt;
   String endAt;
   int attendeesNumber;
-  String paymentStatus;
+  String paymentStatusFormat;
   bool isActive;
   String updatedAtFormat;
   String bookingDateFormat;
@@ -59,7 +59,7 @@ class MyBooking {
     startAt: json["startAt"],
     endAt: json["endAt"],
     attendeesNumber: json["attendeesNumber"],
-    paymentStatus: json["paymentStatus"],
+    paymentStatusFormat: json["paymentStatusFormat"],
     isActive: json["isActive"],
     updatedAtFormat: json["updatedAtFormat"],
     bookingDateFormat: json["bookingDateFormat"],
@@ -73,7 +73,7 @@ class MyBooking {
     "startAt": startAt,
     "endAt": endAt,
     "attendeesNumber": attendeesNumber,
-    "paymentStatus": paymentStatus,
+    "paymentStatusFormat": paymentStatusFormat,
     "isActive": isActive,
     "updatedAtFormat": updatedAtFormat,
     "bookingDateFormat": bookingDateFormat,

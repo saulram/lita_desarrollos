@@ -40,7 +40,7 @@ class _CommonAreasPageState extends State<CommonAreasPage>
         appBar: AppBar(
           backgroundColor: primaryLita,
           title: Text(
-            'Áreas Comunes',
+            'Áreas comunes',
             style: GoogleFonts.sourceSansPro(
                 fontWeight: FontWeight.w600, fontSize: 22,color: Colors.white),
           ),

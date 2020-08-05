@@ -93,6 +93,7 @@ class ProfileService with ChangeNotifier {
     } catch (e) {
       print(e);
     }
+    _isloading = false;
 
     notifyListeners();
   }

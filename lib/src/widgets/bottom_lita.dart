@@ -17,8 +17,13 @@ class BottomLita extends StatelessWidget {
         Navigator.popUntil(context, (route) => route.isFirst);
         }
       },
+
+      selectedItemColor: HexColor('#828282'),
+      unselectedItemColor: HexColor('#828282'),
+      selectedFontSize: 12,
+      unselectedFontSize: 12,
       currentIndex: loginService.pageView,
-      selectedItemColor: HexColor('#4E76B6'),
+
       items: [
         BottomNavigationBarItem(
             icon: ImageIcon(
@@ -26,7 +31,6 @@ class BottomLita extends StatelessWidget {
             ),
             title: Text(
               'Inicio',
-              style: GoogleFonts.sourceSansPro(color: HexColor('#4E76B6')),
             )),
         BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/icono_social.png')),
