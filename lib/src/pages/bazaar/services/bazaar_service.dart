@@ -283,9 +283,33 @@ class BazaarService with ChangeNotifier {
   }
 
 
-  Future<bool> createPostComment(String wallId, String text)async{
+  Future<bool> createPostComment({String wallId, String text,String bazaarId})async{
     print("Este es el wall id =$wallId ");
-    String query = r'''
+
+    MutationOptions options;
+    if(wallId != null){
+      String query = r'''
+    mutation($wallId: ID, $text: String!) {
+    addComment(input: { text: $text, wallId: $wallId }) {
+        _id
+        wallId
+        text
+        postedAt
+        postedAtFormatDate
+        isActive
+    }
+}
+    ''';
+      options = MutationOptions(
+          documentNode: gql(query),
+          variables: {
+            "wallId":wallId,
+            "text":text
+          }
+      );
+
+    }else{
+      String query = r'''
     mutation($bazaarId: ID, $text: String!) {
     addComment(input: { text: $text, bazaarId: $bazaarId }) {
         _id
@@ -297,13 +321,14 @@ class BazaarService with ChangeNotifier {
     }
 }
     ''';
-    MutationOptions options = MutationOptions(
-        documentNode: gql(query),
-        variables: {
-          "bazaarId":wallId,
-          "text":text
-        }
-    );
+      options = MutationOptions(
+          documentNode: gql(query),
+          variables: {
+            "bazaarId":bazaarId,
+            "text":text
+          }
+      );
+    }
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;

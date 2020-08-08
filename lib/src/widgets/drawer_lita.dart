@@ -20,7 +20,7 @@ class DrawerLita extends StatelessWidget {
     final user = loginService.loginResult.user;
     return Drawer(
       elevation: 0,
-      child: Container(
+      child: user == null ? Container() :Container(
         color: HexColor(user.residency.theme.mainColor),
         child: SafeArea(
           child: SingleChildScrollView(
@@ -63,7 +63,7 @@ class DrawerLita extends StatelessWidget {
                                           user.residency.theme.thirdColor),
                                       backgroundImage:
                                           NetworkImage(user.fullFile),
-                                      maxRadius:35
+                                      maxRadius:32
 
 
                                     ),
@@ -411,7 +411,9 @@ class DrawerLita extends StatelessWidget {
                       ),
                     )
                   ],
-                )
+                ),
+
+                Text('V1.0.4',style: GoogleFonts.sourceSansPro(fontSize: 9,color: Colors.white),)
               ],
             ),
           ),

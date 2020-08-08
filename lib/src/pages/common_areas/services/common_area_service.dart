@@ -123,6 +123,7 @@ LoginResult get user =>_user;
       print(res.exception);
     } else {
       comments = commentListFromJson(jsonEncode(res.data));
+      print(comments.toString());
 
 
       notifyListeners();

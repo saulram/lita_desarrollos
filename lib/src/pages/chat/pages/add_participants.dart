@@ -1,10 +1,7 @@
-import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_skeleton/flutter_skeleton.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:litadesarrollos/src/pages/chat/components/chat_tile_lita.dart';
 import 'package:litadesarrollos/src/pages/chat/pages/group_name.dart';
 import 'package:litadesarrollos/src/pages/chat/services/chat_service.dart';
 import 'package:litadesarrollos/src/pages/directorio/services/directory_service.dart';
@@ -38,8 +35,10 @@ class _AddParticipantsState extends State<AddParticipants> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>ChatName()));
-          }, child: Icon(FontAwesomeIcons.chevronRight)),
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => ChatName()));
+          },
+          child: Icon(FontAwesomeIcons.chevronRight)),
       body: Column(
         children: <Widget>[
           directoryService.loading
@@ -47,7 +46,9 @@ class _AddParticipantsState extends State<AddParticipants> {
               : Expanded(
                   child: ListView.builder(
                       itemCount:
-                          directoryService.residents.usersDirectory !=null? directoryService.residents.usersDirectory.length :0,
+                          directoryService.residents.usersDirectory != null
+                              ? directoryService.residents.usersDirectory.length
+                              : 0,
                       itemBuilder: (BuildContext cctx, int i) {
                         return CheckboxListTile(
                           controlAffinity: ListTileControlAffinity.platform,

@@ -81,6 +81,7 @@ class AddComment extends StatelessWidget {
                     child: FormBuilderTextField(
                       attribute: "description",
                       textInputAction: TextInputAction.done,
+                      textCapitalization: TextCapitalization.sentences,
                       decoration:
                       InputDecoration(labelText: "Escribe aquí tu publicación"),
                       validators: [FormBuilderValidators.required()],

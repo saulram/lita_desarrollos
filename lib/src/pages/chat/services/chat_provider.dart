@@ -19,6 +19,9 @@ class ChatProvider extends ChangeNotifier {
     _messages = messages;
     notifyListeners();
   }
+  clearChat(){
+    _messages = [];
+  }
 
   void addMessage(){
 

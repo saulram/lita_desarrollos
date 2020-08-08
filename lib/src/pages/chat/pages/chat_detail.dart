@@ -188,6 +188,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   void dispose() {
     super.dispose();
+    _chat.clearChat();
 
     _socketClient.disconnect();
   }

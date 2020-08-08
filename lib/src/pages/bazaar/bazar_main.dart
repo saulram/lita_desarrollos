@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_skeleton/flutter_skeleton.dart';
@@ -205,8 +206,8 @@ class _BazaarMainState extends State<BazaarMain>
                                                         AspectRatio(
                                                             aspectRatio: 4 / 4,
                                                             child:
-                                                                Image.network(
-                                                              categorie
+                                                                CachedNetworkImage(
+                                                              imageUrl:categorie
                                                                   .bazaars[i]
                                                                   .fullFiles[0],
                                                               fit: BoxFit.cover,

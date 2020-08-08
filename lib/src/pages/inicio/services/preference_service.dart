@@ -14,7 +14,7 @@ class PrefService with ChangeNotifier {
 
   void update(LoginResult lr) {
     _loginResult = lr;
-    if(_loginResult.user.screenPreferences != null){
+    if(_loginResult.user != null){
       _categories= _loginResult.user.screenPreferences;
     }
 

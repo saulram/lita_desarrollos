@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
@@ -8,17 +7,19 @@ import 'package:provider/provider.dart';
 
 class AddCommentDetailPost extends StatefulWidget {
   final String postId;
+  final String bazaarId;
   final FocusNode focusNode;
 
-
-  const AddCommentDetailPost({Key key, this.postId, this.focusNode}) : super(key: key);
+  const AddCommentDetailPost(
+      {Key key, this.postId, this.focusNode, this.bazaarId})
+      : super(key: key);
 
   @override
   _AddCommentDetailPostState createState() => _AddCommentDetailPostState();
 }
 
 class _AddCommentDetailPostState extends State<AddCommentDetailPost> {
-  final  _addcommentKey = GlobalKey<FormState>(debugLabel: 'asd');
+  final _addcommentKey = GlobalKey<FormState>(debugLabel: 'asd');
 
   // Define the controllers
   TextEditingController _titleController;
@@ -35,7 +36,6 @@ class _AddCommentDetailPostState extends State<AddCommentDetailPost> {
   @override
   void dispose() {
     // Remember that you have to dispose of the controllers once the widget is ready to be disposed of
-
 
     _titleController.dispose();
     super.dispose();
@@ -60,54 +60,63 @@ class _AddCommentDetailPostState extends State<AddCommentDetailPost> {
             } else {}
           },
           style: GoogleFonts.sourceSansPro(color: Colors.white),
-
           minLines: 1,
           decoration: InputDecoration(
             suffixIcon: wallProvider.isloading == true
                 ? CircularProgressIndicator()
                 : FlatButton(
-              onPressed: () async {
-                if(_addcommentKey.currentState.validate()){
-                  if(wallService.commentId != null){
-                    bool addReply = await wallService.createreplyComment(_titleController.text);
-                    if(addReply == true){
-                      wallProvider.commentId = null;
-                      wallProvider.getComments(widget.postId);
-                    }
+                    onPressed: () async {
+                      if (_addcommentKey.currentState.validate()) {
+                        if (wallService.commentId != null || wallProvider.commentId != null ) {
+                          if(widget.postId != null ){
+                            bool addReply = await wallService
+                                .createreplyComment(_titleController.text);
+                            if (addReply == true) {
+                              wallService.commentId = null;
+                              wallService.getComments(widget.postId);
+                            }
 
-                  }else{
-                    bool commented = await  wallProvider.createPostComment(widget.postId, _titleController.text);
-                    _titleController.clear();
-                    if(commented == true){
-                      wallProvider.getComments(widget.postId);
+                          }else{
+                            bool addReply = await wallProvider
+                                .createreplyComment(_titleController.text);
+                            if (addReply == true) {
+                              wallProvider.commentId = null;
+                              wallProvider.getComments(widget.bazaarId);
+                            }
+                          }
 
+                        } else {
+                          bool commented = await wallProvider.createPostComment(
+                              wallId: widget.postId,
+                              text: _titleController.text,
+                              bazaarId: widget.bazaarId);
+                          _titleController.clear();
+                          if (commented == true) {
 
-
-                    }
-                  }
-
-                }
-
-              },
-              child: Text(
-                'Publicar',
-                style: GoogleFonts.sourceSansPro(
-                    color: Colors.white),
-              ),
-            ),
+                            if (widget.postId != null) {
+                              wallService.getComments(widget.postId);
+                            } else {
+                              wallProvider.getComments(widget.bazaarId);
+                            }
+                          }
+                        }
+                      }
+                    },
+                    child: Text(
+                      'Publicar',
+                      style: GoogleFonts.sourceSansPro(color: Colors.white),
+                    ),
+                  ),
             contentPadding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
             labelText: "Escribe un comentario",
-            labelStyle: GoogleFonts.sourceSansPro(
-                color: Colors.white,
-                fontSize: 16),
+            labelStyle:
+                GoogleFonts.sourceSansPro(color: Colors.white, fontSize: 16),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
-              borderSide: BorderSide(color:Colors.white)
-            ),
+                borderRadius: BorderRadius.circular(18),
+                borderSide: BorderSide(color: Colors.white)),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
-                borderSide: BorderSide(color:Colors.white)
-            ),
+                borderSide: BorderSide(color: Colors.white)),
             focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.white,

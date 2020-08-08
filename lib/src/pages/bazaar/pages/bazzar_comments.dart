@@ -1,3 +1,4 @@
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
@@ -108,13 +109,13 @@ class BazaarComments extends StatelessWidget {
                                                   style:
                                                       GoogleFonts.sourceSansPro(
                                                           color: Colors.white,
-                                                          fontSize: 13,
+                                                          fontSize: 10,
                                                           fontWeight:
                                                               FontWeight.w300),
                                                 ),
                                                 FlatButton(
                                                   onPressed: () {
-                                                   // wallProvider.commentId =
+                                                    wallProvider.commentId =
                                                         wallProvider
                                                             .comments[j].id;
                                                     FocusScope.of(context)
@@ -126,23 +127,20 @@ class BazaarComments extends StatelessWidget {
                                                     style: GoogleFonts
                                                         .sourceSansPro(
                                                             color:
-                                                                Colors.white),
+                                                                Colors.white,fontSize: 13),
                                                   ),
                                                 ),
                                                 FlatButton(
                                                   onPressed: () {
                                                     //wallProvider.commentId =
-                                                    wallProvider.comments[j].id;
-                                                    FocusScope.of(context)
-                                                        .requestFocus(
-                                                            myFocusNode);
+                                                    Alert.alert(context,title: 'Exito',content: 'Se ha reportado a administración');
                                                   },
                                                   child: Text(
                                                     'Reportar',
                                                     style: GoogleFonts
                                                         .sourceSansPro(
                                                             color:
-                                                                Colors.white),
+                                                                Colors.white,fontSize: 13),
                                                   ),
                                                 )
                                               ],
@@ -184,7 +182,7 @@ class BazaarComments extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: AddCommentDetailPost(
-                  postId:bazaarId,
+                  bazaarId:bazaarId,
                   focusNode: focusNode,
                 ),
               ),

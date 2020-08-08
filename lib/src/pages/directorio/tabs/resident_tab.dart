@@ -18,9 +18,9 @@ class ResidentTab extends StatelessWidget {
     } else {
       if (directory.user.isPhoneActive) {
         return Scaffold(
-          body: directory.residents.usersDirectory != null ? ListView.builder(
+          body: directory.loading != true ? ListView.builder(
             physics: BouncingScrollPhysics(),
-            itemCount: directory.residents.usersDirectory.length,
+            itemCount:directory.residents.usersDirectory != null? directory.residents.usersDirectory.length : 0,
             itemBuilder: (BuildContext ctx, int i) {
               return Padding(
                 padding: const EdgeInsets.all(11.0),

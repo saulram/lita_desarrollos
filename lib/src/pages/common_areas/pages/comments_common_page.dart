@@ -12,12 +12,14 @@ class AreaComments extends StatelessWidget {
   final CommonArea area;
   final GlobalKey<FormBuilderState> commentsKey = GlobalKey<FormBuilderState>();
 
-   AreaComments({Key key, this.area}) : super(key: key);
+  AreaComments({Key key, this.area}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final spaceService = Provider.of<CommonService>(context);
     final userService = Provider.of<LoginService>(context);
-    if (spaceService.comments.comments != null && spaceService.loading!=true) {
+    if (spaceService.comments.comments != null &&
+        spaceService.loading != true) {
       return Scaffold(
           backgroundColor: HexColor(
               userService.loginResult.user.residency.theme.secondaryColor),
@@ -35,22 +37,31 @@ class AreaComments extends StatelessWidget {
           body: Column(
             children: <Widget>[
               Expanded(
-                flex:5,
+                flex: 5,
                 child: ListView.builder(
-                    itemCount: spaceService.comments!=null ?spaceService.comments.comments.length:0,
+                    itemCount: spaceService.comments != null
+                        ? spaceService.comments.comments.length
+                        : 0,
                     itemBuilder: (BuildContext ctx, int i) {
                       return Container(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width*.03),
+                        padding: EdgeInsets.all(
+                            MediaQuery.of(context).size.width * .03),
                         decoration: BoxDecoration(
-                            border: Border(bottom: BorderSide(color: HexColor(userService.loginResult.user.residency.theme.thirdColor),width: .2))
-                        ),
+                            border: Border(
+                                bottom: BorderSide(
+                                    color: HexColor(userService.loginResult.user
+                                        .residency.theme.thirdColor),
+                                    width: .2))),
                         child: Row(
                           children: <Widget>[
                             Expanded(
                               child: Center(
                                 child: CircleAvatar(
                                   backgroundImage: NetworkImage(spaceService
-                                      .comments.comments[i].postedById.fullFile),
+                                      .comments
+                                      .comments[i]
+                                      .postedById
+                                      .fullFile),
                                 ),
                               ),
                             ),
@@ -59,16 +70,28 @@ class AreaComments extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
-
                                 children: <Widget>[
-
-                                  Text(spaceService.comments.comments[i]
-                                      .postedById.completeName,style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 16),),
                                   Text(
-                                    spaceService.comments.comments[i].text,style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 13,fontWeight: FontWeight.w300),),
+                                    spaceService.comments.comments[i].postedById
+                                        .completeName,
+                                    style: GoogleFonts.sourceSansPro(
+                                        color: Colors.white, fontSize: 16),
+                                  ),
                                   Text(
-                                    spaceService.comments.comments[i].postedAtFormatDate,style: GoogleFonts.sourceSansPro(color: Colors.white,fontSize: 13,fontWeight: FontWeight.w300),),
-
+                                    spaceService.comments.comments[i].text,
+                                    style: GoogleFonts.sourceSansPro(
+                                        color: Colors.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w300),
+                                  ),
+                                  Text(
+                                    spaceService.comments.comments[i]
+                                        .postedAtFormatDate,
+                                    style: GoogleFonts.sourceSansPro(
+                                        color: Colors.white,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w300),
+                                  ),
                                 ],
                               ),
                             ),
@@ -85,7 +108,8 @@ class AreaComments extends StatelessWidget {
                       flex: 1,
                       child: Center(
                         child: CircleAvatar(
-                          backgroundImage: NetworkImage(userService.loginResult.user.fullFile),
+                          backgroundImage: NetworkImage(
+                              userService.loginResult.user.fullFile),
                         ),
                       ),
                     ),
@@ -98,62 +122,58 @@ class AreaComments extends StatelessWidget {
                           child: FormBuilderTextField(
                             attribute: "comment",
                             minLines: 1,
+                            style:
+                                GoogleFonts.sourceSansPro(color: Colors.white),
                             decoration: InputDecoration(
-                              suffixIcon: spaceService.loading==true ? Container(
-                                width: 10,
-                                height: 5,
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: .5,
-                                    backgroundColor: Colors.white,
-                                                                  ),
-                                ),
-                              ): FlatButton(
-                                onPressed: ()async  {
-                                  if(commentsKey.currentState.saveAndValidate()){
-                                    print(commentsKey.currentState.value["comment"]);
-                                    spaceService.text = commentsKey.currentState.value["comment"];
-                                    print(area.id);
-                                    bool completed = await spaceService.addMensaje(area.id);
-                                    if(completed == true){
-                                      print('Coment Agregado');
-                                      commentsKey.currentState.value['comment']= '';
-                                      commentsKey.currentState.reset();
-                                      spaceService.getComments(area.id);
+                              suffixIcon: spaceService.loading == true
+                                  ? Container(
+                                      width: 10,
+                                      height: 5,
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: .5,
+                                          backgroundColor: Colors.white,
+                                        ),
+                                      ),
+                                    )
+                                  : FlatButton(
+                                      onPressed: () async {
+                                        if (commentsKey.currentState
+                                            .saveAndValidate()) {
+                                          print(commentsKey
+                                              .currentState.value["comment"]);
+                                          spaceService.text = commentsKey
+                                              .currentState.value["comment"];
 
-
-
-                                    }else{
-                                      print( 'Hubo un error');
-                                    }
-                                  }
-                                },
-                                child: Text(
-                                  'Publicar',
-                                  style: GoogleFonts.sourceSansPro(
-                                      color: HexColor(
-                                          userService.loginResult.user.residency.theme.mainColor)),
-                                ),
-                              ),
-                              contentPadding: EdgeInsets.symmetric(horizontal: 5,vertical: 8),
+                                          bool completed = await spaceService
+                                              .addMensaje(area.id);
+                                          if (completed == true) {
+                                            print('Coment Agregado');
+                                            spaceService.getComments(area.id);
+                                          } else {
+                                            print('Hubo un error');
+                                          }
+                                        }
+                                      },
+                                      child: Text(
+                                        'Publicar',
+                                        style: GoogleFonts.sourceSansPro(
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 5, vertical: 8),
                               labelText: "Escribe un comentario",
                               labelStyle: GoogleFonts.sourceSansPro(
-                                  color:
-                                      Colors.white,
-                                  fontSize: 16),
+                                  color: Colors.white, fontSize: 16),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(18),
-                                borderSide: BorderSide(
-                                  color: Colors.white
-                                )
-                              ),
+                                  borderRadius: BorderRadius.circular(18),
+                                  borderSide: BorderSide(color: Colors.white)),
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                )
-                              ),
-
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                  )),
                               focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Colors.white,
