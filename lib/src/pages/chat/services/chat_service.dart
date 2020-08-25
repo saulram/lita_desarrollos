@@ -1,20 +1,25 @@
 import 'dart:convert';
-
 import 'package:easy_alert/easy_alert.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/pages/chat/models/chat_list_model.dart';
 import 'package:litadesarrollos/src/utils/globals.dart';
+
 
 class ChatService with ChangeNotifier {
   static LoginResult _loginResult;
 
   void update(LoginResult lr) {
     _loginResult = lr;
-    if(_loginResult.user!= null){
+    notifyListeners();
+
+
+    if (_loginResult.user != null) {
       _chatParticipants = ["${_loginResult.user.id}"];
+
     }
+
     getChats();
     notifyListeners();
   }
@@ -36,13 +41,8 @@ query {
 
   LoginResult get loginResult => _loginResult;
 
-  static HttpLink httplink = HttpLink(uri: uri, headers: <String, String>{
-    "Authorization": "${_loginResult.token}",
-  });
-  static GraphQLClient _client = GraphQLClient(
-    cache: InMemoryCache(),
-    link: httplink,
-  );
+
+
 
   bool _isloading = false;
 
@@ -53,19 +53,38 @@ query {
     notifyListeners();
   }
 
-  ChatList _chatList;
+  ChatList _chatList =  ChatList();
 
   ChatList get chatList => _chatList;
 
   Future<bool> getChats() async {
+    HttpLink _httpLink= HttpLink(uri: uri, headers: <String, String>{
+      "Authorization": "${_loginResult.token}",
+    });
+    GraphQLClient _client = GraphQLClient(
+      cache: InMemoryCache(),
+
+      link: _httpLink,
+    );
+
+    _chatList.chats = [];
+
+    notifyListeners();
     QueryOptions options = QueryOptions(
-        documentNode: gql(query), fetchPolicy: FetchPolicy.cacheAndNetwork);
+        documentNode: gql(query), fetchPolicy: FetchPolicy.networkOnly);
 
     isloading = true;
     QueryResult res = await _client.query(options);
 
     isloading = false;
+    if(res.hasException){
+      print(res.exception);
+      return false;
+    }
+
     _chatList = chatListFromJson(jsonEncode(res.data));
+
+
     notifyListeners();
 
     return true;
@@ -104,7 +123,7 @@ query {
               ok: 'Entendido')
           : _chatParticipants.add(categoryName);
 
-      print(_chatParticipants);
+
     } else {
       _chatParticipants.remove(categoryName);
     }
@@ -112,6 +131,14 @@ query {
   }
 
   Future<bool> createChat(String name) async {
+    HttpLink _httpLink= HttpLink(uri: uri, headers: <String, String>{
+      "Authorization": "${_loginResult.token}",
+    });
+    GraphQLClient _client = GraphQLClient(
+      cache: InMemoryCache(),
+
+      link: _httpLink,
+    );
     query = r'''
     mutation($users: [ID]!, $name: String) {
     addChat(input: { users: $users, name: $name }) {
@@ -124,19 +151,16 @@ query {
 }
     ''';
     MutationOptions options = MutationOptions(
-      documentNode: gql(query),
-      variables: {
-        "users": _chatParticipants,
-        "name": name
-      }
-    );
+        documentNode: gql(query),
+        variables: {"users": _chatParticipants, "name": name});
     isloading = true;
     QueryResult res = await _client.mutate(options);
     isloading = false;
-    if(res.hasException){
+    if (res.hasException) {
       return false;
     }
     return true;
-
   }
+
+
 }

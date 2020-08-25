@@ -5,6 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
+import 'package:litadesarrollos/src/models/files_model.dart';
 
 import 'package:litadesarrollos/src/pages/maintenance/report_created_success.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
@@ -15,7 +16,7 @@ import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class MtoTab extends StatelessWidget {
-  GlobalKey<FormBuilderState> addMto = GlobalKey<FormBuilderState>();
+  GlobalKey<FormBuilderState> _addMto = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,15 @@ class MtoTab extends StatelessWidget {
         context: context,
         source: source,
         cameraIcon: Icon(
-          CupertinoIcons.photo_camera_solid,
-          color: Colors.red,
-        ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+          CupertinoIcons.photo_camera,
+
+        ), //cameraIcon and galleryI
+        galleryIcon:  Icon(
+          CupertinoIcons.video_camera
+        ),// con can chan,ge. If no ic
+        cameraText: Text('Cámara')//
+        ,
+        galleryText: Text('Galeria')// on provided default icon will be present
       );
       mtoService.image = image;
       mtoService.uploadImage();
@@ -65,7 +72,7 @@ class MtoTab extends StatelessWidget {
                   ],
                 ),
                 FormBuilder(
-                  key: addMto,
+                  key: _addMto,
                   child: Padding(
                     padding: EdgeInsets.all(15.0),
                     child: FormBuilderTextField(
@@ -146,16 +153,16 @@ class MtoTab extends StatelessWidget {
                       .loginResult.user.residency.theme.secondaryColor),
                   disabledColor: Colors.grey,
                   onPressed: mtoService.isloading ==true ? null: () async {
-                    if(addMto.currentState.saveAndValidate()){
-                    mtoService.description=  addMto.currentState.value["description"];
+                    if(_addMto.currentState.saveAndValidate()){
+                    mtoService.description=  _addMto.currentState.value["description"];
                       bool created = await mtoService.addComplainFuturo("maintenance");
                       if(created == true){
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ReportDonePage(rn: mtoService.report.addComplain.reportId,)));
-                        mtoService.fileNames = null;
+                        mtoService.fileNames = FilesUploaded();
                         mtoService.image = null;
 
                       }else{
-
+                        print(mtoService.description);
                       }
                     }
 

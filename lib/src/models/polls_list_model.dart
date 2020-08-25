@@ -95,9 +95,9 @@ class Percent {
     this.thirdOption,
   });
 
-  int firstOption;
-  int secondOption;
-  int thirdOption;
+  var firstOption;
+  var secondOption;
+  var thirdOption;
 
   factory Percent.fromJson(Map<String, dynamic> json) => Percent(
     firstOption: json["firstOption"],

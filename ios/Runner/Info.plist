@@ -30,13 +30,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Necesitamos acceso para tomar fotos desde tu dispositivo</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Necesitamos permiso para usar tu microfono cuando grabas </string>
+	<string>Necesitamos tu permiso para poder tomar fotos y publicarlas dentro de la aplicación en el Muro o reportar problemas de mantenimiento.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Permiso para guardar imagenes en tu carrete.</string>
+	<string>Necesitamos tu permiso para guardar las fotos que tomas dentro de la aplicación en tu carrete de fotos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Permiso para ver tu biblioteca de fotos</string>
+	<string>Necesitamos tu permiso para explorar y usar fotos de tu carrete y publicarlas dentro de la aplicación en el Muro, en la sección de mantenimiento y en tu perfil.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

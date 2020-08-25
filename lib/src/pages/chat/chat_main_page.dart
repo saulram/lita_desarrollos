@@ -10,10 +10,24 @@ import 'package:litadesarrollos/src/widgets/bottom_lita.dart';
 import 'package:litadesarrollos/src/widgets/drawer_lita.dart';
 import 'package:provider/provider.dart';
 
-class MainChatPage extends StatelessWidget {
+class MainChatPage extends StatefulWidget {
+  @override
+  _MainChatPageState createState() => _MainChatPageState();
+}
+
+class _MainChatPageState extends State<MainChatPage> {
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    final chatService = Provider.of<ChatService>(context);
+    var _chatService = Provider.of<ChatService>(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       endDrawer: DrawerLita(),
@@ -54,7 +68,7 @@ class MainChatPage extends StatelessWidget {
             ],
           ),
           Divider(),
-          chatService.isloading ? Expanded(
+          _chatService.isloading ? Expanded(
             child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int i) {
@@ -81,17 +95,26 @@ class MainChatPage extends StatelessWidget {
                   );
                 }),
           ) : Expanded(
-            child: ListView.builder(itemCount:chatService.chatList.chats.length,itemBuilder: (BuildContext cctx, int i) {
-              return ChatTile(
-                name:"${chatService.chatList.chats[i].name}",
-                chatId:"${chatService.chatList.chats[i].id}",
-                userId:"${chatService.loginResult.user?.id}",
+            child: RefreshIndicator(onRefresh: _chatService.getChats,
+              child: ListView.builder(itemCount:_chatService.chatList.chats.length ?? 0,itemBuilder: (BuildContext cctx, int i) {
+                return ChatTile(
+                  name:"${_chatService.chatList.chats[i].name}",
+                  chatId:"${_chatService.chatList.chats[i].id}",
+                  userId:"${_chatService.loginResult.user?.id}",
 
-              );
-            }),
+                );
+              }),
+            ),
           )
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  print('SE CIERRA EL CHAT');
   }
 }

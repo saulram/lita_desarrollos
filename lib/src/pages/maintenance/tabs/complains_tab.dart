@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:litadesarrollos/src/models/files_model.dart';
 
 import 'package:litadesarrollos/src/pages/maintenance/report_created_success.dart';
 import 'package:litadesarrollos/src/pages/maintenance/services/mto_service.dart';
@@ -73,10 +76,10 @@ class ComplainTab extends StatelessWidget {
                   onPressed: mtoService.isloading ==true ? null: () async {
                     if(addMto.currentState.saveAndValidate()){
                       mtoService.description=  addMto.currentState.value["description"];
-                      bool created = await mtoService.addComplainFuturo("maintenance");
+                      bool created = await mtoService.addComplainFuturo("complain");
                       if(created == true){
                         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>ReportDonePage(rn: mtoService.report.addComplain.reportId,)));
-                        mtoService.fileNames = null;
+                        mtoService.fileNames = new FilesUploaded();
                         mtoService.image = null;
 
                       }else{

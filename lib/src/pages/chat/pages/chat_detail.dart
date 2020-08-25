@@ -43,16 +43,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       _chat.messages = chatHistory;
     };
     _socketClient.onMessageSent = (data) {
+      print('Mensaje : ${data["senderId"]["completeName"]}');
       MessageList _msg = MessageList(
         id: data["_id"],
         chatId: data["chatId"],
-        updatedAt: DateTime.parse(data["updatedAt"]),
-        senderId: SenderId.fromJson(data["senderId"]),
+        updatedAtFormat: data["updatedAtFormat"],
+        senderId: SenderId(id:data["senderId"]["_id"],completeName:data["senderId"]["completeName"]),
         text: data["text"],
       );
 
-      chatHistory.add(_msg);
+      chatHistory.insert(0, _msg);
       _chat.messages = chatHistory;
+
     };
   }
 
@@ -104,10 +106,18 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                             return Bubble(
                               style: styleMe,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
+
                                   Text(
-                                    '${_chat.messages[i].text}',
+                                    '${_chat.messages[i].text}\n',
                                     style: GoogleFonts.sourceSansPro(
+                                        color: Colors.white),
+                                  ),
+                                  Text(
+                                    '${_chat.messages[i].updatedAtFormat}\n',
+                                    style: GoogleFonts.sourceSansPro(
+                                      fontSize: 10,
                                         color: Colors.white),
                                   ),
                                 ],
@@ -126,8 +136,12 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  '${_chat.messages[i].text}',
+                                  '${_chat.messages[i].text}\n',
                                   style: GoogleFonts.sourceSansPro(),
+                                ),
+                                Text(
+                                  '${_chat.messages[i].updatedAtFormat}',
+                                  style: GoogleFonts.sourceSansPro(fontSize: 10),
                                 ),
                               ],
                             ),
@@ -173,7 +187,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       MessageList _msg = MessageList(
         id: "",
         chatId: widget.chatId,
-        updatedAt: DateTime.now(),
+        updatedAtFormat: DateTime.now().toIso8601String(),
         senderId: SenderId(completeName: user.completeName, id: widget.userId),
         text: _controller.text,
       );

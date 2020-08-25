@@ -109,7 +109,7 @@ class LoginService with ChangeNotifier {
     } else {
 
       _loginResult = loginResultFromJson(res.body);
-      print('Entramos!');
+      print('Entramos! ${_loginResult.token}');
       _error = '';
       _isloading = false;
       notifyListeners();
@@ -150,7 +150,7 @@ class LoginService with ChangeNotifier {
     //se borra completamente el almacen seguro
     await _storage.deleteAll();
     _loginResult = LoginResult();
-    notifyListeners();
+
   }
 
   static HttpLink httplink = HttpLink(

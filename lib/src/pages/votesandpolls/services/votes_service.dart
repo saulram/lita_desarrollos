@@ -112,6 +112,7 @@ class VoteService with ChangeNotifier {
 
     }
     _loading = false;
+    print('Votaciones updated');
     notifyListeners();
   }
 }

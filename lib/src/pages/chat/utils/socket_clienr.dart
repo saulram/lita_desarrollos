@@ -13,7 +13,8 @@ class SocketClient {
   conect(String token, String chatId, String userId) async {
     final options = SocketOptions(AppConfig.apiSocket,
         query: {"token": token},
-        enableLogging: true,
+        enableLogging: false,
+      nameSpace: '/',
         transports: [Transports.POLLING],);
 
     _socket = await _manager.createInstance(options);
@@ -49,7 +50,6 @@ class SocketClient {
     });
 
     _socket.on('updateChat',(data){
-      print('Mensaje enviado/recibido : $data');
 
 
       if(onMessageSent!=null){

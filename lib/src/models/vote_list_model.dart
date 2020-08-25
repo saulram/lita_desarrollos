@@ -78,8 +78,8 @@ class Percent {
     this.downVote,
   });
 
-  int upVote;
-  int downVote;
+  var upVote;
+  var downVote;
 
   factory Percent.fromJson(Map<String, dynamic> json) => Percent(
     upVote: json["upVote"],

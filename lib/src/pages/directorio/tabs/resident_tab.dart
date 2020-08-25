@@ -18,22 +18,25 @@ class ResidentTab extends StatelessWidget {
     } else {
       if (directory.user.isPhoneActive) {
         return Scaffold(
-          body: directory.loading != true ? ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount:directory.residents.usersDirectory != null? directory.residents.usersDirectory.length : 0,
-            itemBuilder: (BuildContext ctx, int i) {
-              return Padding(
-                padding: const EdgeInsets.all(11.0),
-                child: ResidentsCard(
-                  completeName:
-                      directory.residents.usersDirectory[i].completeName,
-                  address:
-                      directory.residents.usersDirectory[i].departmentId.name,
-                  phone: directory.residents.usersDirectory[i].phone,
-                  file: directory.residents.usersDirectory[i].fullFile,
-                ),
-              );
-            },
+          body: directory.loading != true ? RefreshIndicator(
+            onRefresh: directory.getDirectories,
+            child: ListView.builder(
+
+              itemCount:directory.residents.usersDirectory != null? directory.residents.usersDirectory.length : 0,
+              itemBuilder: (BuildContext ctx, int i) {
+                return Padding(
+                  padding: const EdgeInsets.all(11.0),
+                  child: ResidentsCard(
+                    completeName:
+                        directory.residents.usersDirectory[i].completeName,
+                    address:
+                        directory.residents.usersDirectory[i].departmentId.name,
+                    phone: directory.residents.usersDirectory[i].phone,
+                    file: directory.residents.usersDirectory[i].fullFile,
+                  ),
+                );
+              },
+            ),
           ): Center(child: CircularProgressIndicator(),),
         );
       } else {

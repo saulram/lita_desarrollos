@@ -15,21 +15,24 @@ class GeneralTab extends StatelessWidget {
     } else {
       return Scaffold(
         body: directory.generalServices.directories != null
-            ? ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount: directory.generalServices.directories.length,
-                itemBuilder: (BuildContext ctx, int i) {
-                  return Padding(
-                    padding: const EdgeInsets.all(11.0),
-                    child: GeneralCard(
-                      completeName:
-                      directory.generalServices.directories[i].title,
-                      phone: directory.generalServices.directories[i].phone,
-                      description: directory.generalServices.directories[i].description,
-                    ),
-                  );
-                },
-              )
+            ? RefreshIndicator(
+          onRefresh: directory.getDirectories,
+              child: ListView.builder(
+
+                  itemCount: directory.generalServices.directories.length,
+                  itemBuilder: (BuildContext ctx, int i) {
+                    return Padding(
+                      padding: const EdgeInsets.all(11.0),
+                      child: GeneralCard(
+                        completeName:
+                        directory.generalServices.directories[i].title,
+                        phone: directory.generalServices.directories[i].phone,
+                        description: directory.generalServices.directories[i].description,
+                      ),
+                    );
+                  },
+                ),
+            )
             : Center(
                 child: Text('Aún no hay servicios registrados'),
               ),

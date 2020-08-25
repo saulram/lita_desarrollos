@@ -25,9 +25,14 @@ class _MainPageState extends State<MainPage> {
 
     final pushProvider = new PushNotificationsProvider(widget.loginResult);
     pushProvider.mensajes.listen((argumento) {
+      if(argumento=="Mensaje en el chat"){
+        Navigator.of(context).pushNamed('Chat');
+      }else{
+        Navigator.of(context).pushNamed('Notifications');
+      }
 
-      Navigator.of(context).pushNamed('Notifications');
-      print('estamos');
+
+
     });
     pushProvider.initNotifications();
   }

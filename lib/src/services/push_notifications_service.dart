@@ -58,12 +58,13 @@ class PushNotificationsProvider {
       updateFCM(this.loginResult, token);
     });
 
-    _firebaseMessaging.configure(onMessage: (info) {
+    _firebaseMessaging.configure(
+        onMessage: (info) {
       // ignore: missing_return
 
       //Llega cuando esta abierta la app
 
-      print('=======ON MESSAGE =========\n $info');
+      //print('=======ON MESSAGE =========\n $info');
       String argumento = 'no-data';
       if (Platform.isIOS) {
         argumento = info['aps']['title'] ?? 'no-data';

@@ -81,11 +81,9 @@ class MtoService with ChangeNotifier {
     notifyListeners();
   }
 
-  static HttpLink httplink = HttpLink(
-      uri: uri,
-      headers: <String, String>{
-        "Authorization": "${_loginResult.token}",
-      });
+  static HttpLink httplink = HttpLink(uri: uri, headers: <String, String>{
+    "Authorization": "${_loginResult.token}",
+  });
   static GraphQLClient _client = GraphQLClient(
     cache: InMemoryCache(),
     link: httplink,
@@ -95,7 +93,7 @@ class MtoService with ChangeNotifier {
   String get description => _description;
 
   set description(String des) {
-    _description = description;
+    _description = des;
     notifyListeners();
   }
 
@@ -106,13 +104,23 @@ class MtoService with ChangeNotifier {
   Future<bool> addComplainFuturo(String type) async {
     _isloading = true;
     notifyListeners();
-    MutationOptions addComplainOptions = MutationOptions(
-        documentNode: gql(addComplain),
-        variables: {
-          "description": " $_description",
-          "type": "$type",
-          "pictures": "$_fileNames"
-        });
+    MutationOptions addComplainOptions;
+    if (_fileNames.fileNames != null) {
+      addComplainOptions =
+          MutationOptions(documentNode: gql(addComplain), variables: {
+        "description": "$_description",
+        "type": "$type",
+        "pictures":
+            "${_fileNames.fileNames != null ? _fileNames.fileNames[0] : null}"
+      });
+    } else {
+      addComplainOptions =
+          MutationOptions(documentNode: gql(addComplain), variables: {
+        "description": "$_description",
+        "type": "$type",
+      });
+    }
+
     QueryResult res = await _client.mutate(addComplainOptions);
     if (res.hasException) {
       print(res.exception);
@@ -123,7 +131,7 @@ class MtoService with ChangeNotifier {
       _isloading = false;
       notifyListeners();
       _report = reportCreatedFromJson(jsonEncode(res.data));
-      print(res.data);
+
 
       return true;
     }

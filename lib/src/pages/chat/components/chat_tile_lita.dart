@@ -33,7 +33,7 @@ class ChatTile extends StatelessWidget {
         backgroundColor: primaryLita,
         child: Center(
           child: Text(
-            '${name.substring(0, 1)}',
+            '${name.substring(0, 1).toUpperCase()}',
             style: GoogleFonts.sourceSansPro(
                 color: Colors.white, fontWeight: FontWeight.w600, fontSize: 22),
           ),

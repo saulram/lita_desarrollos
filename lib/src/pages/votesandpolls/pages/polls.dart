@@ -46,7 +46,7 @@ class PollsTab extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .7,
                                 child: FAProgressBar(
                                   currentValue: pollsService
-                                      .listOfPolls.polls[index].percent.firstOption,
+                                      .listOfPolls.polls[index].percent.firstOption.toInt(),
                                   displayText: '%',
                                   size: MediaQuery.of(context).size.width * .1,
                                   direction: Axis.horizontal,
@@ -74,7 +74,7 @@ class PollsTab extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .7,
                                 child: FAProgressBar(
                                   currentValue: pollsService.listOfPolls
-                                      .polls[index].percent.secondOption,
+                                      .polls[index].percent.secondOption.toInt(),
                                   displayText: '%',
                                   size: MediaQuery.of(context).size.width * .1,
                                   direction: Axis.horizontal,
@@ -101,7 +101,7 @@ class PollsTab extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .7,
                                 child: FAProgressBar(
                                   currentValue: pollsService.listOfPolls
-                                      .polls[index].percent.thirdOption,
+                                      .polls[index].percent.thirdOption.toInt(),
                                   displayText: '%',
                                   size: MediaQuery.of(context).size.width * .1,
                                   direction: Axis.horizontal,

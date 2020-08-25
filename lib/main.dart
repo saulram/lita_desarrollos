@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:litadesarrollos/src/pages/root_page.dart';
 import 'package:litadesarrollos/src/utils/provider_list.dart';
 import 'package:litadesarrollos/src/utils/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -17,14 +17,10 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-
 void main() async {
-
   HttpOverrides.global = new MyHttpOverrides();
 
-
-
-  runApp(MyApp());
+  runApp(Phoenix(child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {

@@ -12,21 +12,21 @@ class MessageList {
   MessageList({
     this.id,
     this.chatId,
-    this.updatedAt,
+    this.updatedAtFormat,
     this.senderId,
     this.text,
   });
 
   String id;
   String chatId;
-  DateTime updatedAt;
+  String updatedAtFormat;
   SenderId senderId;
   String text;
 
   factory MessageList.fromJson(Map<String, dynamic> json) => MessageList(
     id: json["_id"],
     chatId: json["chatId"],
-    updatedAt: DateTime.parse(json["updatedAt"]),
+    updatedAtFormat:json["updatedAtFormat"],
     senderId: SenderId.fromJson(json["senderId"]),
     text: json["text"],
   );
@@ -34,7 +34,7 @@ class MessageList {
   Map<String, dynamic> toJson() => {
     "_id": id,
     "chatId": chatId,
-    "updatedAt": updatedAt.toIso8601String(),
+    "updatedAt": updatedAtFormat,
     "senderId": senderId.toJson(),
     "text": text,
   };

@@ -18,21 +18,31 @@ class EmergencyTab extends StatelessWidget {
     } else {
       if (directory.user!=null) {
         return Scaffold(
-          body: directory.emergencias.directories != null ? ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: directory.emergencias.directories.length,
-            itemBuilder: (BuildContext ctx, int i) {
-              return Padding(
-                padding: const EdgeInsets.all(11.0),
-                child: EmergencyCards(
-                  completeName:
-                  directory.emergencias.directories[i].title,
-                  phone:
-                  directory.emergencias.directories[i].phone,
+          body: directory.emergencias.directories != null ? Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: RefreshIndicator(
 
+                  child: ListView.builder(
+                    itemCount: directory.emergencias.directories.length,
+                    itemBuilder: (BuildContext ctx, int i) {
+                      return Padding(
+                        padding: const EdgeInsets.all(11.0),
+                        child: EmergencyCards(
+                          completeName:
+                          directory.emergencias.directories[i].title,
+                          phone:
+                          directory.emergencias.directories[i].phone,
+
+                        ),
+                      );
+                    },
+                  ),
+                  onRefresh: directory.getDirectories,
                 ),
-              );
-            },
+              ),
+            ],
           ): Center(child: CircularProgressIndicator(),),
         );
       } else {

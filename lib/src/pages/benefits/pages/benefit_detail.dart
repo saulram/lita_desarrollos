@@ -50,7 +50,7 @@ class BenefitDetail extends StatelessWidget {
                             '${object.title}',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.sourceSansPro(
-                                color: Colors.white, fontSize: 24),
+                                color: Colors.white, fontSize: 22),
                           ),
                         ),
                       ],

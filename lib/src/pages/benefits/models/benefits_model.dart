@@ -90,7 +90,7 @@ class Benefit {
     phone: json["phone"] == null ? null : json["phone"],
     website: json["website"],
     updatedAtFormat: json["updatedAtFormat"],
-    branch: json["branch"] == null ? null : json["branch"],
+    branch:  json["branch"],
   );
 
   Map<String, dynamic> toJson() => {

@@ -20,14 +20,15 @@ class DirectoryService with ChangeNotifier {
 
   void update(LoginResult lr) {
     _login = lr;
+    _loading = true;
+    getDirectories();
+ notifyListeners();
+  }
+  Future<void>getDirectories() async{
     getRes();
     getPers();
     getGen();
     getEmergency();
-
-    _loading = true;
-
-    notifyListeners();
   }
 
   User get user => _login.user;
@@ -45,25 +46,29 @@ class DirectoryService with ChangeNotifier {
   //Get Residentes
   QueryOptions options = QueryOptions(
     documentNode: gql(getResidentes),
+    fetchPolicy: FetchPolicy.cacheAndNetwork
   );
 
   //Get Personal
   QueryOptions personal = QueryOptions(
     documentNode: gql(getPersonal),
+      fetchPolicy: FetchPolicy.cacheAndNetwork
   );
   //GETgeneral
   QueryOptions general = QueryOptions(
     documentNode: gql(getGeneral),
     variables: {
       "category":"services"
-    }
+    },
+      fetchPolicy: FetchPolicy.cacheAndNetwork
   );
   //get emergency
   QueryOptions emergency = QueryOptions(
       documentNode: gql(getGeneral),
       variables: {
         "category":"emergency"
-      }
+      },
+      fetchPolicy: FetchPolicy.cacheAndNetwork
   );
   //listar emergencias
   Future<bool> getEmergency() async {

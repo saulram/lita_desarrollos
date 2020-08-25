@@ -45,7 +45,7 @@ class VotesTab extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .7,
                                 child: FAProgressBar(
                                   currentValue:
-                                      voteService.votations.votes[index].percent.upVote,
+                                      voteService.votations.votes[index].percent.upVote.toInt(),
                                   displayText: '%',
                                   size: MediaQuery.of(context).size.width * .1,
                                   direction: Axis.horizontal,
@@ -69,7 +69,7 @@ class VotesTab extends StatelessWidget {
                                 width: MediaQuery.of(context).size.width * .7,
                                 child: FAProgressBar(
                                   currentValue:
-                                      voteService.votations.votes[index].percent.downVote,
+                                      voteService.votations.votes[index].percent.downVote.toInt(),
                                   displayText: '%',
                                   size: MediaQuery.of(context).size.width * .1,
                                   direction: Axis.horizontal,

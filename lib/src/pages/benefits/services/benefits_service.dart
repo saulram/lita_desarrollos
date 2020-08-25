@@ -94,7 +94,6 @@ query {
         _id
         benefitId {
             title
-            description
             discount
         }
         code
