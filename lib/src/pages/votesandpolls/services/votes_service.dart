@@ -108,6 +108,7 @@ class VoteService with ChangeNotifier {
     if (res.hasException) {
 
     } else {
+
       votations = voteListFromJson(jsonEncode(res.data));
 
     }

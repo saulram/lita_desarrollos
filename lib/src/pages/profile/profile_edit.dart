@@ -211,6 +211,7 @@ class MyProfile extends StatelessWidget {
                 children: <Widget>[
                   FlatButton(
                     onPressed: () {
+                      initialService.wrongUserData(wrong: true);
                       Alert.alert(context,title: 'Gracias',content: 'El administrador se pondrá en contracto contigo para solucionarlo.',ok: 'Entendido');
 
                     },

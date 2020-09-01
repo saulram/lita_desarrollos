@@ -30,6 +30,7 @@ class PollService with ChangeNotifier {
             thirdOption
         }
         updatedAtFormat
+        expiresAtFormat
         alreadyAnswer
     }
 }
@@ -52,6 +53,7 @@ class PollService with ChangeNotifier {
             votes
         }
         updatedAtFormat
+        expiresAtFormat
     }
 }
   ''';

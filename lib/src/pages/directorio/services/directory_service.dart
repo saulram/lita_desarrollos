@@ -110,7 +110,7 @@ class DirectoryService with ChangeNotifier {
     notifyListeners();
     QueryResult res = await _client.query(personal);
     if(res.hasException){
-      print(res.data);
+      print(res.exception);
       _loading = false;
       notifyListeners();
       return false;
@@ -130,6 +130,7 @@ class DirectoryService with ChangeNotifier {
     if (res.hasException) {
       _loading = false;
       notifyListeners();
+      print(res.exception);
       return false;
     } else {
       residents = residentsFromJson(jsonEncode(res.data));

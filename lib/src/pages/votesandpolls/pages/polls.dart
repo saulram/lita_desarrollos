@@ -120,7 +120,7 @@ class PollsTab extends StatelessWidget {
                           SizedBox(height: MediaQuery.of(context).size.height*.01,),
                           Row(
                             children: <Widget>[
-                              Text('Encuesta cerrada el: ${pollsService.listOfPolls.polls[index].updatedAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                              Text('Encuesta cerrada el: ${pollsService.listOfPolls.polls[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
                             ],
                           ),
 

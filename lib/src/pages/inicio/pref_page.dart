@@ -86,7 +86,8 @@ class PreferenceSelection extends StatelessWidget {
                               color: Colors.white,
                             ),
                             children: [
-                              CheckboxListTile(
+                              loginService.loginResult.user.roles[0] != 'resident'
+                                  ? Container() :  CheckboxListTile(
                                 title: Text(
                                   'Áreas Comunes',
                                   style: GoogleFonts.sourceSansPro(
@@ -161,7 +162,8 @@ class PreferenceSelection extends StatelessWidget {
                                 checkColor: primaryLita,
                                 activeColor: Colors.white,
                               ),
-                              CheckboxListTile(
+                              loginService.loginResult.user.roles[0] != 'resident'
+                                  ? Container() :   CheckboxListTile(
                                 title: Text(
                                   'Mantenimiento y quejas',
                                   style: GoogleFonts.sourceSansPro(
@@ -212,7 +214,8 @@ class PreferenceSelection extends StatelessWidget {
                             checkColor: primaryLita,
                             activeColor: Colors.white,
                           ),
-                          CheckboxListTile(
+                          loginService.loginResult.user.roles[0] != 'resident'
+                              ? Container() :  CheckboxListTile(
                             title: Text(
                               'Estado de cuenta',
                               style: GoogleFonts.sourceSansPro(
@@ -229,7 +232,8 @@ class PreferenceSelection extends StatelessWidget {
                             checkColor: primaryLita,
                             activeColor: Colors.white,
                           ),
-                          CheckboxListTile(
+                          loginService.loginResult.user.roles[0] != 'resident'
+                              ? Container() :   CheckboxListTile(
                             title: Text(
                               'Visitas programadas',
                               style: GoogleFonts.sourceSansPro(

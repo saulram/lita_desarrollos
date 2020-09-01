@@ -10,7 +10,8 @@ import 'package:litadesarrollos/src/utils/globals.dart';
 class PersonalService with ChangeNotifier {
   static LoginResult _login;
 
-  LoginResult get login => login;
+  LoginResult get login => _login;
+
   bool _isloading = false;
   bool get isloading => _isloading;
 

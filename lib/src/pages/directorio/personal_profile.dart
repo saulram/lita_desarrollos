@@ -19,7 +19,7 @@ class PersonalProfile extends StatelessWidget {
 
 
 
-  final GlobalKey<FormBuilderState> comentKey = GlobalKey<FormBuilderState>();
+  final GlobalKey<FormBuilderState> _commentKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     final personalService = Provider.of<PersonalService>(context);
@@ -99,6 +99,7 @@ class PersonalProfile extends StatelessWidget {
               ),
               Container(
                 height: MediaQuery.of(context).size.height * .22,
+
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * .05, left: 8),
                 child: SingleChildScrollView(
@@ -106,7 +107,7 @@ class PersonalProfile extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Container(
+                      Row(),Container(
                         child: Text(
                           'Descripción',
                           style: GoogleFonts.sourceSansPro(
@@ -140,7 +141,7 @@ class PersonalProfile extends StatelessWidget {
                   Expanded(
                     flex: 5,
                     child: FormBuilder(
-                      key: comentKey,
+                      key: _commentKey,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: FormBuilderTextField(
@@ -149,13 +150,13 @@ class PersonalProfile extends StatelessWidget {
                           decoration: InputDecoration(
                             suffixIcon: personalService.isloading==true ? CircularProgressIndicator(): FlatButton(
                               onPressed: ()async  {
-                                if(comentKey.currentState.saveAndValidate()){
-                                  print(comentKey.currentState.value["comment"]);
-                                  personalService.text = comentKey.currentState.value["comment"];
+                                if(_commentKey.currentState.saveAndValidate()){
+                                  print(_commentKey.currentState.value["comment"]);
+                                  personalService.text = _commentKey.currentState.value["comment"];
                                   bool completed = await personalService.addMensaje(personal.id);
                                   if(completed == true){
                                     print('Coment Agregado');
-                                    comentKey.currentState.reset();
+                                    _commentKey.currentState.reset();
                                     personalService.getComments(personal.id);
 
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalComments()));

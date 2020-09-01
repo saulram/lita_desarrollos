@@ -84,8 +84,8 @@ class FoundTab extends StatelessWidget {
                             Row(),
                             AspectRatio(
                                 aspectRatio: 4 / 3,
-                                child: Image.network(
-                                  lostService.found.lostObjects[i].fullFiles[0],fit: BoxFit.cover,)),
+                                child: lostService.objects.lostObjects[i].fullFiles.length>0 ? Image.network(
+                                  lostService.objects.lostObjects[i].fullFiles[0],fit: BoxFit.cover,):Container()),
                             Text('${lostService.found.lostObjects[i].name}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w600),textAlign: TextAlign.start,),
                             Text('${lostService.found.lostObjects[i].looseAtFormatDate}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w400,fontSize: 10),textAlign: TextAlign.start,),
 

@@ -90,8 +90,8 @@ class LostTab extends StatelessWidget {
                               Row(),
                               AspectRatio(
                                   aspectRatio: 4 / 4,
-                                  child: Image.network(
-                                    lostService.objects.lostObjects[i].fullFiles[0],fit: BoxFit.cover,)),
+                                  child: lostService.objects.lostObjects[i].fullFiles.length>0 ? Image.network(
+                                    lostService.objects.lostObjects[i].fullFiles[0],fit: BoxFit.cover,):Container())  ,
                               Text('${lostService.objects.lostObjects[i].name}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w600),textAlign: TextAlign.start,),
                               Text('${lostService.objects.lostObjects[i].looseAtFormatDate}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w400,fontSize: 10),textAlign: TextAlign.start,),
 

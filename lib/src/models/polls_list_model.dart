@@ -34,6 +34,7 @@ class Poll {
     this.percent,
     this.updatedAtFormat,
     this.alreadyAnswer,
+    this.expiresAtFormat,
   });
 
   String id;
@@ -42,8 +43,9 @@ class Poll {
   Option secondOption;
   Option thirdOption;
   Percent percent;
-  dynamic updatedAtFormat;
+  String updatedAtFormat;
   bool alreadyAnswer;
+  String expiresAtFormat;
 
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
     id: json["_id"],
@@ -54,6 +56,7 @@ class Poll {
     percent: Percent.fromJson(json["percent"]),
     updatedAtFormat: json["updatedAtFormat"],
     alreadyAnswer: json["alreadyAnswer"],
+    expiresAtFormat: json["expiresAtFormat"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -65,6 +68,7 @@ class Poll {
     "percent": percent.toJson(),
     "updatedAtFormat": updatedAtFormat,
     "alreadyAnswer": alreadyAnswer,
+    "expiresAtFormat": expiresAtFormat,
   };
 }
 
@@ -95,14 +99,14 @@ class Percent {
     this.thirdOption,
   });
 
-  var firstOption;
-  var secondOption;
-  var thirdOption;
+  double firstOption;
+  int secondOption;
+  double thirdOption;
 
   factory Percent.fromJson(Map<String, dynamic> json) => Percent(
-    firstOption: json["firstOption"],
+    firstOption: json["firstOption"].toDouble(),
     secondOption: json["secondOption"],
-    thirdOption: json["thirdOption"],
+    thirdOption: json["thirdOption"].toDouble(),
   );
 
   Map<String, dynamic> toJson() => {

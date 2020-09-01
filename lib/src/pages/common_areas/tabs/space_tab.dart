@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 final formatCurrency = new NumberFormat.simpleCurrency();
+
 class SpaceTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,10 @@ class SpaceTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Image.network(spaceService.areasList.commonAreas[i].fullFiles[0]),
+            AspectRatio(
+              aspectRatio: 16/9,
+                child: spaceService.areasList.commonAreas[i].fullFiles.length==0 ?Container(): Image.network(
+                    spaceService.areasList.commonAreas[i].fullFiles[0])),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -35,10 +39,13 @@ class SpaceTab extends StatelessWidget {
                         flex: 1,
                         child: GestureDetector(
                           onTap: () {
-                              spaceService.getComments(
-                              spaceService.areasList.commonAreas[i].id
-                            );
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AreaComments(area: spaceService.areasList.commonAreas[i],)));
+                            spaceService.getComments(
+                                spaceService.areasList.commonAreas[i].id);
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => AreaComments(
+                                      area:
+                                          spaceService.areasList.commonAreas[i],
+                                    )));
                           },
                           child: Row(
                             children: <Widget>[
@@ -55,7 +62,10 @@ class SpaceTab extends StatelessWidget {
                         flex: 2,
                         child: Text(
                           "${spaceService.areasList.commonAreas[i].schedule}",
-                          style: GoogleFonts.sourceSansPro(fontSize: 10,color: HexColor('#333333'),),
+                          style: GoogleFonts.sourceSansPro(
+                            fontSize: 10,
+                            color: HexColor('#333333'),
+                          ),
                           textAlign: TextAlign.end,
                         ),
                       )
@@ -72,28 +82,46 @@ class SpaceTab extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.sourceSansPro(),
                   ),
-                 spaceService.areasList.commonAreas[i].regulationContent == '' || spaceService.areasList.commonAreas[i].regulationFileUrl== null ? Container() : CupertinoButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>RulesPage(area: spaceService.areasList.commonAreas[i],)));
-                    },
-                    padding: EdgeInsets.all(0),
-                    child: Text(
-                      'Reglamento',
-                      style: GoogleFonts.sourceSansPro(
-                          color: accentLita, fontSize: 16),
-                    ),
-                  ),
+                  spaceService.areasList.commonAreas[i].regulationContent ==
+                              '' ||
+                          spaceService
+                                  .areasList.commonAreas[i].regulationFileUrl ==
+                              null
+                      ? Container()
+                      : CupertinoButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RulesPage(
+                                          area: spaceService
+                                              .areasList.commonAreas[i],
+                                        )));
+                          },
+                          padding: EdgeInsets.all(0),
+                          child: Text(
+                            'Reglamento',
+                            style: GoogleFonts.sourceSansPro(
+                                color: accentLita, fontSize: 16),
+                          ),
+                        ),
                   Text(
                       'Costo: ${formatCurrency.format(spaceService.areasList.commonAreas[i].cost)} MXN'),
-                 spaceService.user.user.roles[0]!='resident'? Container(): Center(
-                    child: CupertinoButton(
-                      color: accentLita,
-
-                        child: Text('Reservar'), onPressed: () {
-                        print(spaceService.areasList.commonAreas[i].id
-                        );
-      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookingArea(area: spaceService.areasList.commonAreas[i],)));}),
-                  )
+                  spaceService.user.user.roles[0] != 'resident'
+                      ? Container()
+                      : Center(
+                          child: CupertinoButton(
+                              color: accentLita,
+                              child: Text('Reservar'),
+                              onPressed: () {
+                                print(spaceService.areasList.commonAreas[i].id);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => BookingArea(
+                                          area: spaceService
+                                              .areasList.commonAreas[i],
+                                        )));
+                              }),
+                        )
                 ],
               ),
             )

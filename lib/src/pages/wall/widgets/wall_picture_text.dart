@@ -40,7 +40,7 @@ class WallPictureText extends StatelessWidget {
                     style: GoogleFonts.sourceSansPro(),
                     textAlign: TextAlign.start,
                     softWrap: true,
-                    maxLines: 2,
+                    
                   ),
                 ),
                 Text(

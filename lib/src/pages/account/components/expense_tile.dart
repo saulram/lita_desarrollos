@@ -48,9 +48,9 @@ class ExpenseTile extends StatelessWidget {
           ),
           Expanded(
             child: Row(
-              mainAxisAlignment:MainAxisAlignment.center,
+              mainAxisAlignment:MainAxisAlignment.start,
               children: <Widget>[
-                Text('${object.termPaidDateFormat}',style: GoogleFonts.sourceSansPro(),),
+                Text('${object.termPaidDateFormat}',style: GoogleFonts.sourceSansPro(fontSize: 12),),
               ],
             ),
           ),

@@ -75,6 +75,7 @@ class LostService with ChangeNotifier {
     isloading = true;
     QueryResult res = await _client.query(foptions);
     QueryResult res2 = await _client.query(options);
+    print(res2.data);
     _objects = lostListFromJson(jsonEncode(res2.data));
     _found = lostListFromJson(jsonEncode(res.data));
     isloading = false;

@@ -221,7 +221,8 @@ class DrawerLita extends StatelessWidget {
                               Navigator.of(context).pushNamed('Bazar');
                             },
                           ),
-                          ListTile(
+                          loginService.loginResult.user.roles[0] != 'resident'
+                              ? Container():   ListTile(
                             title: Container(
                               margin: EdgeInsets.only(
                                   left: MediaQuery.of(context).size.width * .1),
