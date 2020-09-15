@@ -437,7 +437,7 @@ class DrawerLita extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'V1.0.6',
+                        'V1.0.8',
                         style: GoogleFonts.sourceSansPro(
                             fontSize: 9, color: Colors.white),
                       )

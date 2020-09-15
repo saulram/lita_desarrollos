@@ -337,6 +337,29 @@ LoginResult get user =>_user;
   MyBookingsList get myBooks =>_myBooks;
 
 
+  Future<void> reportComment ( String commentId)async{
+    String query = r'''
+    mutation($id:ID!){
+    addCommentComplain(id:$id)
+    }
+    ''';
+    MutationOptions options = MutationOptions(
+      documentNode: gql(query),
+      variables: {
+        "id":commentId
+      }
+    );
+
+    QueryResult res= await _client.mutate(options);
+    if(res.hasException){
+      print(res.exception);
+    }else{
+      print(res.data);
+    }
+
+  }
+
+
 
   Future<bool> getMyReservations()async {
     _myBooks = MyBookingsList();

@@ -1,3 +1,4 @@
+import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -84,13 +85,25 @@ class AreaComments extends StatelessWidget {
                                         fontSize: 13,
                                         fontWeight: FontWeight.w300),
                                   ),
-                                  Text(
-                                    spaceService.comments.comments[i]
-                                        .postedAtFormatDate,
-                                    style: GoogleFonts.sourceSansPro(
-                                        color: Colors.white,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w300),
+                                  Row(
+                                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(
+                                        spaceService.comments.comments[i]
+                                            .postedAtFormatDate,
+                                        style: GoogleFonts.sourceSansPro(
+                                            color: Colors.white,
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                      FlatButton(
+                                        child: Text('Reportar',style: GoogleFonts.sourceSansPro(color: Colors.white),),
+                                        onPressed: (){
+                                          spaceService.reportComment(spaceService.comments.comments[i].id);
+                                          Alert.alert(context,title: 'Comentario Reportado');
+                                        },
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),

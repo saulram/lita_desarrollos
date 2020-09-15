@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/models/loginmodel.dart';
 import 'package:litadesarrollos/src/models/walls_model.dart';
+import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/wall/services/wall_service.dart';
 import 'package:litadesarrollos/src/pages/wall/widgets/wall_comment_reply.dart';
 import 'package:provider/provider.dart';
@@ -108,6 +109,8 @@ class WallCommentsPost extends StatelessWidget {
                                   ),
                                   FlatButton(
                                     onPressed: () {
+                                      CommonService common = CommonService();
+                                      common.reportComment(wallsList.comments[j].id);
                                       Alert.alert(context,title: 'Se ha reportado al administrador');
                                     },
                                     child: Text(

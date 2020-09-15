@@ -100,12 +100,12 @@ class Percent {
   });
 
   double firstOption;
-  int secondOption;
+  double secondOption;
   double thirdOption;
 
   factory Percent.fromJson(Map<String, dynamic> json) => Percent(
     firstOption: json["firstOption"].toDouble(),
-    secondOption: json["secondOption"],
+    secondOption: json["secondOption"].toDouble(),
     thirdOption: json["thirdOption"].toDouble(),
   );
 

@@ -69,9 +69,10 @@ class FoundTab extends StatelessWidget {
                 ),
                 itemCount: lostService.found.lostObjects!=null? lostService.found.lostObjects.length:0,
                 itemBuilder: (BuildContext ctx, int i) {
-                  if(lostService.found.lostObjects[i].type =='encontrado'){
+
                     return GestureDetector(
                       onTap: (){
+                        print(lostService.found.lostObjects[i].fullFiles[0]);
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FoundDetail(object:lostService.found.lostObjects[i])));
 
                       },
@@ -84,8 +85,8 @@ class FoundTab extends StatelessWidget {
                             Row(),
                             AspectRatio(
                                 aspectRatio: 4 / 3,
-                                child: lostService.objects.lostObjects[i].fullFiles.length>0 ? Image.network(
-                                  lostService.objects.lostObjects[i].fullFiles[0],fit: BoxFit.cover,):Container()),
+                                child: lostService.found.lostObjects[i].fullFiles.length>0 ? Image.network(
+                                  lostService.found.lostObjects[i].fullFiles[0],fit: BoxFit.cover,):Container()),
                             Text('${lostService.found.lostObjects[i].name}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w600),textAlign: TextAlign.start,),
                             Text('${lostService.found.lostObjects[i].looseAtFormatDate}',style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w400,fontSize: 10),textAlign: TextAlign.start,),
 
@@ -93,10 +94,7 @@ class FoundTab extends StatelessWidget {
                         ),
                       ),
                     );
-                  }else{
-                    return Container();
-                  }
-                }),
+                  }),
           ),
         )
       ],

@@ -2,6 +2,7 @@ import 'package:easy_alert/easy_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:litadesarrollos/src/pages/bazaar/services/bazaar_service.dart';
+import 'package:litadesarrollos/src/pages/common_areas/services/common_area_service.dart';
 import 'package:litadesarrollos/src/pages/wall/widgets/add_comment_post_detail.dart';
 
 import 'package:litadesarrollos/src/pages/wall/widgets/wall_comment_reply.dart';
@@ -133,6 +134,8 @@ class BazaarComments extends StatelessWidget {
                                                 FlatButton(
                                                   onPressed: () {
                                                     //wallProvider.commentId =
+                                                    CommonService coment = CommonService();
+                                                    coment.reportComment(wallProvider.comments[j].id);
                                                     Alert.alert(context,title: 'Exito',content: 'Se ha reportado a administración');
                                                   },
                                                   child: Text(

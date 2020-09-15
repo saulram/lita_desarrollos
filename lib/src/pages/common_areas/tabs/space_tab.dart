@@ -26,7 +26,7 @@ class SpaceTab extends StatelessWidget {
             AspectRatio(
               aspectRatio: 16/9,
                 child: spaceService.areasList.commonAreas[i].fullFiles.length==0 ?Container(): Image.network(
-                    spaceService.areasList.commonAreas[i].fullFiles[0])),
+                    spaceService.areasList.commonAreas[i].fullFiles[0],fit: BoxFit.cover,)),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(

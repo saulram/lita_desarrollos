@@ -240,7 +240,7 @@ class PollsTab extends StatelessWidget {
                           padding: const EdgeInsets.all(15.0),
                           child: Row(
                             children: <Widget>[
-                              Text('Encuesta valida hasta el: ${pollsService.listOfPolls.polls[index].updatedAtFormat}',style: GoogleFonts.sourceSansPro(),),
+                              Text('Encuesta válida hasta el: ${pollsService.listOfPolls.polls[index].expiresAtFormat}',style: GoogleFonts.sourceSansPro(),),
                             ],
                           ),
                         ),

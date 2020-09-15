@@ -16,6 +16,7 @@ class FoundDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginProvider = Provider.of<LoginService>(context);
 
+
     return loginProvider.loginResult.user != null
         ? Scaffold(
       endDrawer: DrawerLita(),
